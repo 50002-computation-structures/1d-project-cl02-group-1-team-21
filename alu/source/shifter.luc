@@ -1,0 +1,41 @@
+module shifter (
+    input a[32],    // Input data
+    input b[5],     // Shift amount (0-31)
+    input alufn[2], // ALU function code (00 = SHL, 01 = SHR, 11 = SRA)
+    output shift[32] // Shifted output
+) {
+    sig rev_a[32]  // Register to store reversed input
+    sig rev_out[32] // Register to store reversed output
+    sig left_shifted[32]  // Intermediate left-shifted output
+    sig shifted_bits[32]  // Final shifted output
+    
+    mux_2 mux_2()
+    bit_reverse bit_reverse(#SIZE(32))
+    
+    x_bit_left_shifter shifter_inst(#SHIFT(b))
+
+    always {
+        shift = 0
+
+        // Reverse bits for SHR/SRA
+        mux_2.s0 = alufn[0]
+        bit_reverse.in = a
+        rev_a = bit_reverse.reversed
+        mux_2.in = c{a, rev_a}
+        rev_a = mux_2.out
+        
+        // Use parameterized left shifter
+        shifter_inst.a = rev_a
+        shifter_inst.shift = b
+        shifter_inst.pad = alufn[1] == 11 ? a[31] : 0
+        left_shifted = shifter_inst.out
+        
+        mux_2.s0 = alufn[0]
+        bit_reverse.in = left_shifted
+        rev_out = bit_reverse.reversed
+        mux_2.in = c{left_shifted, rev_out}
+        rev_out = mux_2.out
+
+        shift = rev_out
+    }
+}

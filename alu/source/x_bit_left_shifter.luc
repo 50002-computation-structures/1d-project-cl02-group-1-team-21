@@ -1,0 +1,23 @@
+module x_bit_left_shifter #(
+    SHIFT = 8 : SHIFT > -1 & SHIFT < 32
+)(
+    input a[32],   // Input data
+    input shift,   // Shift enable
+    input pad,     // Padding bit (0 for SHL, MSB for SRA)
+    output out[32] // Shifted output
+) {
+    mux_2 shift_mux()
+    sig shifted_bits[32]
+    always {
+        shifted_bits = a
+        repeat (i, 32) {
+            sig in_mux[2]
+            in_mux[0] = a[i]                    // No shift case
+            in_mux[1] = (i + SHIFT < 32) ? a[i + SHIFT] : pad
+            shift_mux.s0 = shift
+            shift_mux.in = in_mux
+            shifted_bits[i] = shift_mux.out
+        }
+        out = shifted_bits
+    }
+}

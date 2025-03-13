@@ -1,0 +1,25 @@
+module boolean #(
+    SIZE = 32 : SIZE > 0
+)(
+    input a[SIZE],
+    input b[SIZE],
+    input alufn[6],
+    output bool[SIZE]
+) {
+    always {
+        bool = 0
+        
+        case(alufn[3:0]){
+            b1000: 
+                bool = a & b // AND Operation
+            b1110: 
+                bool = a | b // OR Operation
+            b0110: 
+                bool = a ^ b // XOR Operation
+            b1010: 
+                bool = a // Pass-through A
+            default:
+                bool = 0 // Default case
+        }
+    }
+}
