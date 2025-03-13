@@ -1,0 +1,27 @@
+module alu (
+    input a[32],
+    input b[32],
+    input alufn[6],
+    output out[32],
+    output z,
+    output v,
+    output n
+) {
+    
+    // adder adder(#SIZE(32)) // 2 units: add & subtract
+    // compare compare() // 3 compare units
+    // multiplier multiplier() // 1 Mutiplier unit
+    // boolean boolean(#SIZE(32)) // 4 boolean units
+    shifter shifter() // 3 shifter units
+    
+    always {
+        shifter.a = a
+        shifter.b = b
+        shifter.alufn = alufn
+        
+        out = shifter.shift
+        z = 0
+        v = 0
+        n = 0
+    }
+}
