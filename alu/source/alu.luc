@@ -11,15 +11,15 @@ module alu (
     // adder adder(#SIZE(32)) // 2 units: add & subtract
     // compare compare() // 3 compare units
     // multiplier multiplier() // 1 Mutiplier unit
-    boolean boolean(#SIZE(32)) // 4 boolean units
-    
+    // boolean boolean(#SIZE(32)) // 4 boolean units
+    shifter shifter() // 3 shifter units
     
     always {
-        boolean.a = a
-        boolean.b = b
-        boolean.alufn = alufn
+        shifter.a = a
+        shifter.b = b
+        shifter.alufn = alufn
         
-        out = boolean.bool
+        out = shifter.shift
         z = 0
         v = 0
         n = 0

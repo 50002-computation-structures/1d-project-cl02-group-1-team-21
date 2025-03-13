@@ -1,41 +1,47 @@
 module shifter (
-    input a[32],    // Input data
-    input b[5],     // Shift amount (0-31)
-    input alufn[2], // ALU function code (00 = SHL, 01 = SHR, 11 = SRA)
-    output shift[32] // Shifted output
+    input a[32],
+    input b[5],
+    input alufn[6],
+    output shift[32]
 ) {
-    sig rev_a[32]  // Register to store reversed input
-    sig rev_out[32] // Register to store reversed output
-    sig left_shifted[32]  // Intermediate left-shifted output
-    sig shifted_bits[32]  // Final shifted output
-    
-    mux_2 mux_2()
-    bit_reverse bit_reverse(#SIZE(32))
-    
-    x_bit_left_shifter shifter_inst(#SHIFT(b))
+    mux_2 mux_a[32]
+    mux_2 mux_shl[32]
+    mux_2 mux_pad
+    bit_reverse first_bit_reverse(#SIZE(32))
+    bit_reverse second_bit_reverse(#SIZE(32))
 
+    x_bit_left_shifter left_shifters[5](#SHIFT({5b10000, 5b01000, 5b00100, 5b00010, 5b00001}))
+        
     always {
         shift = 0
-
-        // Reverse bits for SHR/SRA
-        mux_2.s0 = alufn[0]
-        bit_reverse.in = a
-        rev_a = bit_reverse.reversed
-        mux_2.in = c{a, rev_a}
-        rev_a = mux_2.out
         
-        // Use parameterized left shifter
-        shifter_inst.a = rev_a
-        shifter_inst.shift = b
-        shifter_inst.pad = alufn[1] == 11 ? a[31] : 0
-        left_shifted = shifter_inst.out
-        
-        mux_2.s0 = alufn[0]
-        bit_reverse.in = left_shifted
-        rev_out = bit_reverse.reversed
-        mux_2.in = c{left_shifted, rev_out}
-        rev_out = mux_2.out
+        first_bit_reverse.in = a
 
-        shift = rev_out
-    }
+        repeat(i, 32) {
+            mux_a.s0[i] = alufn[0]
+            mux_a.in[i] = c{first_bit_reverse.reversed[i], a[i]}
+        }
+
+        mux_pad.s0 = alufn[1]
+        mux_pad.in = c{1b0,a[31]}
+                
+        repeat(i, 5) {
+            if (i == 0) {
+                left_shifters.a[i] = mux_a.out
+            } else {
+                left_shifters.a[i] = left_shifters.out[i-1]
+            }
+            left_shifters.shift[i] = b[i]
+            left_shifters.pad[i] = mux_pad.out
+        }
+        
+        second_bit_reverse.in = left_shifters.out[4]
+        repeat(i, 32) {
+            mux_shl.s0[i] = alufn[0]
+            mux_shl.in[i][0] = left_shifters.out[4][i]
+            mux_shl.in[i][1] = second_bit_reverse.reversed[i]
+        }
+        
+        shift = mux_shl.out
+    } 
 }
