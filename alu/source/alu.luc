@@ -7,21 +7,70 @@ module alu (
     output v,
     output n
 ) {
+    mux_4 alu_mux[32]
+    mux_2 smul_mux[32]
     
-    // adder adder(#SIZE(32)) // 2 units: add & subtract
-    // compare compare() // 3 compare units
-    // multiplier multiplier() // 1 Mutiplier unit
-    // boolean boolean(#SIZE(32)) // 4 boolean units
+    adder adder(#SIZE(32)) // 2 units: add & subtract
+    multiplier multiplier() // 1 Mutiplier unit
+    boolean boolean(#SIZE(32)) // 4 boolean units
     shifter shifter() // 3 shifter units
+    compare compare() // 3 compare units
+    
+    adder cmp_adder(#SIZE(32))
     
     always {
+        // Assembling Adder
+        adder.a = a
+        adder.b = b
+        adder.alufn_signal = alufn
+        
+        // Assembling Multiplier
+        multiplier.a = a
+        multiplier.b = b
+        
+        repeat(i, 32){
+            smul_mux.s0[i] = alufn[1]
+            smul_mux.in[i][0] = adder.out[i]
+            smul_mux.in[i][1] = multiplier.mul[i]
+        }
+        
+        // Assembling Boolean
+        boolean.a = a
+        boolean.b = b
+        boolean.alufn = alufn
+        
+        // Assembling Shifter
         shifter.a = a
         shifter.b = b
         shifter.alufn = alufn
         
-        out = shifter.shift
-        z = 0
-        v = 0
-        n = 0
+        // Assembling Compare (with helper cmp_adder)
+        cmp_adder.a = a
+        cmp_adder.b = b
+        cmp_adder.alufn_signal = 6b000001
+        
+        compare.z = cmp_adder.z
+        compare.v = cmp_adder.v
+        compare.n = cmp_adder.n
+        compare.alufn = alufn
+        
+        repeat(i, 32){
+            alu_mux.s0[i] = alufn[4]
+            alu_mux.s1[i] = alufn[5]
+            alu_mux.in[i][0] = smul_mux.out[i]
+            alu_mux.in[i][1] = boolean.bool[i]
+            alu_mux.in[i][2] = shifter.shift[i]
+            if(~|i){
+                alu_mux.in[i][3] = compare.cmp
+            } else {
+                alu_mux.in[i][3] = 1b0
+            }
+        }
+        
+        out = alu_mux.out
+
+        z = adder.z
+        v = adder.v
+        n = adder.n
     }
 }
