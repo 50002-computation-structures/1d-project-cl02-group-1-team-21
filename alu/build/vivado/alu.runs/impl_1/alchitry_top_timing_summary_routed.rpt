@@ -1,0 +1,878 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
+| Date         : Fri Mar 14 05:02:07 2025
+| Host         : debian running 64-bit Debian GNU/Linux 12 (bookworm)
+| Command      : report_timing_summary -max_paths 10 -report_unconstrained -file alchitry_top_timing_summary_routed.rpt -pb alchitry_top_timing_summary_routed.pb -rpx alchitry_top_timing_summary_routed.rpx -warn_on_violation
+| Design       : alchitry_top
+| Device       : 7a35t-ftg256
+| Speed File   : -1  PRODUCTION 1.23 2018-06-13
+| Design State : Routed
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Timing Summary Report
+
+------------------------------------------------------------------------------------------------
+| Timer Settings
+| --------------
+------------------------------------------------------------------------------------------------
+
+  Enable Multi Corner Analysis               :  Yes
+  Enable Pessimism Removal                   :  Yes
+  Pessimism Removal Resolution               :  Nearest Common Node
+  Enable Input Delay Default Clock           :  No
+  Enable Preset / Clear Arcs                 :  No
+  Disable Flight Delays                      :  No
+  Ignore I/O Paths                           :  No
+  Timing Early Launch at Borrowing Latches   :  No
+  Borrow Time for Max Delay Exceptions       :  Yes
+  Merge Timing Exceptions                    :  Yes
+  Inter-SLR Compensation                     :  Conservative
+
+  Corner  Analyze    Analyze    
+  Name    Max Paths  Min Paths  
+  ------  ---------  ---------  
+  Slow    Yes        Yes        
+  Fast    Yes        Yes        
+
+
+------------------------------------------------------------------------------------------------
+| Report Methodology
+| ------------------
+------------------------------------------------------------------------------------------------
+
+No report available as report_methodology has not been run prior. Run report_methodology on the current design for the summary of methodology violations.
+
+
+
+check_timing report
+
+Table of Contents
+-----------------
+1. checking no_clock (0)
+2. checking constant_clock (0)
+3. checking pulse_width_clock (0)
+4. checking unconstrained_internal_endpoints (0)
+5. checking no_input_delay (0)
+6. checking no_output_delay (0)
+7. checking multiple_clock (0)
+8. checking generated_clocks (0)
+9. checking loops (0)
+10. checking partial_input_delay (0)
+11. checking partial_output_delay (0)
+12. checking latch_loops (0)
+
+1. checking no_clock (0)
+------------------------
+ There are 0 register/latch pins with no clock.
+
+
+2. checking constant_clock (0)
+------------------------------
+ There are 0 register/latch pins with constant_clock.
+
+
+3. checking pulse_width_clock (0)
+---------------------------------
+ There are 0 register/latch pins which need pulse_width check
+
+
+4. checking unconstrained_internal_endpoints (0)
+------------------------------------------------
+ There are 0 pins that are not constrained for maximum delay.
+
+ There are 0 pins that are not constrained for maximum delay due to constant clock.
+
+
+5. checking no_input_delay (0)
+------------------------------
+ There are 0 input ports with no input delay specified.
+
+ There are 0 input ports with no input delay but user has a false path constraint.
+
+
+6. checking no_output_delay (0)
+-------------------------------
+ There are 0 ports with no output delay specified.
+
+ There are 0 ports with no output delay but user has a false path constraint
+
+ There are 0 ports with no output delay but with a timing clock defined on it or propagating through it
+
+
+7. checking multiple_clock (0)
+------------------------------
+ There are 0 register/latch pins with multiple clocks.
+
+
+8. checking generated_clocks (0)
+--------------------------------
+ There are 0 generated clocks that are not connected to a clock source.
+
+
+9. checking loops (0)
+---------------------
+ There are 0 combinational loops in the design.
+
+
+10. checking partial_input_delay (0)
+------------------------------------
+ There are 0 input ports with partial input delay specified.
+
+
+11. checking partial_output_delay (0)
+-------------------------------------
+ There are 0 ports with partial output delay specified.
+
+
+12. checking latch_loops (0)
+----------------------------
+ There are 0 combinational latch loops in the design through latch input
+
+
+
+------------------------------------------------------------------------------------------------
+| Design Timing Summary
+| ---------------------
+------------------------------------------------------------------------------------------------
+
+    WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
+    -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
+        inf        0.000                      0                   33          inf        0.000                      0                   33           NA           NA                      NA                    NA  
+
+
+All user specified timing constraints are met.
+
+
+------------------------------------------------------------------------------------------------
+| Clock Summary
+| -------------
+------------------------------------------------------------------------------------------------
+
+Clock  Waveform(ns)       Period(ns)      Frequency(MHz)
+-----  ------------       ----------      --------------
+clk_0  {0.000 5.000}      10.000          100.000         
+
+
+------------------------------------------------------------------------------------------------
+| Intra Clock Table
+| -----------------
+------------------------------------------------------------------------------------------------
+
+Clock             WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
+-----             -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
+
+
+------------------------------------------------------------------------------------------------
+| Inter Clock Table
+| -----------------
+------------------------------------------------------------------------------------------------
+
+From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints  
+----------    --------          -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------  
+
+
+------------------------------------------------------------------------------------------------
+| Other Path Groups Table
+| -----------------------
+------------------------------------------------------------------------------------------------
+
+Path Group    From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints  
+----------    ----------    --------          -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------  
+
+
+------------------------------------------------------------------------------------------------
+| User Ignored Path Table
+| -----------------------
+------------------------------------------------------------------------------------------------
+
+Path Group    From Clock    To Clock    
+----------    ----------    --------    
+
+
+------------------------------------------------------------------------------------------------
+| Unconstrained Path Table
+| ------------------------
+------------------------------------------------------------------------------------------------
+
+Path Group    From Clock    To Clock    
+----------    ----------    --------    
+(none)                                    
+
+
+------------------------------------------------------------------------------------------------
+| Timing Details
+| --------------
+------------------------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------------
+Path Group:  (none)
+From Clock:  
+  To Clock:  
+
+Max Delay            33 Endpoints
+Min Delay            33 Endpoints
+--------------------------------------------------------------------------------------
+
+
+Max Delay Paths
+--------------------------------------------------------------------------------------
+Slack:                    inf
+  Source:                 io_dip[0][1]
+                            (input port)
+  Destination:            io_led[0][5]
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        21.465ns  (logic 7.196ns (33.525%)  route 14.269ns (66.475%))
+  Logic Levels:           14  (IBUF=1 LUT2=1 LUT4=3 LUT6=8 OBUF=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    D5                                                0.000     0.000 r  io_dip[0][1] (IN)
+                         net (fo=0)                   0.000     0.000    io_dip[0][1]
+    D5                   IBUF (Prop_ibuf_I_O)         1.471     1.471 r  led_OBUF[7]_inst_i_17/O
+                         net (fo=34, routed)          2.424     3.895    alu_manual/alu/multiplier/io_led[1][4]_INST_0_i_4_0
+    SLICE_X63Y71         LUT2 (Prop_lut2_I0_O)        0.124     4.019 r  alu_manual/alu/multiplier/i_/led_OBUF[4]_inst_i_15/O
+                         net (fo=2, routed)           0.590     4.609    alu_manual/alu/multiplier/M_fa_a[32]
+    SLICE_X61Y71         LUT6 (Prop_lut6_I5_O)        0.124     4.733 r  alu_manual/alu/multiplier/i_/led_OBUF[4]_inst_i_10/O
+                         net (fo=3, routed)           0.811     5.544    alu_manual/alu/multiplier/p_2054_in
+    SLICE_X60Y70         LUT4 (Prop_lut4_I0_O)        0.146     5.690 r  alu_manual/alu/multiplier/i_/led_OBUF[5]_inst_i_11/O
+                         net (fo=6, routed)           1.452     7.142    alu_manual/alu/multiplier/p_2110_in
+    SLICE_X58Y69         LUT6 (Prop_lut6_I0_O)        0.328     7.470 r  alu_manual/alu/multiplier/i_/led_OBUF[7]_inst_i_25/O
+                         net (fo=6, routed)           1.293     8.763    alu_manual/alu/multiplier/p_1967_in
+    SLICE_X59Y68         LUT4 (Prop_lut4_I1_O)        0.152     8.915 r  alu_manual/alu/multiplier/i_/led_OBUF[7]_inst_i_26/O
+                         net (fo=5, routed)           0.634     9.549    alu_manual/alu/multiplier/p_1965_in
+    SLICE_X58Y69         LUT6 (Prop_lut6_I3_O)        0.326     9.875 r  alu_manual/alu/multiplier/i_/io_led[0][7]_INST_0_i_35/O
+                         net (fo=2, routed)           0.583    10.458    alu_manual/alu/multiplier/p_1961_in
+    SLICE_X58Y70         LUT6 (Prop_lut6_I4_O)        0.124    10.582 r  alu_manual/alu/multiplier/i_/io_led[0][7]_INST_0_i_26/O
+                         net (fo=5, routed)           0.980    11.562    alu_manual/alu/multiplier/p_1769_in
+    SLICE_X61Y70         LUT4 (Prop_lut4_I0_O)        0.154    11.716 r  alu_manual/alu/multiplier/i_/io_led[0][7]_INST_0_i_17/O
+                         net (fo=4, routed)           0.837    12.553    alu_manual/alu/multiplier/p_1640_in
+    SLICE_X62Y69         LUT6 (Prop_lut6_I2_O)        0.327    12.880 r  alu_manual/alu/multiplier/i_/io_led[0][3]_INST_0_i_3/O
+                         net (fo=3, routed)           1.056    13.937    alu_manual/alu/multiplier/p_1564_in
+    SLICE_X62Y68         LUT6 (Prop_lut6_I3_O)        0.124    14.061 r  alu_manual/alu/multiplier/i_/io_led[0][7]_INST_0_i_8/O
+                         net (fo=2, routed)           1.000    15.061    alu_manual/alu/multiplier/p_1560_in
+    SLICE_X65Y69         LUT6 (Prop_lut6_I0_O)        0.124    15.185 r  alu_manual/alu/multiplier/io_led[0][5]_INST_0_i_2/O
+                         net (fo=1, routed)           0.263    15.448    alu_manual/alu/multiplier/io_led[0][5]_INST_0_i_2_n_0
+    SLICE_X65Y69         LUT6 (Prop_lut6_I1_O)        0.124    15.572 r  alu_manual/alu/multiplier/io_led[0][5]_INST_0_i_1/O
+                         net (fo=1, routed)           2.345    17.917    io_led[0]_OBUF[5]
+    A3                   OBUF (Prop_obuf_I_O)         3.548    21.465 r  io_led[0][5]_INST_0/O
+                         net (fo=0)                   0.000    21.465    io_led[0][5]
+    A3                                                                r  io_led[0][5] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 io_dip[0][1]
+                            (input port)
+  Destination:            io_led[0][4]
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        21.219ns  (logic 7.401ns (34.881%)  route 13.818ns (65.119%))
+  Logic Levels:           14  (IBUF=1 LUT2=1 LUT4=4 LUT6=7 OBUF=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    D5                                                0.000     0.000 r  io_dip[0][1] (IN)
+                         net (fo=0)                   0.000     0.000    io_dip[0][1]
+    D5                   IBUF (Prop_ibuf_I_O)         1.471     1.471 r  led_OBUF[7]_inst_i_17/O
+                         net (fo=34, routed)          2.424     3.895    alu_manual/alu/multiplier/io_led[1][4]_INST_0_i_4_0
+    SLICE_X63Y71         LUT2 (Prop_lut2_I0_O)        0.124     4.019 r  alu_manual/alu/multiplier/i_/led_OBUF[4]_inst_i_15/O
+                         net (fo=2, routed)           0.590     4.609    alu_manual/alu/multiplier/M_fa_a[32]
+    SLICE_X61Y71         LUT6 (Prop_lut6_I5_O)        0.124     4.733 r  alu_manual/alu/multiplier/i_/led_OBUF[4]_inst_i_10/O
+                         net (fo=3, routed)           0.811     5.544    alu_manual/alu/multiplier/p_2054_in
+    SLICE_X60Y70         LUT4 (Prop_lut4_I0_O)        0.146     5.690 r  alu_manual/alu/multiplier/i_/led_OBUF[5]_inst_i_11/O
+                         net (fo=6, routed)           1.452     7.142    alu_manual/alu/multiplier/p_2110_in
+    SLICE_X58Y69         LUT6 (Prop_lut6_I0_O)        0.328     7.470 r  alu_manual/alu/multiplier/i_/led_OBUF[7]_inst_i_25/O
+                         net (fo=6, routed)           1.293     8.763    alu_manual/alu/multiplier/p_1967_in
+    SLICE_X59Y68         LUT4 (Prop_lut4_I1_O)        0.152     8.915 r  alu_manual/alu/multiplier/i_/led_OBUF[7]_inst_i_26/O
+                         net (fo=5, routed)           0.634     9.549    alu_manual/alu/multiplier/p_1965_in
+    SLICE_X58Y69         LUT6 (Prop_lut6_I3_O)        0.326     9.875 r  alu_manual/alu/multiplier/i_/io_led[0][7]_INST_0_i_35/O
+                         net (fo=2, routed)           0.583    10.458    alu_manual/alu/multiplier/p_1961_in
+    SLICE_X58Y70         LUT6 (Prop_lut6_I4_O)        0.124    10.582 r  alu_manual/alu/multiplier/i_/io_led[0][7]_INST_0_i_26/O
+                         net (fo=5, routed)           0.980    11.562    alu_manual/alu/multiplier/p_1769_in
+    SLICE_X61Y70         LUT4 (Prop_lut4_I0_O)        0.154    11.716 r  alu_manual/alu/multiplier/i_/io_led[0][7]_INST_0_i_17/O
+                         net (fo=4, routed)           0.837    12.553    alu_manual/alu/multiplier/p_1640_in
+    SLICE_X62Y69         LUT6 (Prop_lut6_I2_O)        0.327    12.880 r  alu_manual/alu/multiplier/i_/io_led[0][3]_INST_0_i_3/O
+                         net (fo=3, routed)           0.502    13.382    alu_manual/alu/multiplier/p_1564_in
+    SLICE_X62Y69         LUT4 (Prop_lut4_I1_O)        0.119    13.501 r  alu_manual/alu/multiplier/i_/io_led[0][4]_INST_0_i_5/O
+                         net (fo=1, routed)           0.581    14.083    alu_manual/alu/multiplier/p_1562_in
+    SLICE_X63Y69         LUT6 (Prop_lut6_I5_O)        0.332    14.415 r  alu_manual/alu/multiplier/i_/io_led[0][4]_INST_0_i_2/O
+                         net (fo=1, routed)           0.799    15.214    alu_manual/alu/multiplier/M_multiplier_mul[12]
+    SLICE_X65Y69         LUT6 (Prop_lut6_I1_O)        0.124    15.338 r  alu_manual/alu/multiplier/io_led[0][4]_INST_0_i_1/O
+                         net (fo=1, routed)           2.331    17.669    io_led[0]_OBUF[4]
+    B4                   OBUF (Prop_obuf_I_O)         3.550    21.219 r  io_led[0][4]_INST_0/O
+                         net (fo=0)                   0.000    21.219    io_led[0][4]
+    B4                                                                r  io_led[0][4] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 io_dip[0][1]
+                            (input port)
+  Destination:            io_led[0][6]
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        20.939ns  (logic 7.415ns (35.412%)  route 13.524ns (64.588%))
+  Logic Levels:           14  (IBUF=1 LUT2=1 LUT4=4 LUT6=7 OBUF=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    D5                                                0.000     0.000 r  io_dip[0][1] (IN)
+                         net (fo=0)                   0.000     0.000    io_dip[0][1]
+    D5                   IBUF (Prop_ibuf_I_O)         1.471     1.471 r  led_OBUF[7]_inst_i_17/O
+                         net (fo=34, routed)          2.424     3.895    alu_manual/alu/multiplier/io_led[1][4]_INST_0_i_4_0
+    SLICE_X63Y71         LUT2 (Prop_lut2_I0_O)        0.124     4.019 r  alu_manual/alu/multiplier/i_/led_OBUF[4]_inst_i_15/O
+                         net (fo=2, routed)           0.590     4.609    alu_manual/alu/multiplier/M_fa_a[32]
+    SLICE_X61Y71         LUT6 (Prop_lut6_I5_O)        0.124     4.733 r  alu_manual/alu/multiplier/i_/led_OBUF[4]_inst_i_10/O
+                         net (fo=3, routed)           0.811     5.544    alu_manual/alu/multiplier/p_2054_in
+    SLICE_X60Y70         LUT4 (Prop_lut4_I0_O)        0.146     5.690 r  alu_manual/alu/multiplier/i_/led_OBUF[5]_inst_i_11/O
+                         net (fo=6, routed)           1.452     7.142    alu_manual/alu/multiplier/p_2110_in
+    SLICE_X58Y69         LUT6 (Prop_lut6_I0_O)        0.328     7.470 r  alu_manual/alu/multiplier/i_/led_OBUF[7]_inst_i_25/O
+                         net (fo=6, routed)           1.293     8.763    alu_manual/alu/multiplier/p_1967_in
+    SLICE_X59Y68         LUT4 (Prop_lut4_I1_O)        0.152     8.915 r  alu_manual/alu/multiplier/i_/led_OBUF[7]_inst_i_26/O
+                         net (fo=5, routed)           0.634     9.549    alu_manual/alu/multiplier/p_1965_in
+    SLICE_X58Y69         LUT6 (Prop_lut6_I3_O)        0.326     9.875 r  alu_manual/alu/multiplier/i_/io_led[0][7]_INST_0_i_35/O
+                         net (fo=2, routed)           0.583    10.458    alu_manual/alu/multiplier/p_1961_in
+    SLICE_X58Y70         LUT6 (Prop_lut6_I4_O)        0.124    10.582 r  alu_manual/alu/multiplier/i_/io_led[0][7]_INST_0_i_26/O
+                         net (fo=5, routed)           0.980    11.562    alu_manual/alu/multiplier/p_1769_in
+    SLICE_X61Y70         LUT4 (Prop_lut4_I0_O)        0.154    11.716 r  alu_manual/alu/multiplier/i_/io_led[0][7]_INST_0_i_17/O
+                         net (fo=4, routed)           0.839    12.555    alu_manual/alu/multiplier/p_1640_in
+    SLICE_X61Y68         LUT6 (Prop_lut6_I4_O)        0.327    12.882 r  alu_manual/alu/multiplier/i_/io_led[0][7]_INST_0_i_10/O
+                         net (fo=3, routed)           0.841    13.723    alu_manual/alu/multiplier/p_1688_in
+    SLICE_X63Y69         LUT6 (Prop_lut6_I4_O)        0.124    13.847 r  alu_manual/alu/multiplier/i_/io_led[0][7]_INST_0_i_7/O
+                         net (fo=2, routed)           0.804    14.651    alu_manual/alu/multiplier/p_1510_in
+    SLICE_X64Y69         LUT4 (Prop_lut4_I0_O)        0.146    14.797 r  alu_manual/alu/multiplier/i_/io_led[0][7]_INST_0_i_3/O
+                         net (fo=2, routed)           0.605    15.402    alu_manual/alu/multiplier/p_1558_in
+    SLICE_X64Y71         LUT6 (Prop_lut6_I1_O)        0.328    15.730 r  alu_manual/alu/multiplier/io_led[0][6]_INST_0_i_1/O
+                         net (fo=1, routed)           1.668    17.398    io_led[0]_OBUF[6]
+    F4                   OBUF (Prop_obuf_I_O)         3.541    20.939 r  io_led[0][6]_INST_0/O
+                         net (fo=0)                   0.000    20.939    io_led[0][6]
+    F4                                                                r  io_led[0][6] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 io_dip[0][1]
+                            (input port)
+  Destination:            io_led[0][7]
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        20.644ns  (logic 7.416ns (35.921%)  route 13.228ns (64.079%))
+  Logic Levels:           14  (IBUF=1 LUT2=1 LUT4=4 LUT6=7 OBUF=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    D5                                                0.000     0.000 r  io_dip[0][1] (IN)
+                         net (fo=0)                   0.000     0.000    io_dip[0][1]
+    D5                   IBUF (Prop_ibuf_I_O)         1.471     1.471 r  led_OBUF[7]_inst_i_17/O
+                         net (fo=34, routed)          2.424     3.895    alu_manual/alu/multiplier/io_led[1][4]_INST_0_i_4_0
+    SLICE_X63Y71         LUT2 (Prop_lut2_I0_O)        0.124     4.019 r  alu_manual/alu/multiplier/i_/led_OBUF[4]_inst_i_15/O
+                         net (fo=2, routed)           0.590     4.609    alu_manual/alu/multiplier/M_fa_a[32]
+    SLICE_X61Y71         LUT6 (Prop_lut6_I5_O)        0.124     4.733 r  alu_manual/alu/multiplier/i_/led_OBUF[4]_inst_i_10/O
+                         net (fo=3, routed)           0.811     5.544    alu_manual/alu/multiplier/p_2054_in
+    SLICE_X60Y70         LUT4 (Prop_lut4_I0_O)        0.146     5.690 r  alu_manual/alu/multiplier/i_/led_OBUF[5]_inst_i_11/O
+                         net (fo=6, routed)           1.452     7.142    alu_manual/alu/multiplier/p_2110_in
+    SLICE_X58Y69         LUT6 (Prop_lut6_I0_O)        0.328     7.470 r  alu_manual/alu/multiplier/i_/led_OBUF[7]_inst_i_25/O
+                         net (fo=6, routed)           1.293     8.763    alu_manual/alu/multiplier/p_1967_in
+    SLICE_X59Y68         LUT4 (Prop_lut4_I1_O)        0.152     8.915 r  alu_manual/alu/multiplier/i_/led_OBUF[7]_inst_i_26/O
+                         net (fo=5, routed)           0.634     9.549    alu_manual/alu/multiplier/p_1965_in
+    SLICE_X58Y69         LUT6 (Prop_lut6_I3_O)        0.326     9.875 r  alu_manual/alu/multiplier/i_/io_led[0][7]_INST_0_i_35/O
+                         net (fo=2, routed)           0.583    10.458    alu_manual/alu/multiplier/p_1961_in
+    SLICE_X58Y70         LUT6 (Prop_lut6_I4_O)        0.124    10.582 r  alu_manual/alu/multiplier/i_/io_led[0][7]_INST_0_i_26/O
+                         net (fo=5, routed)           0.980    11.562    alu_manual/alu/multiplier/p_1769_in
+    SLICE_X61Y70         LUT4 (Prop_lut4_I0_O)        0.154    11.716 r  alu_manual/alu/multiplier/i_/io_led[0][7]_INST_0_i_17/O
+                         net (fo=4, routed)           0.839    12.555    alu_manual/alu/multiplier/p_1640_in
+    SLICE_X61Y68         LUT6 (Prop_lut6_I4_O)        0.327    12.882 r  alu_manual/alu/multiplier/i_/io_led[0][7]_INST_0_i_10/O
+                         net (fo=3, routed)           0.841    13.723    alu_manual/alu/multiplier/p_1688_in
+    SLICE_X63Y69         LUT6 (Prop_lut6_I4_O)        0.124    13.847 r  alu_manual/alu/multiplier/i_/io_led[0][7]_INST_0_i_7/O
+                         net (fo=2, routed)           0.804    14.651    alu_manual/alu/multiplier/p_1510_in
+    SLICE_X64Y69         LUT4 (Prop_lut4_I0_O)        0.146    14.797 r  alu_manual/alu/multiplier/i_/io_led[0][7]_INST_0_i_3/O
+                         net (fo=2, routed)           0.317    15.114    alu_manual/alu/multiplier/p_1558_in
+    SLICE_X64Y71         LUT6 (Prop_lut6_I2_O)        0.328    15.442 r  alu_manual/alu/multiplier/io_led[0][7]_INST_0_i_1/O
+                         net (fo=1, routed)           1.660    17.102    io_led[0]_OBUF[7]
+    F3                   OBUF (Prop_obuf_I_O)         3.542    20.644 r  io_led[0][7]_INST_0/O
+                         net (fo=0)                   0.000    20.644    io_led[0][7]
+    F3                                                                r  io_led[0][7] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 io_dip[0][1]
+                            (input port)
+  Destination:            io_led[0][3]
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        20.564ns  (logic 7.073ns (34.397%)  route 13.491ns (65.603%))
+  Logic Levels:           13  (IBUF=1 LUT2=1 LUT4=3 LUT6=7 OBUF=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    D5                                                0.000     0.000 r  io_dip[0][1] (IN)
+                         net (fo=0)                   0.000     0.000    io_dip[0][1]
+    D5                   IBUF (Prop_ibuf_I_O)         1.471     1.471 r  led_OBUF[7]_inst_i_17/O
+                         net (fo=34, routed)          2.424     3.895    alu_manual/alu/multiplier/io_led[1][4]_INST_0_i_4_0
+    SLICE_X63Y71         LUT2 (Prop_lut2_I0_O)        0.124     4.019 r  alu_manual/alu/multiplier/i_/led_OBUF[4]_inst_i_15/O
+                         net (fo=2, routed)           0.590     4.609    alu_manual/alu/multiplier/M_fa_a[32]
+    SLICE_X61Y71         LUT6 (Prop_lut6_I5_O)        0.124     4.733 r  alu_manual/alu/multiplier/i_/led_OBUF[4]_inst_i_10/O
+                         net (fo=3, routed)           0.811     5.544    alu_manual/alu/multiplier/p_2054_in
+    SLICE_X60Y70         LUT4 (Prop_lut4_I0_O)        0.146     5.690 r  alu_manual/alu/multiplier/i_/led_OBUF[5]_inst_i_11/O
+                         net (fo=6, routed)           1.452     7.142    alu_manual/alu/multiplier/p_2110_in
+    SLICE_X58Y69         LUT6 (Prop_lut6_I0_O)        0.328     7.470 r  alu_manual/alu/multiplier/i_/led_OBUF[7]_inst_i_25/O
+                         net (fo=6, routed)           1.293     8.763    alu_manual/alu/multiplier/p_1967_in
+    SLICE_X59Y68         LUT4 (Prop_lut4_I1_O)        0.152     8.915 r  alu_manual/alu/multiplier/i_/led_OBUF[7]_inst_i_26/O
+                         net (fo=5, routed)           0.634     9.549    alu_manual/alu/multiplier/p_1965_in
+    SLICE_X58Y69         LUT6 (Prop_lut6_I3_O)        0.326     9.875 r  alu_manual/alu/multiplier/i_/io_led[0][7]_INST_0_i_35/O
+                         net (fo=2, routed)           0.583    10.458    alu_manual/alu/multiplier/p_1961_in
+    SLICE_X58Y70         LUT6 (Prop_lut6_I4_O)        0.124    10.582 r  alu_manual/alu/multiplier/i_/io_led[0][7]_INST_0_i_26/O
+                         net (fo=5, routed)           0.980    11.562    alu_manual/alu/multiplier/p_1769_in
+    SLICE_X61Y70         LUT4 (Prop_lut4_I0_O)        0.154    11.716 r  alu_manual/alu/multiplier/i_/io_led[0][7]_INST_0_i_17/O
+                         net (fo=4, routed)           0.837    12.553    alu_manual/alu/multiplier/p_1640_in
+    SLICE_X62Y69         LUT6 (Prop_lut6_I2_O)        0.327    12.880 r  alu_manual/alu/multiplier/i_/io_led[0][3]_INST_0_i_3/O
+                         net (fo=3, routed)           0.581    13.462    alu_manual/alu/multiplier/p_1564_in
+    SLICE_X62Y68         LUT6 (Prop_lut6_I0_O)        0.124    13.586 r  alu_manual/alu/multiplier/io_led[0][3]_INST_0_i_2/O
+                         net (fo=1, routed)           0.800    14.386    alu_manual/alu/multiplier/io_led[0][3]_INST_0_i_2_n_0
+    SLICE_X65Y69         LUT6 (Prop_lut6_I1_O)        0.124    14.510 r  alu_manual/alu/multiplier/io_led[0][3]_INST_0_i_1/O
+                         net (fo=1, routed)           2.505    17.015    io_led[0]_OBUF[3]
+    A4                   OBUF (Prop_obuf_I_O)         3.549    20.564 r  io_led[0][3]_INST_0/O
+                         net (fo=0)                   0.000    20.564    io_led[0][3]
+    A4                                                                r  io_led[0][3] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 io_dip[0][1]
+                            (input port)
+  Destination:            io_led[0][2]
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        20.270ns  (logic 7.305ns (36.037%)  route 12.966ns (63.963%))
+  Logic Levels:           13  (IBUF=1 LUT2=1 LUT4=4 LUT6=6 OBUF=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    D5                                                0.000     0.000 r  io_dip[0][1] (IN)
+                         net (fo=0)                   0.000     0.000    io_dip[0][1]
+    D5                   IBUF (Prop_ibuf_I_O)         1.471     1.471 r  led_OBUF[7]_inst_i_17/O
+                         net (fo=34, routed)          2.424     3.895    alu_manual/alu/multiplier/io_led[1][4]_INST_0_i_4_0
+    SLICE_X63Y71         LUT2 (Prop_lut2_I0_O)        0.124     4.019 r  alu_manual/alu/multiplier/i_/led_OBUF[4]_inst_i_15/O
+                         net (fo=2, routed)           0.590     4.609    alu_manual/alu/multiplier/M_fa_a[32]
+    SLICE_X61Y71         LUT6 (Prop_lut6_I5_O)        0.124     4.733 r  alu_manual/alu/multiplier/i_/led_OBUF[4]_inst_i_10/O
+                         net (fo=3, routed)           0.811     5.544    alu_manual/alu/multiplier/p_2054_in
+    SLICE_X60Y70         LUT4 (Prop_lut4_I0_O)        0.146     5.690 r  alu_manual/alu/multiplier/i_/led_OBUF[5]_inst_i_11/O
+                         net (fo=6, routed)           1.452     7.142    alu_manual/alu/multiplier/p_2110_in
+    SLICE_X58Y69         LUT6 (Prop_lut6_I0_O)        0.328     7.470 r  alu_manual/alu/multiplier/i_/led_OBUF[7]_inst_i_25/O
+                         net (fo=6, routed)           1.293     8.763    alu_manual/alu/multiplier/p_1967_in
+    SLICE_X59Y68         LUT4 (Prop_lut4_I1_O)        0.152     8.915 r  alu_manual/alu/multiplier/i_/led_OBUF[7]_inst_i_26/O
+                         net (fo=5, routed)           0.634     9.549    alu_manual/alu/multiplier/p_1965_in
+    SLICE_X58Y69         LUT6 (Prop_lut6_I3_O)        0.326     9.875 r  alu_manual/alu/multiplier/i_/io_led[0][7]_INST_0_i_35/O
+                         net (fo=2, routed)           0.583    10.458    alu_manual/alu/multiplier/p_1961_in
+    SLICE_X58Y70         LUT6 (Prop_lut6_I4_O)        0.124    10.582 r  alu_manual/alu/multiplier/i_/io_led[0][7]_INST_0_i_26/O
+                         net (fo=5, routed)           0.980    11.562    alu_manual/alu/multiplier/p_1769_in
+    SLICE_X61Y70         LUT4 (Prop_lut4_I0_O)        0.154    11.716 r  alu_manual/alu/multiplier/i_/io_led[0][7]_INST_0_i_17/O
+                         net (fo=4, routed)           0.848    12.564    alu_manual/alu/multiplier/p_1640_in
+    SLICE_X62Y69         LUT4 (Prop_lut4_I0_O)        0.355    12.919 r  alu_manual/alu/multiplier/i_/io_led[0][2]_INST_0_i_4/O
+                         net (fo=1, routed)           0.436    13.356    alu_manual/alu/multiplier/p_1516_in
+    SLICE_X62Y69         LUT6 (Prop_lut6_I3_O)        0.326    13.682 r  alu_manual/alu/multiplier/io_led[0][2]_INST_0_i_2/O
+                         net (fo=1, routed)           0.441    14.123    alu_manual/alu/multiplier/io_led[0][2]_INST_0_i_2_n_0
+    SLICE_X64Y71         LUT6 (Prop_lut6_I1_O)        0.124    14.247 r  alu_manual/alu/multiplier/io_led[0][2]_INST_0_i_1/O
+                         net (fo=1, routed)           2.473    16.720    io_led[0]_OBUF[2]
+    A5                   OBUF (Prop_obuf_I_O)         3.551    20.270 r  io_led[0][2]_INST_0/O
+                         net (fo=0)                   0.000    20.270    io_led[0][2]
+    A5                                                                r  io_led[0][2] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 io_dip[0][0]
+                            (input port)
+  Destination:            io_led[0][1]
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        19.393ns  (logic 6.490ns (33.464%)  route 12.903ns (66.536%))
+  Logic Levels:           12  (IBUF=1 LUT4=1 LUT6=9 OBUF=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    D6                                                0.000     0.000 r  io_dip[0][0] (IN)
+                         net (fo=0)                   0.000     0.000    io_dip[0][0]
+    D6                   IBUF (Prop_ibuf_I_O)         1.474     1.474 r  led_OBUF[7]_inst_i_19/O
+                         net (fo=30, routed)          2.905     4.378    alu_manual/alu/multiplier/led_OBUF[3]_inst_i_6_0
+    SLICE_X59Y73         LUT6 (Prop_lut6_I2_O)        0.124     4.502 r  alu_manual/alu/multiplier/i_/led_OBUF[5]_inst_i_18/O
+                         net (fo=4, routed)           0.847     5.350    alu_manual/alu/multiplier/p_4_in
+    SLICE_X60Y72         LUT6 (Prop_lut6_I4_O)        0.124     5.474 r  alu_manual/alu/multiplier/i_/led_OBUF[5]_inst_i_15/O
+                         net (fo=4, routed)           0.811     6.285    alu_manual/alu/multiplier/p_2196_in
+    SLICE_X59Y72         LUT6 (Prop_lut6_I3_O)        0.124     6.409 r  alu_manual/alu/multiplier/i_/led_OBUF[7]_inst_i_32/O
+                         net (fo=3, routed)           1.118     7.527    alu_manual/alu/multiplier/p_2050_in
+    SLICE_X59Y68         LUT6 (Prop_lut6_I4_O)        0.124     7.651 r  alu_manual/alu/multiplier/i_/io_led[0][0]_INST_0_i_10/O
+                         net (fo=2, routed)           0.724     8.375    alu_manual/alu/multiplier/i_/io_led[0][0]_INST_0_i_10_n_0
+    SLICE_X59Y71         LUT6 (Prop_lut6_I0_O)        0.124     8.499 r  alu_manual/alu/multiplier/i_/io_led[0][0]_INST_0_i_8/O
+                         net (fo=2, routed)           1.170     9.669    alu_manual/alu/multiplier/p_1775_in
+    SLICE_X58Y68         LUT6 (Prop_lut6_I2_O)        0.124     9.793 r  alu_manual/alu/multiplier/i_/io_led[0][1]_INST_0_i_5/O
+                         net (fo=3, routed)           0.619    10.412    alu_manual/alu/multiplier/p_1696_in
+    SLICE_X60Y68         LUT6 (Prop_lut6_I3_O)        0.124    10.536 r  alu_manual/alu/multiplier/i_/io_led[0][2]_INST_0_i_5/O
+                         net (fo=4, routed)           0.815    11.351    alu_manual/alu/multiplier/p_1694_in
+    SLICE_X61Y69         LUT4 (Prop_lut4_I3_O)        0.152    11.503 r  alu_manual/alu/multiplier/i_/io_led[0][1]_INST_0_i_4/O
+                         net (fo=1, routed)           0.436    11.940    alu_manual/alu/multiplier/p_1518_in
+    SLICE_X61Y69         LUT6 (Prop_lut6_I3_O)        0.326    12.266 r  alu_manual/alu/multiplier/io_led[0][1]_INST_0_i_2/O
+                         net (fo=1, routed)           0.815    13.081    alu_manual/alu/multiplier/io_led[0][1]_INST_0_i_2_n_0
+    SLICE_X63Y70         LUT6 (Prop_lut6_I1_O)        0.124    13.205 r  alu_manual/alu/multiplier/io_led[0][1]_INST_0_i_1/O
+                         net (fo=1, routed)           2.642    15.847    io_led[0]_OBUF[1]
+    B5                   OBUF (Prop_obuf_I_O)         3.546    19.393 r  io_led[0][1]_INST_0/O
+                         net (fo=0)                   0.000    19.393    io_led[0][1]
+    B5                                                                r  io_led[0][1] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 io_dip[0][1]
+                            (input port)
+  Destination:            led[7]
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        18.757ns  (logic 6.471ns (34.500%)  route 12.286ns (65.500%))
+  Logic Levels:           10  (IBUF=1 LUT2=1 LUT4=2 LUT6=5 OBUF=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    D5                                                0.000     0.000 r  io_dip[0][1] (IN)
+                         net (fo=0)                   0.000     0.000    io_dip[0][1]
+    D5                   IBUF (Prop_ibuf_I_O)         1.471     1.471 r  led_OBUF[7]_inst_i_17/O
+                         net (fo=34, routed)          2.424     3.895    alu_manual/alu/multiplier/io_led[1][4]_INST_0_i_4_0
+    SLICE_X63Y71         LUT2 (Prop_lut2_I0_O)        0.124     4.019 r  alu_manual/alu/multiplier/i_/led_OBUF[4]_inst_i_15/O
+                         net (fo=2, routed)           0.590     4.609    alu_manual/alu/multiplier/M_fa_a[32]
+    SLICE_X61Y71         LUT6 (Prop_lut6_I5_O)        0.124     4.733 r  alu_manual/alu/multiplier/i_/led_OBUF[4]_inst_i_10/O
+                         net (fo=3, routed)           0.811     5.544    alu_manual/alu/multiplier/p_2054_in
+    SLICE_X60Y70         LUT4 (Prop_lut4_I0_O)        0.146     5.690 r  alu_manual/alu/multiplier/i_/led_OBUF[5]_inst_i_11/O
+                         net (fo=6, routed)           1.452     7.142    alu_manual/alu/multiplier/p_2110_in
+    SLICE_X58Y69         LUT6 (Prop_lut6_I0_O)        0.328     7.470 r  alu_manual/alu/multiplier/i_/led_OBUF[7]_inst_i_25/O
+                         net (fo=6, routed)           1.293     8.763    alu_manual/alu/multiplier/p_1967_in
+    SLICE_X59Y68         LUT4 (Prop_lut4_I1_O)        0.152     8.915 r  alu_manual/alu/multiplier/i_/led_OBUF[7]_inst_i_26/O
+                         net (fo=5, routed)           0.711     9.626    alu_manual/alu/multiplier/p_1965_in
+    SLICE_X58Y68         LUT6 (Prop_lut6_I0_O)        0.326     9.952 r  alu_manual/alu/multiplier/i_/led_OBUF[7]_inst_i_18/O
+                         net (fo=1, routed)           0.433    10.385    alu_manual/alu/multiplier/p_1646_in
+    SLICE_X58Y68         LUT6 (Prop_lut6_I3_O)        0.124    10.509 r  alu_manual/alu/multiplier/i_/led_OBUF[7]_inst_i_5/O
+                         net (fo=1, routed)           0.743    11.252    alu_manual/alu/multiplier/M_multiplier_mul[7]
+    SLICE_X64Y68         LUT6 (Prop_lut6_I3_O)        0.124    11.376 r  alu_manual/alu/multiplier/led_OBUF[7]_inst_i_1/O
+                         net (fo=1, routed)           3.829    15.205    led_OBUF[7]
+    N16                  OBUF (Prop_obuf_I_O)         3.552    18.757 r  led_OBUF[7]_inst/O
+                         net (fo=0)                   0.000    18.757    led[7]
+    N16                                                               r  led[7] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 io_dip[0][1]
+                            (input port)
+  Destination:            io_led[0][0]
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        18.281ns  (logic 6.819ns (37.298%)  route 11.463ns (62.702%))
+  Logic Levels:           11  (IBUF=1 LUT2=1 LUT4=2 LUT5=1 LUT6=5 OBUF=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    D5                                                0.000     0.000 r  io_dip[0][1] (IN)
+                         net (fo=0)                   0.000     0.000    io_dip[0][1]
+    D5                   IBUF (Prop_ibuf_I_O)         1.471     1.471 r  led_OBUF[7]_inst_i_17/O
+                         net (fo=34, routed)          2.424     3.895    alu_manual/alu/multiplier/io_led[1][4]_INST_0_i_4_0
+    SLICE_X63Y71         LUT2 (Prop_lut2_I0_O)        0.124     4.019 r  alu_manual/alu/multiplier/i_/led_OBUF[4]_inst_i_15/O
+                         net (fo=2, routed)           0.590     4.609    alu_manual/alu/multiplier/M_fa_a[32]
+    SLICE_X61Y71         LUT6 (Prop_lut6_I5_O)        0.124     4.733 r  alu_manual/alu/multiplier/i_/led_OBUF[4]_inst_i_10/O
+                         net (fo=3, routed)           0.811     5.544    alu_manual/alu/multiplier/p_2054_in
+    SLICE_X60Y70         LUT4 (Prop_lut4_I0_O)        0.146     5.690 r  alu_manual/alu/multiplier/i_/led_OBUF[5]_inst_i_11/O
+                         net (fo=6, routed)           1.452     7.142    alu_manual/alu/multiplier/p_2110_in
+    SLICE_X58Y69         LUT6 (Prop_lut6_I0_O)        0.328     7.470 r  alu_manual/alu/multiplier/i_/led_OBUF[7]_inst_i_25/O
+                         net (fo=6, routed)           1.293     8.763    alu_manual/alu/multiplier/p_1967_in
+    SLICE_X59Y68         LUT4 (Prop_lut4_I1_O)        0.152     8.915 r  alu_manual/alu/multiplier/i_/led_OBUF[7]_inst_i_26/O
+                         net (fo=5, routed)           0.478     9.393    alu_manual/alu/multiplier/p_1965_in
+    SLICE_X59Y68         LUT6 (Prop_lut6_I0_O)        0.326     9.719 r  alu_manual/alu/multiplier/i_/io_led[0][0]_INST_0_i_9/O
+                         net (fo=5, routed)           0.821    10.540    alu_manual/alu/multiplier/p_1827_in
+    SLICE_X60Y68         LUT6 (Prop_lut6_I0_O)        0.124    10.664 r  alu_manual/alu/multiplier/i_/io_led[0][0]_INST_0_i_5/O
+                         net (fo=1, routed)           0.452    11.116    alu_manual/alu/multiplier/p_1520_in
+    SLICE_X60Y68         LUT5 (Prop_lut5_I3_O)        0.150    11.266 r  alu_manual/alu/multiplier/io_led[0][0]_INST_0_i_2/O
+                         net (fo=1, routed)           0.597    11.863    alu_manual/alu/multiplier/io_led[0][0]_INST_0_i_2_n_0
+    SLICE_X64Y68         LUT6 (Prop_lut6_I0_O)        0.328    12.191 r  alu_manual/alu/multiplier/io_led[0][0]_INST_0_i_1/O
+                         net (fo=1, routed)           2.545    14.736    io_led[0]_OBUF[0]
+    B6                   OBUF (Prop_obuf_I_O)         3.546    18.281 r  io_led[0][0]_INST_0/O
+                         net (fo=0)                   0.000    18.281    io_led[0][0]
+    B6                                                                r  io_led[0][0] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 io_dip[0][1]
+                            (input port)
+  Destination:            led[6]
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        17.461ns  (logic 6.090ns (34.880%)  route 11.370ns (65.120%))
+  Logic Levels:           9  (IBUF=1 LUT2=1 LUT4=1 LUT6=5 OBUF=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    D5                                                0.000     0.000 r  io_dip[0][1] (IN)
+                         net (fo=0)                   0.000     0.000    io_dip[0][1]
+    D5                   IBUF (Prop_ibuf_I_O)         1.471     1.471 r  led_OBUF[7]_inst_i_17/O
+                         net (fo=34, routed)          2.424     3.895    alu_manual/alu/multiplier/io_led[1][4]_INST_0_i_4_0
+    SLICE_X63Y71         LUT2 (Prop_lut2_I0_O)        0.124     4.019 r  alu_manual/alu/multiplier/i_/led_OBUF[4]_inst_i_15/O
+                         net (fo=2, routed)           0.590     4.609    alu_manual/alu/multiplier/M_fa_a[32]
+    SLICE_X61Y71         LUT6 (Prop_lut6_I5_O)        0.124     4.733 r  alu_manual/alu/multiplier/i_/led_OBUF[4]_inst_i_10/O
+                         net (fo=3, routed)           0.811     5.544    alu_manual/alu/multiplier/p_2054_in
+    SLICE_X60Y70         LUT4 (Prop_lut4_I0_O)        0.146     5.690 r  alu_manual/alu/multiplier/i_/led_OBUF[5]_inst_i_11/O
+                         net (fo=6, routed)           1.452     7.142    alu_manual/alu/multiplier/p_2110_in
+    SLICE_X58Y69         LUT6 (Prop_lut6_I0_O)        0.328     7.470 r  alu_manual/alu/multiplier/i_/led_OBUF[7]_inst_i_25/O
+                         net (fo=6, routed)           1.194     8.664    alu_manual/alu/multiplier/p_1967_in
+    SLICE_X59Y67         LUT6 (Prop_lut6_I0_O)        0.124     8.788 r  alu_manual/alu/multiplier/i_/led_OBUF[6]_inst_i_8/O
+                         net (fo=1, routed)           0.653     9.441    alu_manual/alu/multiplier/p_1648_in
+    SLICE_X60Y67         LUT6 (Prop_lut6_I0_O)        0.124     9.565 r  alu_manual/alu/multiplier/led_OBUF[6]_inst_i_2/O
+                         net (fo=1, routed)           0.817    10.382    alu_manual/alu/multiplier/led_OBUF[6]_inst_i_2_n_0
+    SLICE_X62Y67         LUT6 (Prop_lut6_I0_O)        0.124    10.506 r  alu_manual/alu/multiplier/led_OBUF[6]_inst_i_1/O
+                         net (fo=1, routed)           3.429    13.935    led_OBUF[6]
+    M12                  OBUF (Prop_obuf_I_O)         3.525    17.461 r  led_OBUF[6]_inst/O
+                         net (fo=0)                   0.000    17.461    led[6]
+    M12                                                               r  led[6] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+
+
+
+
+Min Delay Paths
+--------------------------------------------------------------------------------------
+Slack:                    inf
+  Source:                 usb_rx
+                            (input port)
+  Destination:            usb_tx
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        1.872ns  (logic 1.510ns (80.671%)  route 0.362ns (19.329%))
+  Logic Levels:           2  (IBUF=1 OBUF=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    P15                                               0.000     0.000 r  usb_rx (IN)
+                         net (fo=0)                   0.000     0.000    usb_rx
+    P15                  IBUF (Prop_ibuf_I_O)         0.263     0.263 r  usb_rx_IBUF_inst/O
+                         net (fo=1, routed)           0.362     0.625    usb_tx_OBUF
+    P16                  OBUF (Prop_obuf_I_O)         1.247     1.872 r  usb_tx_OBUF_inst/O
+                         net (fo=0)                   0.000     1.872    usb_tx
+    P16                                                               r  usb_tx (OUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 io_dip[2][4]
+                            (input port)
+  Destination:            io_led[2][4]
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        2.406ns  (logic 1.522ns (63.284%)  route 0.883ns (36.716%))
+  Logic Levels:           3  (IBUF=1 LUT5=1 OBUF=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    J5                                                0.000     0.000 f  io_dip[2][4] (IN)
+                         net (fo=0)                   0.000     0.000    io_dip[2][4]
+    J5                   IBUF (Prop_ibuf_I_O)         0.243     0.243 f  led_OBUF[6]_inst_i_4/O
+                         net (fo=23, routed)          0.442     0.685    led_OBUF[6]_inst_i_4_n_0
+    SLICE_X65Y66         LUT5 (Prop_lut5_I4_O)        0.045     0.730 r  io_led[2][4]_INST_0_i_1/O
+                         net (fo=1, routed)           0.441     1.171    io_led[2]_OBUF[4]
+    K1                   OBUF (Prop_obuf_I_O)         1.235     2.406 r  io_led[2][4]_INST_0/O
+                         net (fo=0)                   0.000     2.406    io_led[2][4]
+    K1                                                                r  io_led[2][4] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 io_dip[2][4]
+                            (input port)
+  Destination:            io_led[2][0]
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        2.417ns  (logic 1.514ns (62.614%)  route 0.904ns (37.386%))
+  Logic Levels:           3  (IBUF=1 LUT5=1 OBUF=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    J5                                                0.000     0.000 f  io_dip[2][4] (IN)
+                         net (fo=0)                   0.000     0.000    io_dip[2][4]
+    J5                   IBUF (Prop_ibuf_I_O)         0.243     0.243 f  led_OBUF[6]_inst_i_4/O
+                         net (fo=23, routed)          0.573     0.816    led_OBUF[6]_inst_i_4_n_0
+    SLICE_X64Y66         LUT5 (Prop_lut5_I4_O)        0.045     0.861 r  io_led[2][0]_INST_0_i_1/O
+                         net (fo=1, routed)           0.331     1.192    io_led[2]_OBUF[0]
+    G2                   OBUF (Prop_obuf_I_O)         1.226     2.417 r  io_led[2][0]_INST_0/O
+                         net (fo=0)                   0.000     2.417    io_led[2][0]
+    G2                                                                r  io_led[2][0] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 io_dip[2][4]
+                            (input port)
+  Destination:            io_led[2][5]
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        2.463ns  (logic 1.517ns (61.601%)  route 0.946ns (38.399%))
+  Logic Levels:           3  (IBUF=1 LUT5=1 OBUF=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    J5                                                0.000     0.000 f  io_dip[2][4] (IN)
+                         net (fo=0)                   0.000     0.000    io_dip[2][4]
+    J5                   IBUF (Prop_ibuf_I_O)         0.243     0.243 f  led_OBUF[6]_inst_i_4/O
+                         net (fo=23, routed)          0.445     0.688    led_OBUF[6]_inst_i_4_n_0
+    SLICE_X65Y66         LUT5 (Prop_lut5_I4_O)        0.045     0.733 r  io_led[2][5]_INST_0_i_1/O
+                         net (fo=1, routed)           0.501     1.234    io_led[2]_OBUF[5]
+    J1                   OBUF (Prop_obuf_I_O)         1.229     2.463 r  io_led[2][5]_INST_0/O
+                         net (fo=0)                   0.000     2.463    io_led[2][5]
+    J1                                                                r  io_led[2][5] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 io_dip[2][5]
+                            (input port)
+  Destination:            io_led[1][7]
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        2.504ns  (logic 1.487ns (59.364%)  route 1.018ns (40.636%))
+  Logic Levels:           3  (IBUF=1 LUT6=1 OBUF=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    J4                                                0.000     0.000 r  io_dip[2][5] (IN)
+                         net (fo=0)                   0.000     0.000    io_dip[2][5]
+    J4                   IBUF (Prop_ibuf_I_O)         0.240     0.240 r  led_OBUF[6]_inst_i_3/O
+                         net (fo=23, routed)          0.492     0.732    led_OBUF[6]_inst_i_3_n_0
+    SLICE_X65Y66         LUT6 (Prop_lut6_I4_O)        0.045     0.777 r  io_led[1][7]_INST_0_i_1/O
+                         net (fo=1, routed)           0.526     1.303    io_led[1]_OBUF[7]
+    K5                   OBUF (Prop_obuf_I_O)         1.202     2.504 r  io_led[1][7]_INST_0/O
+                         net (fo=0)                   0.000     2.504    io_led[1][7]
+    K5                                                                r  io_led[1][7] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 io_dip[2][5]
+                            (input port)
+  Destination:            io_led[2][7]
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        2.515ns  (logic 1.517ns (60.333%)  route 0.997ns (39.667%))
+  Logic Levels:           3  (IBUF=1 LUT6=1 OBUF=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    J4                                                0.000     0.000 r  io_dip[2][5] (IN)
+                         net (fo=0)                   0.000     0.000    io_dip[2][5]
+    J4                   IBUF (Prop_ibuf_I_O)         0.240     0.240 r  led_OBUF[6]_inst_i_3/O
+                         net (fo=23, routed)          0.491     0.731    led_OBUF[6]_inst_i_3_n_0
+    SLICE_X65Y66         LUT6 (Prop_lut6_I4_O)        0.045     0.776 r  io_led[2][7]_INST_0_i_1/O
+                         net (fo=1, routed)           0.507     1.282    io_led[2]_OBUF[7]
+    L2                   OBUF (Prop_obuf_I_O)         1.232     2.515 r  io_led[2][7]_INST_0/O
+                         net (fo=0)                   0.000     2.515    io_led[2][7]
+    L2                                                                r  io_led[2][7] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 io_dip[0][7]
+                            (input port)
+  Destination:            io_led[0][7]
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        2.521ns  (logic 1.624ns (64.423%)  route 0.897ns (35.577%))
+  Logic Levels:           4  (IBUF=1 LUT2=1 LUT6=1 OBUF=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    C4                                                0.000     0.000 r  io_dip[0][7] (IN)
+                         net (fo=0)                   0.000     0.000    io_dip[0][7]
+    C4                   IBUF (Prop_ibuf_I_O)         0.292     0.292 r  led_OBUF[7]_inst_i_13/O
+                         net (fo=31, routed)          0.466     0.758    alu_manual/alu/multiplier/io_led[0][7]_INST_0_i_1_2
+    SLICE_X64Y71         LUT2 (Prop_lut2_I0_O)        0.045     0.803 r  alu_manual/alu/multiplier/i_/io_led[0][7]_INST_0_i_2/O
+                         net (fo=2, routed)           0.100     0.903    alu_manual/alu/multiplier/M_fa_a[178]
+    SLICE_X64Y71         LUT6 (Prop_lut6_I1_O)        0.045     0.948 r  alu_manual/alu/multiplier/io_led[0][7]_INST_0_i_1/O
+                         net (fo=1, routed)           0.331     1.279    io_led[0]_OBUF[7]
+    F3                   OBUF (Prop_obuf_I_O)         1.242     2.521 r  io_led[0][7]_INST_0/O
+                         net (fo=0)                   0.000     2.521    io_led[0][7]
+    F3                                                                r  io_led[0][7] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 io_dip[2][5]
+                            (input port)
+  Destination:            io_led[2][2]
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        2.527ns  (logic 1.507ns (59.641%)  route 1.020ns (40.359%))
+  Logic Levels:           3  (IBUF=1 LUT5=1 OBUF=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    J4                                                0.000     0.000 r  io_dip[2][5] (IN)
+                         net (fo=0)                   0.000     0.000    io_dip[2][5]
+    J4                   IBUF (Prop_ibuf_I_O)         0.240     0.240 r  led_OBUF[6]_inst_i_3/O
+                         net (fo=23, routed)          0.614     0.854    led_OBUF[6]_inst_i_3_n_0
+    SLICE_X64Y67         LUT5 (Prop_lut5_I3_O)        0.045     0.899 r  io_led[2][2]_INST_0_i_1/O
+                         net (fo=1, routed)           0.406     1.305    io_led[2]_OBUF[2]
+    H2                   OBUF (Prop_obuf_I_O)         1.222     2.527 r  io_led[2][2]_INST_0/O
+                         net (fo=0)                   0.000     2.527    io_led[2][2]
+    H2                                                                r  io_led[2][2] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 io_dip[1][3]
+                            (input port)
+  Destination:            io_led[1][0]
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        2.578ns  (logic 1.562ns (60.580%)  route 1.016ns (39.420%))
+  Logic Levels:           3  (IBUF=1 LUT6=1 OBUF=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    C2                                                0.000     0.000 r  io_dip[1][3] (IN)
+                         net (fo=0)                   0.000     0.000    io_dip[1][3]
+    C2                   IBUF (Prop_ibuf_I_O)         0.268     0.268 r  io_led[2][7]_INST_0_i_4/O
+                         net (fo=50, routed)          0.685     0.953    io_led[2][7]_INST_0_i_4_n_0
+    SLICE_X64Y70         LUT6 (Prop_lut6_I2_O)        0.045     0.998 r  io_led[1][0]_INST_0_i_1/O
+                         net (fo=1, routed)           0.331     1.329    io_led[1]_OBUF[0]
+    F2                   OBUF (Prop_obuf_I_O)         1.248     2.578 r  io_led[1][0]_INST_0/O
+                         net (fo=0)                   0.000     2.578    io_led[1][0]
+    F2                                                                r  io_led[1][0] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 io_dip[2][4]
+                            (input port)
+  Destination:            io_led[2][1]
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        2.620ns  (logic 1.514ns (57.813%)  route 1.105ns (42.187%))
+  Logic Levels:           3  (IBUF=1 LUT5=1 OBUF=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    J5                                                0.000     0.000 f  io_dip[2][4] (IN)
+                         net (fo=0)                   0.000     0.000    io_dip[2][4]
+    J5                   IBUF (Prop_ibuf_I_O)         0.243     0.243 f  led_OBUF[6]_inst_i_4/O
+                         net (fo=23, routed)          0.714     0.956    led_OBUF[6]_inst_i_4_n_0
+    SLICE_X65Y67         LUT5 (Prop_lut5_I4_O)        0.045     1.001 r  io_led[2][1]_INST_0_i_1/O
+                         net (fo=1, routed)           0.392     1.393    io_led[2]_OBUF[1]
+    G1                   OBUF (Prop_obuf_I_O)         1.227     2.620 r  io_led[2][1]_INST_0/O
+                         net (fo=0)                   0.000     2.620    io_led[2][1]
+    G1                                                                r  io_led[2][1] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+
+
+
+
