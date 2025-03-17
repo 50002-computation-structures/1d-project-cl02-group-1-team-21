@@ -106,13 +106,13 @@
             {
                 "file": {
                     "type": "Component",
-                    "path": "Constraints/io_v1.acf"
+                    "path": "Constraints/alchitry.acf"
                 }
             },
             {
                 "file": {
                     "type": "Component",
-                    "path": "Constraints/alchitry.acf"
+                    "path": "Constraints/io_v1_pulldown.acf"
                 }
             }
         ],
