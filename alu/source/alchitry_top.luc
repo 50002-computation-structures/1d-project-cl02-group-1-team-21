@@ -10,35 +10,64 @@ module alchitry_top (
     input io_button[5],      // 5 buttons on IO Shield
     input io_dip[3][8]       // DIP switches on IO Shield
 ) {
-    
-    
-    
+
     sig rst                 // reset signal
+    sig start_auto_test
+    sig state_change
+    
+    enum TestStates {
+        MANUAL,
+        AUTO
+    }
+    
+    const CLK_FREQ = $is_sim() ? 1000000 : 10000000 // put 1000 for sim, 10000000 otherwise in hardware
     
     .clk(clk) {
         // The reset conditioner is used to synchronize the reset signal to the FPGA
         // clock. This ensures the entire FPGA comes out of reset at the same time.
         reset_conditioner reset_cond
+        button_conditioner button_cond(#CLK_FREQ(CLK_FREQ))
+        edge_detector edge(#RISE(1), #FALL(0))
+        .rst(rst_n){
+            blinker my_blinker
+            dff states[$width(TestStates)](#INIT(TestStates.MANUAL))
+            alu_manual_tester alu_manual(.io_button(io_button), .io_dip(io_dip), #CLK_FREQ(CLK_FREQ)) 
+            alu_auto_tester alu_auto(.start(start_auto_test)) 
+        }
     }
-    const CLK_FREQ = $is_sim() ? 1000 : 10000000 // put 1000 for sim, 10000000 otherwise in hardware
     
-    blinker my_blinker(.clk(clk), .rst(rst))
-    
-    alu_manual_tester alu_manual(.clk(clk), .rst(rst), .io_button(io_button), .io_dip(io_dip), #CLK_FREQ(CLK_FREQ)) 
     
     always {
-        reset_cond.in = ~rst_n  // input raw inverted reset signal
-        rst = reset_cond.out    // conditioned reset
+        reset_cond.in = ~rst_n
+        rst = reset_cond.out
         
-        led = 8x{my_blinker.blink}       // turn LEDs off
-        usb_tx = usb_rx          // loop serial port
+        button_cond.in = io_button[1]
+        edge.in = button_cond.out
+        state_change = edge.out
         
-
-        // to test ALU 
+        start_auto_test = 0
+        
+        io_led = {8b0, 8b0, 8b0}
         io_segment = alu_manual.io_segment
-        io_select = alu_manual.io_select         
-        io_led = alu_manual.io_led
-        led = alu_manual.led
- 
+        io_select = alu_manual.io_select
+        
+        led = 8x{my_blinker.blink}
+        usb_tx = usb_rx
+        
+        case(states.q){
+            TestStates.MANUAL:
+                io_led = alu_manual.io_led
+                if(state_change){
+                    states.d = TestStates.AUTO
+                }
+            TestStates.AUTO:
+                io_segment = alu_auto.io_seg
+                io_select = alu_auto.io_sel
+                io_led[2][5:0] = alu_auto.opcode_led
+                start_auto_test = 1
+                if(state_change){
+                    states.d = TestStates.MANUAL
+                }
+        }
     }
 }

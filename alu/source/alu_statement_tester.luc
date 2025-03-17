@@ -1,0 +1,137 @@
+// alu_statement_tester cycles through the states to display the values for A, B and output from the ALU.
+// alu_statement_tester starts cycling through the states when start input signal is put to HIGH
+// states transitions occur on the rising clock edge of slow_clock, which has a period of ~0.65s
+// the states terminate either at DONE or ERROR_2
+// DONE state pulls done output signal to HIGH, displays 'd' on seven segment seg_display
+// ERROR displays 'E' on seven segment seg_display
+
+module alu_statement_tester #(
+    INPUT_A,
+    INPUT_B,
+    OPCODE,
+    EXPECTED
+  )
+  (
+    input clk,  // clock : connect to regular 50MHz clock
+    input rst,  // reset
+    input start,
+    output io_seg[8],
+    output io_sel[4],
+    output opcode_led[6],
+    output done
+  ) 
+  {
+    sig slow_clock
+    const SLOW_CLOCK_DEFAULT_SPEED = $is_sim() ? 8 : 28
+    enum States 
+        {INIT, 
+        DISP_A_1, 
+        DISP_A_2, 
+        DISP_B_1, 
+        DISP_B_2, 
+        DISP_O_1, 
+        DISP_O_2, 
+        DONE, 
+        ERROR_1, 
+        ERROR_2}
+      .clk(clk) {
+        edge_detector slow_clock_edge(#RISE(1), #FALL(0))
+        
+        .rst(rst){
+            dff o[32]
+            dff counter[32]
+            dff speed_pointer[$clog2(32)](#INIT(SLOW_CLOCK_DEFAULT_SPEED))
+            dff states[$width(States)](#INIT(States.INIT))
+            multi_seven_seg seg_display
+        }
+      }
+    sig alufn[6]
+    sig a[32]
+    sig b[32]
+    alu alu (.alufn(alufn), .a(a), .b(b))
+  
+    always {
+        done = 0
+        slow_clock = 0
+        slow_clock_edge.in = slow_clock
+        io_seg = 8bzzzzzzzz
+        io_sel = 4bzzzz
+        seg_display.values = {4b0,4b0,4b0,4b0}
+        
+        counter.d = counter.q + 1
+        speed_pointer.d = speed_pointer.q
+        slow_clock = counter.q[speed_pointer.q]
+    
+        alufn = OPCODE
+        a = INPUT_A
+        b = INPUT_B
+        o.d = alu.out
+        opcode_led = OPCODE
+    
+        case (states.q){
+          States.INIT:
+            if (start)
+              states.d = States.DISP_A_1
+      
+          States.DISP_A_1:
+            io_seg = 8b10001000
+            io_sel = 4b1110
+            if (slow_clock_edge.out)
+              states.d = States.DISP_A_2
+        
+          States.DISP_A_2:
+            seg_display.values = {a[15:12], a[11:8], a[7:4], a[3:0]}
+            io_seg = ~seg_display.seg
+            io_sel = ~seg_display.sel
+            if (slow_clock_edge.out)
+              states.d = States.DISP_B_1
+      
+          States.DISP_B_1:
+            io_seg = 8b10000011
+            io_sel = 4b1110
+            if (slow_clock_edge.out)
+              states.d = States.DISP_B_2
+      
+          States.DISP_B_2:
+            seg_display.values = {b[15:12], b[11:8], b[7:4], b[3:0]}
+            io_seg = ~seg_display.seg
+            io_sel = ~seg_display.sel
+            if (slow_clock_edge.out)
+              states.d = States.DISP_O_1
+       
+          States.DISP_O_1:
+            io_seg = 8b11000000
+            io_sel = 4b1110
+            if (slow_clock_edge.out)
+              states.d = States.DISP_O_2
+        
+          States.DISP_O_2:
+            seg_display.values = {o.q[15:12], o.q[11:8], o.q[7:4], o.q[3:0]};
+            io_seg = ~seg_display.seg
+            io_sel = ~seg_display.sel
+        
+            if (slow_clock_edge.out && o.q == EXPECTED)
+              states.d = States.DONE
+            else if (slow_clock_edge.out && o.q != EXPECTED)  
+              states.d = States.ERROR_1
+          
+          States.DONE:
+            io_seg = 8b10100001
+            io_sel = 4b1110
+            opcode_led = 6b000000
+            done = 1
+        
+          States.ERROR_1:
+            seg_display.values = {o.q[15:12], o.q[11:8], o.q[7:4], o.q[3:0]}
+            io_seg = ~seg_display.seg
+            io_sel = ~seg_display.sel
+        
+            if (slow_clock_edge.out)
+              states.d = States.ERROR_2
+        
+          States.ERROR_2:
+            io_seg = 8b10000110
+            io_sel = 4b1110
+      }
+  }
+}
