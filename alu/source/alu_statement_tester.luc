@@ -1,0 +1,125 @@
+module alu_statement_tester #(
+    INPUT_A,
+    INPUT_B,
+    ALUCODE,
+    EXPECTED
+) (
+    input clk,  // clock
+    input rst,  // reset
+    input start,
+    output io_segment[8],
+    output io_select[4],
+    output alucode_led[6],
+    output led[8],
+    output done
+) {
+    
+    enum States{
+        INIT,
+        DISP_A_1,
+        DISP_A_2,
+        DISP_B_1,
+        DISP_B_2,
+        DISP_O_1,
+        DISP_O_2,
+        DONE,
+        ERROR_1,
+        ERROR_2
+    }
+    .clk(clk){
+        edge_detector slow_clock_edge(#RISE(1), #FALL(0))
+        .rst(rst){
+            dff states[$width(States)](#INIT(States.INIT))
+            
+            dff o[32]
+            counter slow_clock(#SIZE(1), #DIV(10))
+            
+            multi_seven_seg seg_display
+        }
+    }
+    
+    sig alufn[6]
+    sig a[32]
+    sig b[32]
+    alu alu(.a(a), .b(b), .alufn(alufn))
+    
+    always {
+        done = 0
+        slow_clock_edge.in = slow_clock.value
+        io_segment = 8hFF
+        io_select = 4hF
+        seg_display.values = {4b0, 4b0, 4b0, 4b0}
+        led = 8h00
+        
+        alufn = ALUCODE
+        a = INPUT_A
+        b = INPUT_B
+        o.d = alu.out
+        
+        
+        case(states.q){
+            States.INIT:
+                if(start){
+                    states.d = States.DISP_A_1
+                }
+            States.DISP_A_1:
+                io_segment = 8b10001000
+                io_select = 4b1110
+                if(slow_clock_edge.out){
+                    states.d = States.DISP_A_2
+                }
+            States.DISP_A_2:
+                seg_display.values = {a[15:12], a[11:8], a[7:4], a[3:0]};
+                io_segment = ~seg_display.seg
+                io_select = ~seg_display.sel
+                if(slow_clock_edge.out){
+                    states.d = States.DISP_B_1
+                }
+            States.DISP_B_1:
+                io_segment = 8b10000011
+                io_select = 4b1110
+                if(slow_clock_edge.out){
+                    states.d = States.DISP_B_2
+                }
+            States.DISP_B_2:
+                seg_display.values = {b[15:12], b[11:8], b[7:4], b[3:0]}
+                io_segment = ~seg_display.seg
+                io_select = ~seg_display.sel
+                if(slow_clock_edge.out){
+                    states.d = States.DISP_O_1
+                }
+            States.DISP_O_1:
+                io_segment = 8b11000000
+                io_select = 4b1110
+                if(slow_clock_edge.out){
+                    states.d = States.DISP_O_2
+                }
+            States.DISP_O_2:
+                seg_display.values = {o.q[15:12], o.q[11:8], o.q[7:4], o.q[3:0]}
+                io_segment = ~seg_display.seg
+                io_select = ~seg_display.sel
+                if(slow_clock_edge.out && o.q == EXPECTED){
+                    states.d = States.DONE
+                } else if (slow_clock_edge.out && o.q != EXPECTED){
+                    states.d = States.ERROR_1
+                }
+            States.DONE:
+                io_segment = 8b10100001
+                io_select = 4b1110
+                alucode_led = 6b000000
+                done = 1     
+            States.ERROR_1:
+                seg_display.values = {o.q[15:12], o.q[11:8], o.q[7:4], o.q[3:0]}
+                io_segment = ~seg_display.seg
+                io_select = ~seg_display.sel
+                if (slow_clock_edge.out)
+                  states.d = States.ERROR_2
+            States.ERROR_2:
+                io_segment = 8b10000110
+                io_select = 4b1110
+        }
+        
+        alucode_led = ALUCODE
+        led[2:0] = c{alu.n, alu.v, alu.z}
+    }
+}

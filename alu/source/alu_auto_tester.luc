@@ -1,0 +1,66 @@
+module alu_auto_tester (
+    input clk,  // clock
+    input rst,  // reset
+    input start,
+    output io_segment[8],
+    output io_select[4],
+    output alucode_led[6],
+    output led[8]
+) {
+    
+    enum AutoStates {STANDBY, TEST_0, TEST_1, TEST_2}
+    .clk(clk){
+        .rst(rst){
+            dff states[$width(AutoStates)](#INIT(AutoStates.STANDBY))
+            
+            alu_statement_tester test_0 (#INPUT_A(32habcd1234), #INPUT_B(32h00000000), #ALUCODE(6b00000001), #EXPECTED(32habcd1234)) // SUB: Zero Subtraction A - 0
+            alu_statement_tester test_1 (#INPUT_A(32h00000000), #INPUT_B(32habcd1234), #ALUCODE(6b00000001), #EXPECTED(32h5432edcc)) // SUB: Zero Subtraction 0 - A
+            alu_statement_tester test_2 (#INPUT_A(32h00000000), #INPUT_B(32h7fffffff), #ALUCODE(6b00000001), #EXPECTED(32h80000001)) // SUB: Boundary Value
+        }
+    }
+    
+    always {
+        io_segment = 8hFF
+        io_select = 4hF
+        alucode_led = 6b000000
+        led = 8h00
+        
+        test_0.start = 0
+        test_1.start = 0
+        test_2.start = 0
+        
+        case(states.q){
+            AutoStates.STANDBY:
+                if(start){
+                    states.d = AutoStates.TEST_0
+                }
+            
+            AutoStates.TEST_0:
+                io_segment = test_0.io_segment
+                io_select = test_0.io_select
+                alucode_led = test_0.alucode_led
+                led = test_0.led
+                test_0.start = 1
+                if(test_0.done)
+                    states.d = AutoStates.TEST_1
+
+            AutoStates.TEST_1:
+                io_segment = test_1.io_segment
+                io_select = test_1.io_select
+                alucode_led = test_1.alucode_led
+                led = test_1.led
+                test_1.start = 1
+                if(test_1.done)
+                    states.d = AutoStates.TEST_2
+
+            AutoStates.TEST_2:
+                io_segment = test_2.io_segment
+                io_select = test_2.io_select
+                alucode_led = test_2.alucode_led
+                led = test_2.led
+                test_2.start = 1
+                if(test_2.done)
+                    states.d = AutoStates.STANDBY
+        }
+    }
+}

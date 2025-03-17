@@ -10,35 +10,70 @@ module alchitry_top (
     input io_button[5],      // 5 buttons on IO Shield
     input io_dip[3][8]       // DIP switches on IO Shield
 ) {
-    
-    
-    
     sig rst                 // reset signal
+    sig state_change
+    
+    const CLK_FREQ = $is_sim() ? 1000 : 10000000 // put 1000 for sim, 10000000 otherwise in hardware
+    
+    enum States{
+        MANUAL,
+        AUTO
+    }
     
     .clk(clk) {
         // The reset conditioner is used to synchronize the reset signal to the FPGA
         // clock. This ensures the entire FPGA comes out of reset at the same time.
         reset_conditioner reset_cond
+        button_conditioner button_cond(#CLK_FREQ(CLK_FREQ))
+        edge_detector edge(#RISE(1), #FALL(0))
+        .rst(rst){
+            dff start_auto_test
+            
+            dff states[$width(States)](#INIT(States.MANUAL))
+            alu_manual_tester alu_manual(.io_button(io_button), .io_dip(io_dip), #CLK_FREQ(CLK_FREQ))
+            alu_auto_tester alu_auto(.start(start_auto_test.q))
+            
+            blinker my_blinker
+        }
     }
-    const CLK_FREQ = $is_sim() ? 1000 : 10000000 // put 1000 for sim, 10000000 otherwise in hardware
     
-    blinker my_blinker(.clk(clk), .rst(rst))
-    
-    alu_manual_tester alu_manual(.clk(clk), .rst(rst), .io_button(io_button), .io_dip(io_dip), #CLK_FREQ(CLK_FREQ)) 
-    
+
     always {
-        reset_cond.in = ~rst_n  // input raw inverted reset signal
-        rst = reset_cond.out    // conditioned reset
-        
         led = 8x{my_blinker.blink}       // turn LEDs off
         usb_tx = usb_rx          // loop serial port
         
-
-        // to test ALU 
-        io_segment = alu_manual.io_segment
-        io_select = alu_manual.io_select         
-        io_led = alu_manual.io_led
-        led = alu_manual.led
- 
+        reset_cond.in = ~rst_n  // input raw inverted reset signal
+        rst = reset_cond.out    // conditioned reset
+        
+        start_auto_test.d = start_auto_test.q
+        
+        button_cond.in = io_button[1]
+        edge.in = button_cond.out
+        state_change = edge.out
+        
+        io_led = {8b0, 8b0, 8b0}
+        io_segment = 0
+        io_select = 4hF
+        
+        case(states.q){
+            States.MANUAL:
+                io_led = alu_manual.io_led
+                io_segment = alu_manual.io_segment
+                io_select = alu_manual.io_select
+                led = alu_manual.led
+                if(state_change){
+                    states.d = States.AUTO
+                }
+            States.AUTO:
+                start_auto_test.d = 1
+                io_segment = alu_auto.io_segment
+                io_select = alu_auto.io_select
+                led = alu_auto.led
+                io_led[2][5:0] = alu_auto.alucode_led
+                if(state_change){
+                    states.d = States.MANUAL
+                }       
+        }
+        
     }
 }

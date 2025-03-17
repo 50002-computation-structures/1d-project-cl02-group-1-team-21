@@ -20,13 +20,14 @@ module alu_manual_tester#(
         io_led = 3x{{8h0}}
         io_segment = 0
         io_select = 4hF
+        led = 8h00
         
         alu.a = io_dip[0]
         alu.b = io_dip[1]
         alu.alufn = io_dip[2][5:0]
-        led = alu.out[7:0]
-        io_led[0] = alu.out[15:8]
-        io_led[1] = alu.out[23:16]
-        io_led[2] = alu.out[31:24]        
+        led[2:0] = c{alu.n, alu.v, alu.z}
+        io_led[0] = alu.out[7:0]
+        io_led[1] = alu.out[15:8]
+        io_led[2] = alu.out[23:16]        
     }
 }

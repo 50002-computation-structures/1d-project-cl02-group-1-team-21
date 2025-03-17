@@ -11,7 +11,10 @@ module compare (
         
         compare_mux.s1 = alufn[2]
         compare_mux.s0 = alufn[1]
-        compare_mux.in = c{0, z, n ^ v, (n ^ v) | z}
+        compare_mux.in[0] = 0
+        compare_mux.in[1] = z
+        compare_mux.in[2] = n ^ v
+        compare_mux.in[3] = (n ^ v) | z
         
         cmp = compare_mux.out
     }
