@@ -8,14 +8,60 @@ module alu_auto_tester (
     output led[8]
 ) {
     
-    enum AutoStates {STANDBY, TEST_0, TEST_1, TEST_2}
+    enum AutoStates {STANDBY, TEST_0, TEST_1, TEST_2, TEST_3, TEST_4, TEST_5, TEST_6, TEST_7, TEST_8, TEST_9, TEST_10, TEST_11, TEST_12, TEST_13, TEST_14, TEST_15, TEST_16, TEST_17, TEST_18, TEST_19, TEST_20, TEST_21, TEST_22, TEST_23, TEST_24, TEST_25, TEST_26, TEST_27, TEST_28, TEST_29, TEST_30, TEST_31, TEST_32, TEST_33, TEST_34, TEST_35, TEST_36}
     .clk(clk){
         .rst(rst){
             dff states[$width(AutoStates)](#INIT(AutoStates.STANDBY))
             
-            alu_statement_tester test_0 (#INPUT_A(32habcd1234), #INPUT_B(32h00000000), #ALUCODE(6b00000001), #EXPECTED(32habcd1234)) // SUB: Zero Subtraction A - 0
-            alu_statement_tester test_1 (#INPUT_A(32h00000000), #INPUT_B(32habcd1234), #ALUCODE(6b00000001), #EXPECTED(32h5432edcc)) // SUB: Zero Subtraction 0 - A
-            alu_statement_tester test_2 (#INPUT_A(32h00000000), #INPUT_B(32h7fffffff), #ALUCODE(6b00000001), #EXPECTED(32h80000001)) // SUB: Boundary Value
+            alu_statement_tester test_0 (#INPUT_A(32habcd1234), #INPUT_B(32h00000000), #ALUCODE(6b000000), #EXPECTED(32habcd1234)) // ADD: Zero Addition A + 0
+            alu_statement_tester test_1 (#INPUT_A(32h00000000), #INPUT_B(32habcd1234), #ALUCODE(6b000000), #EXPECTED(32habcd1234)) // ADD: Zero Addition 0 + A
+            alu_statement_tester test_2 (#INPUT_A(32h12345678), #INPUT_B(32h23456789), #ALUCODE(6b000000), #EXPECTED(32h3579be01)) // ADD: Positive Numbers
+            alu_statement_tester test_3 (#INPUT_A(32h7fffffff), #INPUT_B(32h7fffffff), #ALUCODE(6b000000), #EXPECTED(32hfffffffe)) // ADD: Overflow
+
+            alu_statement_tester test_4 (#INPUT_A(32habcd1234), #INPUT_B(32h00000000), #ALUCODE(6b000001), #EXPECTED(32habcd1234)) // SUB: Zero Subtraction A - 0
+            alu_statement_tester test_5 (#INPUT_A(32h00000000), #INPUT_B(32habcd1234), #ALUCODE(6b000001), #EXPECTED(32h5432edcc)) // SUB: Zero Subtraction 0 - A
+            alu_statement_tester test_6 (#INPUT_A(32h00000000), #INPUT_B(32h7fffffff), #ALUCODE(6b000001), #EXPECTED(32h80000001)) // SUB: Boundary Value
+
+            alu_statement_tester test_7 (#INPUT_A(32habcd1234), #INPUT_B(32h00000000), #ALUCODE(6b000010), #EXPECTED(32h00000000)) // MUL: Zero Multiplication
+            alu_statement_tester test_8 (#INPUT_A(32habcd1234), #INPUT_B(32h00000001), #ALUCODE(6b000010), #EXPECTED(32habcd1234)) // MUL: Multiplication by One
+            alu_statement_tester test_9 (#INPUT_A(32h00001234), #INPUT_B(32h00005678), #ALUCODE(6b000010), #EXPECTED(32h06260060)) // MUL: Positive Numbers
+
+            alu_statement_tester test_10 (#INPUT_A(32habcd1234), #INPUT_B(32h00000000), #ALUCODE(6b011000), #EXPECTED(32h00000000)) // AND: All Zeros
+            alu_statement_tester test_11 (#INPUT_A(32habcd1234), #INPUT_B(32hffffffff), #ALUCODE(6b011000), #EXPECTED(32habcd1234)) // AND: All Ones
+            alu_statement_tester test_12 (#INPUT_A(32habcd1234), #INPUT_B(32habcd1234), #ALUCODE(6b011000), #EXPECTED(32habcd1234)) // AND: Identity Check
+            alu_statement_tester test_13 (#INPUT_A(32hffffffff), #INPUT_B(32h00000000), #ALUCODE(6b011000), #EXPECTED(32h00000000)) // AND: Complementary Check
+
+            alu_statement_tester test_14 (#INPUT_A(32habcd1234), #INPUT_B(32h00000000), #ALUCODE(6b011110), #EXPECTED(32habcd1234)) // OR: All Zeros
+            alu_statement_tester test_15 (#INPUT_A(32habcd1234), #INPUT_B(32hffffffff), #ALUCODE(6b011110), #EXPECTED(32hffffffff)) // OR: All Ones
+            alu_statement_tester test_16 (#INPUT_A(32habcd1234), #INPUT_B(32habcd1234), #ALUCODE(6b011110), #EXPECTED(32habcd1234)) // OR: Identity Check
+
+            alu_statement_tester test_17 (#INPUT_A(32habcd1234), #INPUT_B(32h00000000), #ALUCODE(6b010110), #EXPECTED(32habcd1234)) // XOR: Identity Check
+            alu_statement_tester test_18 (#INPUT_A(32habcd1234), #INPUT_B(32habcd1234), #ALUCODE(6b010110), #EXPECTED(32h00000000)) // XOR: Self-XOR
+            alu_statement_tester test_19 (#INPUT_A(32hffffffff), #INPUT_B(32h00000000), #ALUCODE(6b010110), #EXPECTED(32hffffffff)) // XOR: Complementary Check
+
+            alu_statement_tester test_20 (#INPUT_A(32habcd1234), #INPUT_B(32h00000000), #ALUCODE(6b011010), #EXPECTED(32habcd1234)) // LDR: Load Function
+            alu_statement_tester test_21 (#INPUT_A(32hef425678), #INPUT_B(32h00000000), #ALUCODE(6b011010), #EXPECTED(32hef425678)) // LDR: Load Function 
+            alu_statement_tester test_22 (#INPUT_A(32hcd426789), #INPUT_B(32h00000000), #ALUCODE(6b011010), #EXPECTED(32hcd426789)) // LDR: Load Function
+
+            alu_statement_tester test_23 (#INPUT_A(32habcd1234), #INPUT_B(32h00000000), #ALUCODE(6b100000), #EXPECTED(32habcd1234)) // SHL: Zero Shift
+            alu_statement_tester test_24 (#INPUT_A(32h00000001), #INPUT_B(32h0000001f), #ALUCODE(6b100000), #EXPECTED(32h80000000)) // SHL: Maximum Shift
+
+            alu_statement_tester test_25 (#INPUT_A(32habcd1234), #INPUT_B(32h00000000), #ALUCODE(6b100001), #EXPECTED(32habcd1234)) // SHR: Zero Shift
+            alu_statement_tester test_26 (#INPUT_A(32h80000000), #INPUT_B(32h0000001f), #ALUCODE(6b100001), #EXPECTED(32h00000001)) // SHR: Maximum Shift
+
+            alu_statement_tester test_27 (#INPUT_A(32habcd1234), #INPUT_B(32h00000000), #ALUCODE(6b100011), #EXPECTED(32habcd1234)) // SRA: Zero Shift
+            alu_statement_tester test_28 (#INPUT_A(32h80000000), #INPUT_B(32h0000001f), #ALUCODE(6b100011), #EXPECTED(32hffffffff)) // SRA: Arithmetic Right Shift
+
+            alu_statement_tester test_29 (#INPUT_A(32habcd1234), #INPUT_B(32habcd1234), #ALUCODE(6b110011), #EXPECTED(32h00000001)) // CMPEQ: Equality
+            alu_statement_tester test_30 (#INPUT_A(32habcd1234), #INPUT_B(32hef421234), #ALUCODE(6b110011), #EXPECTED(32h00000000)) // CMPEQ: Inequality
+
+            alu_statement_tester test_31 (#INPUT_A(32habcd1234), #INPUT_B(32hef421234), #ALUCODE(6b110101), #EXPECTED(32h00000001)) // CMPLT: Less Than
+            alu_statement_tester test_32 (#INPUT_A(32habcd1234), #INPUT_B(32habcd1234), #ALUCODE(6b110101), #EXPECTED(32h00000000)) // CMPLT: Equal
+            alu_statement_tester test_33 (#INPUT_A(32hef421234), #INPUT_B(32habcd1234), #ALUCODE(6b110101), #EXPECTED(32h00000000)) // CMPLT: Greater Than
+
+            alu_statement_tester test_34 (#INPUT_A(32habcd1234), #INPUT_B(32hef421234), #ALUCODE(6b110101), #EXPECTED(32h00000001)) // CMPLE: Less Than
+            alu_statement_tester test_35 (#INPUT_A(32habcd1234), #INPUT_B(32habcd1234), #ALUCODE(6b110111), #EXPECTED(32h00000001)) // CMPLE: Equal
+            alu_statement_tester test_36 (#INPUT_A(32hef421234), #INPUT_B(32habcd1234), #ALUCODE(6b110111), #EXPECTED(32h00000000)) // CMPLE: Greater Than
         }
     }
     
@@ -26,8 +72,42 @@ module alu_auto_tester (
         led = 8h00
         
         test_0.start = 0
-        test_1.start = 0
-        test_2.start = 0
+    	test_1.start = 0
+    	test_2.start = 0
+    	test_3.start = 0
+    	test_4.start = 0
+    	test_5.start = 0
+    	test_6.start = 0
+    	test_7.start = 0
+    	test_8.start = 0
+    	test_9.start = 0
+    	test_10.start = 0
+    	test_11.start = 0
+    	test_12.start = 0
+    	test_13.start = 0
+    	test_14.start = 0
+    	test_15.start = 0
+    	test_16.start = 0
+    	test_17.start = 0
+    	test_18.start = 0
+    	test_19.start = 0
+    	test_20.start = 0
+    	test_21.start = 0
+    	test_22.start = 0
+    	test_23.start = 0
+    	test_24.start = 0
+    	test_25.start = 0
+    	test_26.start = 0
+    	test_27.start = 0
+    	test_28.start = 0
+    	test_29.start = 0
+    	test_30.start = 0
+    	test_31.start = 0
+    	test_32.start = 0
+    	test_33.start = 0
+    	test_34.start = 0
+    	test_35.start = 0
+    	test_36.start = 0
         
         case(states.q){
             AutoStates.STANDBY:
@@ -60,7 +140,314 @@ module alu_auto_tester (
                 led = test_2.led
                 test_2.start = 1
                 if(test_2.done)
+                    states.d = AutoStates.TEST_3
+
+            AutoStates.TEST_3:
+                io_segment = test_3.io_segment
+                io_select = test_3.io_select
+                alucode_led = test_3.alucode_led
+                led = test_3.led
+                test_3.start = 1
+                if(test_3.done)
+                    states.d = AutoStates.TEST_4
+
+            AutoStates.TEST_4:
+                io_segment = test_4.io_segment
+                io_select = test_4.io_select
+                alucode_led = test_4.alucode_led
+                led = test_4.led
+                test_4.start = 1
+                if(test_4.done)
+                    states.d = AutoStates.TEST_5
+
+            AutoStates.TEST_5:
+                io_segment = test_5.io_segment
+                io_select = test_5.io_select
+                alucode_led = test_5.alucode_led
+                led = test_5.led
+                test_5.start = 1
+                if(test_5.done)
+                    states.d = AutoStates.TEST_6
+
+            AutoStates.TEST_6:
+                io_segment = test_6.io_segment
+                io_select = test_6.io_select
+                alucode_led = test_6.alucode_led
+                led = test_6.led
+                test_6.start = 1
+                if(test_6.done)
+                    states.d = AutoStates.TEST_7
+
+            AutoStates.TEST_7:
+                io_segment = test_7.io_segment
+                io_select = test_7.io_select
+                alucode_led = test_7.alucode_led
+                led = test_7.led
+                test_7.start = 1
+                if(test_7.done)
+                    states.d = AutoStates.TEST_8
+
+            AutoStates.TEST_8:
+                io_segment = test_8.io_segment
+                io_select = test_8.io_select
+                alucode_led = test_8.alucode_led
+                led = test_8.led
+                test_8.start = 1
+                if(test_8.done)
+                    states.d = AutoStates.TEST_9
+
+            AutoStates.TEST_9:
+                io_segment = test_9.io_segment
+                io_select = test_9.io_select
+                alucode_led = test_9.alucode_led
+                led = test_9.led
+                test_9.start = 1
+                if(test_9.done)
+                    states.d = AutoStates.TEST_10
+
+            AutoStates.TEST_10:
+                io_segment = test_10.io_segment
+                io_select = test_10.io_select
+                alucode_led = test_10.alucode_led
+                led = test_10.led
+                test_10.start = 1
+                if(test_10.done)
+                    states.d = AutoStates.TEST_11
+
+            AutoStates.TEST_11:
+                io_segment = test_11.io_segment
+                io_select = test_11.io_select
+                alucode_led = test_11.alucode_led
+                led = test_11.led
+                test_11.start = 1
+                if(test_11.done)
+                    states.d = AutoStates.TEST_12
+
+            AutoStates.TEST_12:
+                io_segment = test_12.io_segment
+                io_select = test_12.io_select
+                alucode_led = test_12.alucode_led
+                led = test_12.led
+                test_12.start = 1
+                if(test_12.done)
+                    states.d = AutoStates.TEST_13
+
+            AutoStates.TEST_13:
+                io_segment = test_13.io_segment
+                io_select = test_13.io_select
+                alucode_led = test_13.alucode_led
+                led = test_13.led
+                test_13.start = 1
+                if(test_13.done)
+                    states.d = AutoStates.TEST_14
+
+            AutoStates.TEST_14:
+                io_segment = test_14.io_segment
+                io_select = test_14.io_select
+                alucode_led = test_14.alucode_led
+                led = test_14.led
+                test_14.start = 1
+                if(test_14.done)
+                    states.d = AutoStates.TEST_15
+
+            AutoStates.TEST_15:
+                io_segment = test_15.io_segment
+                io_select = test_15.io_select
+                alucode_led = test_15.alucode_led
+                led = test_15.led
+                test_15.start = 1
+                if(test_15.done)
+                    states.d = AutoStates.TEST_16
+
+            AutoStates.TEST_16:
+                io_segment = test_16.io_segment
+                io_select = test_16.io_select
+                alucode_led = test_16.alucode_led
+                led = test_16.led
+                test_16.start = 1
+                if(test_16.done)
+                    states.d = AutoStates.TEST_17
+
+            AutoStates.TEST_17:
+                io_segment = test_17.io_segment
+                io_select = test_17.io_select
+                alucode_led = test_17.alucode_led
+                led = test_17.led
+                test_17.start = 1
+                if(test_17.done)
+                    states.d = AutoStates.TEST_18
+
+            AutoStates.TEST_18:
+                io_segment = test_18.io_segment
+                io_select = test_18.io_select
+                alucode_led = test_18.alucode_led
+                led = test_18.led
+                test_18.start = 1
+                if(test_18.done)
+                    states.d = AutoStates.TEST_19
+
+            AutoStates.TEST_19:
+                io_segment = test_19.io_segment
+                io_select = test_19.io_select
+                alucode_led = test_19.alucode_led
+                led = test_19.led
+                test_19.start = 1
+                if(test_19.done)
+                    states.d = AutoStates.TEST_20
+
+            AutoStates.TEST_20:
+                io_segment = test_20.io_segment
+                io_select = test_20.io_select
+                alucode_led = test_20.alucode_led
+                led = test_20.led
+                test_20.start = 1
+                if(test_20.done)
+                    states.d = AutoStates.TEST_21
+
+            AutoStates.TEST_21:
+                io_segment = test_21.io_segment
+                io_select = test_21.io_select
+                alucode_led = test_21.alucode_led
+                led = test_21.led
+                test_21.start = 1
+                if(test_21.done)
+                    states.d = AutoStates.TEST_22
+
+            AutoStates.TEST_22:
+                io_segment = test_22.io_segment
+                io_select = test_22.io_select
+                alucode_led = test_22.alucode_led
+                led = test_22.led
+                test_22.start = 1
+                if(test_22.done)
+                    states.d = AutoStates.TEST_23
+
+            AutoStates.TEST_23:
+                io_segment = test_23.io_segment
+                io_select = test_23.io_select
+                alucode_led = test_23.alucode_led
+                led = test_23.led
+                test_23.start = 1
+                if(test_23.done)
+                    states.d = AutoStates.TEST_24
+
+            AutoStates.TEST_24:
+                io_segment = test_24.io_segment
+                io_select = test_24.io_select
+                alucode_led = test_24.alucode_led
+                led = test_24.led
+                test_24.start = 1
+                if(test_24.done)
+                    states.d = AutoStates.TEST_25
+
+            AutoStates.TEST_25:
+                io_segment = test_25.io_segment
+                io_select = test_25.io_select
+                alucode_led = test_25.alucode_led
+                led = test_25.led
+                test_25.start = 1
+                if(test_25.done)
+                    states.d = AutoStates.TEST_26
+
+            AutoStates.TEST_26:
+                io_segment = test_26.io_segment
+                io_select = test_26.io_select
+                alucode_led = test_26.alucode_led
+                led = test_26.led
+                test_26.start = 1
+                if(test_26.done)
+                    states.d = AutoStates.TEST_27
+
+            AutoStates.TEST_27:
+                io_segment = test_27.io_segment
+                io_select = test_27.io_select
+                alucode_led = test_27.alucode_led
+                led = test_27.led
+                test_27.start = 1
+                if(test_27.done)
+                    states.d = AutoStates.TEST_28
+
+            AutoStates.TEST_28:
+                io_segment = test_28.io_segment
+                io_select = test_28.io_select
+                alucode_led = test_28.alucode_led
+                led = test_28.led
+                test_28.start = 1
+                if(test_28.done)
+                    states.d = AutoStates.TEST_29
+
+            AutoStates.TEST_29:
+                io_segment = test_29.io_segment
+                io_select = test_29.io_select
+                alucode_led = test_29.alucode_led
+                led = test_29.led
+                test_29.start = 1
+                if(test_29.done)
+                    states.d = AutoStates.TEST_30
+
+            AutoStates.TEST_30:
+                io_segment = test_30.io_segment
+                io_select = test_30.io_select
+                alucode_led = test_30.alucode_led
+                led = test_30.led
+                test_30.start = 1
+                if(test_30.done)
+                    states.d = AutoStates.TEST_31
+
+            AutoStates.TEST_31:
+                io_segment = test_31.io_segment
+                io_select = test_31.io_select
+                alucode_led = test_31.alucode_led
+                led = test_31.led
+                test_31.start = 1
+                if(test_31.done)
+                    states.d = AutoStates.TEST_32
+
+            AutoStates.TEST_32:
+                io_segment = test_32.io_segment
+                io_select = test_32.io_select
+                alucode_led = test_32.alucode_led
+                led = test_32.led
+                test_32.start = 1
+                if(test_32.done)
+                    states.d = AutoStates.TEST_33
+
+            AutoStates.TEST_33:
+                io_segment = test_33.io_segment
+                io_select = test_33.io_select
+                alucode_led = test_33.alucode_led
+                led = test_33.led
+                test_33.start = 1
+                if(test_33.done)
+                    states.d = AutoStates.TEST_34
+
+            AutoStates.TEST_34:
+                io_segment = test_34.io_segment
+                io_select = test_34.io_select
+                alucode_led = test_34.alucode_led
+                led = test_34.led
+                test_34.start = 1
+                if(test_34.done)
+                    states.d = AutoStates.TEST_35
+
+            AutoStates.TEST_35:
+                io_segment = test_35.io_segment
+                io_select = test_35.io_select
+                alucode_led = test_35.alucode_led
+                led = test_35.led
+                test_35.start = 1
+                if(test_35.done)
+                    states.d = AutoStates.TEST_36
+
+            AutoStates.TEST_36:
+                io_segment = test_36.io_segment
+                io_select = test_36.io_select
+                alucode_led = test_36.alucode_led
+                led = test_36.led
+                test_36.start = 1
+                if(test_36.done)
                     states.d = AutoStates.STANDBY
+
         }
     }
 }
