@@ -22,8 +22,10 @@ module alu_manual_tester#(
         io_select = 4hF
         led = 8h00
         
-        alu.a = io_dip[0]
-        alu.b = io_dip[1]
+        alu.a[6:0] = io_dip[0][6:0]
+        alu.a[31] = io_dip[0][7]
+        alu.b[6:0] = io_dip[1][6:0]
+        alu.b[31] = io_dip[1][7]
         alu.alufn = io_dip[2][5:0]
         led[2:0] = c{alu.n, alu.v, alu.z}
         io_led[0] = alu.out[7:0]
