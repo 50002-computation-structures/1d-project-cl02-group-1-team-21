@@ -1,0 +1,1627 @@
+#-----------------------------------------------------------
+# Vivado v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Tue Mar 18 20:56:39 2025
+# Process ID: 23628
+# Current directory: C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.runs/synth_1
+# Command line: vivado.exe -log alchitry_top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source alchitry_top.tcl
+# Log file: C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.runs/synth_1/alchitry_top.vds
+# Journal file: C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.runs/synth_1\vivado.jou
+# Running On: Akirayasha, OS: Windows, CPU Frequency: 2304 MHz, CPU Physical cores: 8, Host memory: 34111 MB
+#-----------------------------------------------------------
+source alchitry_top.tcl -notrace
+create_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 463.258 ; gain = 184.965
+Command: synth_design -top alchitry_top -part xc7a35tftg256-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Device 21-403] Loading part xc7a35tftg256-1
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 29028
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1295.910 ; gain = 438.699
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'alchitry_top' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alchitry_top.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'reset_conditioner' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/reset_conditioner.sv:7]
+	Parameter STAGES bound to: 3'b100 
+INFO: [Synth 8-6155] done synthesizing module 'reset_conditioner' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/reset_conditioner.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'button_conditioner' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/button_conditioner.sv:7]
+	Parameter CLK_FREQ bound to: 24'b100110001001011010000000 
+	Parameter MIN_DELAY bound to: 5'b10100 
+	Parameter NUM_SYNC bound to: 2'b10 
+INFO: [Synth 8-6157] synthesizing module 'pipeline' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/pipeline.sv:7]
+	Parameter DEPTH bound to: 2'b10 
+INFO: [Synth 8-6155] done synthesizing module 'pipeline' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/pipeline.sv:7]
+INFO: [Synth 8-6155] done synthesizing module 'button_conditioner' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/button_conditioner.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'edge_detector' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/edge_detector.sv:7]
+	Parameter RISE bound to: 1'b1 
+	Parameter FALL bound to: 1'b0 
+INFO: [Synth 8-6155] done synthesizing module 'edge_detector' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/edge_detector.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'alu_manual_tester' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_manual_tester.sv:7]
+	Parameter CLK_FREQ bound to: 24'b100110001001011010000000 
+INFO: [Synth 8-6157] synthesizing module 'alu' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'mux_4' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/mux_4.sv:7]
+INFO: [Synth 8-226] default block is never used [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/mux_4.sv:15]
+INFO: [Synth 8-6155] done synthesizing module 'mux_4' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/mux_4.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'adder' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/adder.sv:7]
+	Parameter SIZE bound to: 6'b100000 
+INFO: [Synth 8-6157] synthesizing module 'rca' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/rca.sv:7]
+	Parameter SIZE bound to: 6'b100000 
+INFO: [Synth 8-6157] synthesizing module 'fa' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/fa.sv:7]
+INFO: [Synth 8-6155] done synthesizing module 'fa' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/fa.sv:7]
+INFO: [Synth 8-6155] done synthesizing module 'rca' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/rca.sv:7]
+INFO: [Synth 8-6155] done synthesizing module 'adder' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/adder.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'multiplier' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/multiplier.sv:7]
+INFO: [Synth 8-6155] done synthesizing module 'multiplier' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/multiplier.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'division' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/division.sv:7]
+INFO: [Synth 8-6155] done synthesizing module 'division' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/division.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'modulo' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/modulo.sv:7]
+INFO: [Synth 8-6155] done synthesizing module 'modulo' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/modulo.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'boolean' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/boolean.sv:7]
+	Parameter SIZE bound to: 6'b100000 
+INFO: [Synth 8-6155] done synthesizing module 'boolean' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/boolean.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'shifter' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/shifter.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'mux_2' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/mux_2.sv:7]
+INFO: [Synth 8-226] default block is never used [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/mux_2.sv:14]
+INFO: [Synth 8-6155] done synthesizing module 'mux_2' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/mux_2.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'x_bit_left_shifter' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/x_bit_left_shifter.sv:7]
+	Parameter SHIFT bound to: 5'b00001 
+INFO: [Synth 8-6155] done synthesizing module 'x_bit_left_shifter' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/x_bit_left_shifter.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'x_bit_left_shifter__parameterized0' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/x_bit_left_shifter.sv:7]
+	Parameter SHIFT bound to: 5'b00010 
+INFO: [Synth 8-6155] done synthesizing module 'x_bit_left_shifter__parameterized0' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/x_bit_left_shifter.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'x_bit_left_shifter__parameterized1' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/x_bit_left_shifter.sv:7]
+	Parameter SHIFT bound to: 5'b00100 
+INFO: [Synth 8-6155] done synthesizing module 'x_bit_left_shifter__parameterized1' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/x_bit_left_shifter.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'x_bit_left_shifter__parameterized2' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/x_bit_left_shifter.sv:7]
+	Parameter SHIFT bound to: 5'b01000 
+INFO: [Synth 8-6155] done synthesizing module 'x_bit_left_shifter__parameterized2' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/x_bit_left_shifter.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'x_bit_left_shifter__parameterized3' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/x_bit_left_shifter.sv:7]
+	Parameter SHIFT bound to: 5'b10000 
+INFO: [Synth 8-6155] done synthesizing module 'x_bit_left_shifter__parameterized3' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/x_bit_left_shifter.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'bit_reverse' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/bit_reverse.sv:7]
+	Parameter SIZE bound to: 6'b100000 
+INFO: [Synth 8-6155] done synthesizing module 'bit_reverse' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/bit_reverse.sv:7]
+INFO: [Synth 8-6155] done synthesizing module 'shifter' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/shifter.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'compare' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/compare.sv:7]
+INFO: [Synth 8-6155] done synthesizing module 'compare' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/compare.sv:7]
+INFO: [Synth 8-6155] done synthesizing module 'alu' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu.sv:7]
+INFO: [Synth 8-6155] done synthesizing module 'alu_manual_tester' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_manual_tester.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'alu_auto_tester' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_auto_tester.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'alu_statement_tester' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+	Parameter INPUT_A bound to: -1412623820 - type: integer 
+	Parameter INPUT_B bound to: 0 - type: integer 
+	Parameter ALUCODE bound to: 6'b000000 
+	Parameter EXPECTED bound to: -1412623820 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'counter' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/counter.sv:7]
+	Parameter SIZE bound to: 1'b1 
+	Parameter DIV bound to: 5'b11000 
+	Parameter TOP bound to: 1'b0 
+	Parameter UP bound to: 1'b1 
+INFO: [Synth 8-6155] done synthesizing module 'counter' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/counter.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'multi_seven_seg' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/multi_seven_seg.sv:7]
+	Parameter DIGITS bound to: 3'b100 
+	Parameter DIV bound to: 5'b10000 
+INFO: [Synth 8-6157] synthesizing module 'counter__parameterized0' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/counter.sv:7]
+	Parameter SIZE bound to: 2 - type: integer 
+	Parameter DIV bound to: 5'b10000 
+	Parameter TOP bound to: 3'b011 
+	Parameter UP bound to: 1'b1 
+INFO: [Synth 8-6155] done synthesizing module 'counter__parameterized0' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/counter.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'seven_seg' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/seven_seg.sv:7]
+INFO: [Synth 8-6155] done synthesizing module 'seven_seg' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/seven_seg.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'decoder' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/decoder.sv:7]
+	Parameter WIDTH bound to: 2 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'decoder' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/decoder.sv:7]
+INFO: [Synth 8-6155] done synthesizing module 'multi_seven_seg' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/multi_seven_seg.sv:7]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:120]
+INFO: [Synth 8-6155] done synthesizing module 'alu_statement_tester' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'alu_statement_tester__parameterized0' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+	Parameter INPUT_A bound to: 0 - type: integer 
+	Parameter INPUT_B bound to: -1412623820 - type: integer 
+	Parameter ALUCODE bound to: 6'b000000 
+	Parameter EXPECTED bound to: -1412623820 - type: integer 
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:120]
+INFO: [Synth 8-6155] done synthesizing module 'alu_statement_tester__parameterized0' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'alu_statement_tester__parameterized1' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+	Parameter INPUT_A bound to: 305419896 - type: integer 
+	Parameter INPUT_B bound to: 591751049 - type: integer 
+	Parameter ALUCODE bound to: 6'b000000 
+	Parameter EXPECTED bound to: 897170945 - type: integer 
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:120]
+INFO: [Synth 8-6155] done synthesizing module 'alu_statement_tester__parameterized1' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'alu_statement_tester__parameterized2' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+	Parameter INPUT_A bound to: 2147483647 - type: integer 
+	Parameter INPUT_B bound to: 2147483647 - type: integer 
+	Parameter ALUCODE bound to: 6'b000000 
+	Parameter EXPECTED bound to: -2 - type: integer 
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:120]
+INFO: [Synth 8-6155] done synthesizing module 'alu_statement_tester__parameterized2' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'alu_statement_tester__parameterized3' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+	Parameter INPUT_A bound to: -1412623820 - type: integer 
+	Parameter INPUT_B bound to: 0 - type: integer 
+	Parameter ALUCODE bound to: 6'b000001 
+	Parameter EXPECTED bound to: -1412623820 - type: integer 
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:120]
+INFO: [Synth 8-6155] done synthesizing module 'alu_statement_tester__parameterized3' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'alu_statement_tester__parameterized4' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+	Parameter INPUT_A bound to: 0 - type: integer 
+	Parameter INPUT_B bound to: -1412623820 - type: integer 
+	Parameter ALUCODE bound to: 6'b000001 
+	Parameter EXPECTED bound to: 1412623820 - type: integer 
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:120]
+INFO: [Synth 8-6155] done synthesizing module 'alu_statement_tester__parameterized4' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'alu_statement_tester__parameterized5' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+	Parameter INPUT_A bound to: 0 - type: integer 
+	Parameter INPUT_B bound to: 2147483647 - type: integer 
+	Parameter ALUCODE bound to: 6'b000001 
+	Parameter EXPECTED bound to: -2147483647 - type: integer 
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:120]
+INFO: [Synth 8-6155] done synthesizing module 'alu_statement_tester__parameterized5' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'alu_statement_tester__parameterized6' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+	Parameter INPUT_A bound to: -1412623820 - type: integer 
+	Parameter INPUT_B bound to: 0 - type: integer 
+	Parameter ALUCODE bound to: 6'b000010 
+	Parameter EXPECTED bound to: 0 - type: integer 
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:120]
+INFO: [Synth 8-6155] done synthesizing module 'alu_statement_tester__parameterized6' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'alu_statement_tester__parameterized7' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+	Parameter INPUT_A bound to: -1412623820 - type: integer 
+	Parameter INPUT_B bound to: 1 - type: integer 
+	Parameter ALUCODE bound to: 6'b000010 
+	Parameter EXPECTED bound to: -1412623820 - type: integer 
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:120]
+INFO: [Synth 8-6155] done synthesizing module 'alu_statement_tester__parameterized7' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'alu_statement_tester__parameterized8' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+	Parameter INPUT_A bound to: 10 - type: integer 
+	Parameter INPUT_B bound to: -1 - type: integer 
+	Parameter ALUCODE bound to: 6'b000010 
+	Parameter EXPECTED bound to: -10 - type: integer 
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:120]
+INFO: [Synth 8-6155] done synthesizing module 'alu_statement_tester__parameterized8' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'alu_statement_tester__parameterized9' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+	Parameter INPUT_A bound to: 4660 - type: integer 
+	Parameter INPUT_B bound to: 22136 - type: integer 
+	Parameter ALUCODE bound to: 6'b000010 
+	Parameter EXPECTED bound to: 103153760 - type: integer 
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:120]
+INFO: [Synth 8-6155] done synthesizing module 'alu_statement_tester__parameterized9' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'alu_statement_tester__parameterized10' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+	Parameter INPUT_A bound to: -12 - type: integer 
+	Parameter INPUT_B bound to: -10 - type: integer 
+	Parameter ALUCODE bound to: 6'b000010 
+	Parameter EXPECTED bound to: 120 - type: integer 
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:120]
+INFO: [Synth 8-6155] done synthesizing module 'alu_statement_tester__parameterized10' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'alu_statement_tester__parameterized11' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+	Parameter INPUT_A bound to: 1 - type: integer 
+	Parameter INPUT_B bound to: 0 - type: integer 
+	Parameter ALUCODE bound to: 6'b000100 
+	Parameter EXPECTED bound to: 0 - type: integer 
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:120]
+INFO: [Synth 8-6155] done synthesizing module 'alu_statement_tester__parameterized11' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'alu_statement_tester__parameterized12' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+	Parameter INPUT_A bound to: -1412623820 - type: integer 
+	Parameter INPUT_B bound to: 1 - type: integer 
+	Parameter ALUCODE bound to: 6'b000100 
+	Parameter EXPECTED bound to: -1412623820 - type: integer 
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:120]
+INFO: [Synth 8-6155] done synthesizing module 'alu_statement_tester__parameterized12' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'alu_statement_tester__parameterized13' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+	Parameter INPUT_A bound to: 1 - type: integer 
+	Parameter INPUT_B bound to: 16 - type: integer 
+	Parameter ALUCODE bound to: 6'b000100 
+	Parameter EXPECTED bound to: 0 - type: integer 
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:120]
+INFO: [Synth 8-6155] done synthesizing module 'alu_statement_tester__parameterized13' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'alu_statement_tester__parameterized14' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+	Parameter INPUT_A bound to: 4660 - type: integer 
+	Parameter INPUT_B bound to: 5 - type: integer 
+	Parameter ALUCODE bound to: 6'b000100 
+	Parameter EXPECTED bound to: 932 - type: integer 
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:120]
+INFO: [Synth 8-6155] done synthesizing module 'alu_statement_tester__parameterized14' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'alu_statement_tester__parameterized15' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+	Parameter INPUT_A bound to: 2147483634 - type: integer 
+	Parameter INPUT_B bound to: 2 - type: integer 
+	Parameter ALUCODE bound to: 6'b000100 
+	Parameter EXPECTED bound to: 1073741817 - type: integer 
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:120]
+INFO: [Synth 8-6155] done synthesizing module 'alu_statement_tester__parameterized15' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'alu_statement_tester__parameterized16' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+	Parameter INPUT_A bound to: 0 - type: integer 
+	Parameter INPUT_B bound to: 305419896 - type: integer 
+	Parameter ALUCODE bound to: 6'b000100 
+	Parameter EXPECTED bound to: 0 - type: integer 
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:120]
+INFO: [Synth 8-6155] done synthesizing module 'alu_statement_tester__parameterized16' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'alu_statement_tester__parameterized17' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+	Parameter INPUT_A bound to: 1 - type: integer 
+	Parameter INPUT_B bound to: 0 - type: integer 
+	Parameter ALUCODE bound to: 6'b000110 
+	Parameter EXPECTED bound to: 0 - type: integer 
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:120]
+INFO: [Synth 8-6155] done synthesizing module 'alu_statement_tester__parameterized17' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'alu_statement_tester__parameterized18' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+	Parameter INPUT_A bound to: -1412623820 - type: integer 
+	Parameter INPUT_B bound to: 1 - type: integer 
+	Parameter ALUCODE bound to: 6'b000110 
+	Parameter EXPECTED bound to: 0 - type: integer 
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:120]
+INFO: [Synth 8-6155] done synthesizing module 'alu_statement_tester__parameterized18' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'alu_statement_tester__parameterized19' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+	Parameter INPUT_A bound to: 4660 - type: integer 
+	Parameter INPUT_B bound to: 7 - type: integer 
+	Parameter ALUCODE bound to: 6'b000110 
+	Parameter EXPECTED bound to: 5 - type: integer 
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:120]
+INFO: [Synth 8-6155] done synthesizing module 'alu_statement_tester__parameterized19' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'alu_statement_tester__parameterized20' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+	Parameter INPUT_A bound to: 1 - type: integer 
+	Parameter INPUT_B bound to: 256 - type: integer 
+	Parameter ALUCODE bound to: 6'b000110 
+	Parameter EXPECTED bound to: 1 - type: integer 
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:120]
+INFO: [Synth 8-6155] done synthesizing module 'alu_statement_tester__parameterized20' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'alu_statement_tester__parameterized21' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+	Parameter INPUT_A bound to: 2147483647 - type: integer 
+	Parameter INPUT_B bound to: 8 - type: integer 
+	Parameter ALUCODE bound to: 6'b000110 
+	Parameter EXPECTED bound to: 7 - type: integer 
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:120]
+INFO: [Synth 8-6155] done synthesizing module 'alu_statement_tester__parameterized21' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'alu_statement_tester__parameterized22' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+	Parameter INPUT_A bound to: 0 - type: integer 
+	Parameter INPUT_B bound to: 305419896 - type: integer 
+	Parameter ALUCODE bound to: 6'b000110 
+	Parameter EXPECTED bound to: 0 - type: integer 
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:120]
+INFO: [Synth 8-6155] done synthesizing module 'alu_statement_tester__parameterized22' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'alu_statement_tester__parameterized23' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+	Parameter INPUT_A bound to: -1412623820 - type: integer 
+	Parameter INPUT_B bound to: 0 - type: integer 
+	Parameter ALUCODE bound to: 6'b011000 
+	Parameter EXPECTED bound to: 0 - type: integer 
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:120]
+INFO: [Synth 8-6155] done synthesizing module 'alu_statement_tester__parameterized23' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'alu_statement_tester__parameterized24' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+	Parameter INPUT_A bound to: -1412623820 - type: integer 
+	Parameter INPUT_B bound to: -1 - type: integer 
+	Parameter ALUCODE bound to: 6'b011000 
+	Parameter EXPECTED bound to: -1412623820 - type: integer 
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:120]
+INFO: [Synth 8-6155] done synthesizing module 'alu_statement_tester__parameterized24' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'alu_statement_tester__parameterized25' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+	Parameter INPUT_A bound to: -1412623820 - type: integer 
+	Parameter INPUT_B bound to: -1412623820 - type: integer 
+	Parameter ALUCODE bound to: 6'b011000 
+	Parameter EXPECTED bound to: -1412623820 - type: integer 
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:120]
+INFO: [Synth 8-6155] done synthesizing module 'alu_statement_tester__parameterized25' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'alu_statement_tester__parameterized26' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+	Parameter INPUT_A bound to: -1 - type: integer 
+	Parameter INPUT_B bound to: 0 - type: integer 
+	Parameter ALUCODE bound to: 6'b011000 
+	Parameter EXPECTED bound to: 0 - type: integer 
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:120]
+INFO: [Synth 8-6155] done synthesizing module 'alu_statement_tester__parameterized26' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'alu_statement_tester__parameterized27' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+	Parameter INPUT_A bound to: -1412623820 - type: integer 
+	Parameter INPUT_B bound to: 0 - type: integer 
+	Parameter ALUCODE bound to: 6'b011110 
+	Parameter EXPECTED bound to: -1412623820 - type: integer 
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:120]
+INFO: [Synth 8-6155] done synthesizing module 'alu_statement_tester__parameterized27' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'alu_statement_tester__parameterized28' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+	Parameter INPUT_A bound to: -1412623820 - type: integer 
+	Parameter INPUT_B bound to: -1 - type: integer 
+	Parameter ALUCODE bound to: 6'b011110 
+	Parameter EXPECTED bound to: -1 - type: integer 
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:120]
+INFO: [Synth 8-6155] done synthesizing module 'alu_statement_tester__parameterized28' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'alu_statement_tester__parameterized29' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+	Parameter INPUT_A bound to: -1412623820 - type: integer 
+	Parameter INPUT_B bound to: -1412623820 - type: integer 
+	Parameter ALUCODE bound to: 6'b011110 
+	Parameter EXPECTED bound to: -1412623820 - type: integer 
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:120]
+INFO: [Synth 8-6155] done synthesizing module 'alu_statement_tester__parameterized29' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'alu_statement_tester__parameterized30' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+	Parameter INPUT_A bound to: -1412623820 - type: integer 
+	Parameter INPUT_B bound to: 0 - type: integer 
+	Parameter ALUCODE bound to: 6'b010110 
+	Parameter EXPECTED bound to: -1412623820 - type: integer 
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:120]
+INFO: [Synth 8-6155] done synthesizing module 'alu_statement_tester__parameterized30' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'alu_statement_tester__parameterized31' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+	Parameter INPUT_A bound to: -1412623820 - type: integer 
+	Parameter INPUT_B bound to: -1412623820 - type: integer 
+	Parameter ALUCODE bound to: 6'b010110 
+	Parameter EXPECTED bound to: 0 - type: integer 
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:120]
+INFO: [Synth 8-6155] done synthesizing module 'alu_statement_tester__parameterized31' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'alu_statement_tester__parameterized32' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+	Parameter INPUT_A bound to: -1 - type: integer 
+	Parameter INPUT_B bound to: 0 - type: integer 
+	Parameter ALUCODE bound to: 6'b010110 
+	Parameter EXPECTED bound to: -1 - type: integer 
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:120]
+INFO: [Synth 8-6155] done synthesizing module 'alu_statement_tester__parameterized32' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'alu_statement_tester__parameterized33' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+	Parameter INPUT_A bound to: -1412623820 - type: integer 
+	Parameter INPUT_B bound to: 0 - type: integer 
+	Parameter ALUCODE bound to: 6'b011010 
+	Parameter EXPECTED bound to: -1412623820 - type: integer 
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:120]
+INFO: [Synth 8-6155] done synthesizing module 'alu_statement_tester__parameterized33' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'alu_statement_tester__parameterized34' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+	Parameter INPUT_A bound to: -280865160 - type: integer 
+	Parameter INPUT_B bound to: 0 - type: integer 
+	Parameter ALUCODE bound to: 6'b011010 
+	Parameter EXPECTED bound to: -280865160 - type: integer 
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:120]
+INFO: [Synth 8-6155] done synthesizing module 'alu_statement_tester__parameterized34' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'alu_statement_tester__parameterized35' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+	Parameter INPUT_A bound to: -851286135 - type: integer 
+	Parameter INPUT_B bound to: 0 - type: integer 
+	Parameter ALUCODE bound to: 6'b011010 
+	Parameter EXPECTED bound to: -851286135 - type: integer 
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:120]
+INFO: [Synth 8-6155] done synthesizing module 'alu_statement_tester__parameterized35' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'alu_statement_tester__parameterized36' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+	Parameter INPUT_A bound to: -1412623820 - type: integer 
+	Parameter INPUT_B bound to: 0 - type: integer 
+	Parameter ALUCODE bound to: 6'b100000 
+	Parameter EXPECTED bound to: -1412623820 - type: integer 
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:120]
+INFO: [Synth 8-6155] done synthesizing module 'alu_statement_tester__parameterized36' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'alu_statement_tester__parameterized37' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+	Parameter INPUT_A bound to: 1 - type: integer 
+	Parameter INPUT_B bound to: 31 - type: integer 
+	Parameter ALUCODE bound to: 6'b100000 
+	Parameter EXPECTED bound to: -2147483648 - type: integer 
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:120]
+INFO: [Synth 8-6155] done synthesizing module 'alu_statement_tester__parameterized37' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'alu_statement_tester__parameterized38' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+	Parameter INPUT_A bound to: -1412623820 - type: integer 
+	Parameter INPUT_B bound to: 0 - type: integer 
+	Parameter ALUCODE bound to: 6'b100001 
+	Parameter EXPECTED bound to: -1412623820 - type: integer 
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:120]
+INFO: [Synth 8-6155] done synthesizing module 'alu_statement_tester__parameterized38' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'alu_statement_tester__parameterized39' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+	Parameter INPUT_A bound to: -2147483648 - type: integer 
+	Parameter INPUT_B bound to: 31 - type: integer 
+	Parameter ALUCODE bound to: 6'b100001 
+	Parameter EXPECTED bound to: 1 - type: integer 
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:120]
+INFO: [Synth 8-6155] done synthesizing module 'alu_statement_tester__parameterized39' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'alu_statement_tester__parameterized40' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+	Parameter INPUT_A bound to: -1412623820 - type: integer 
+	Parameter INPUT_B bound to: 0 - type: integer 
+	Parameter ALUCODE bound to: 6'b100011 
+	Parameter EXPECTED bound to: -1412623820 - type: integer 
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:120]
+INFO: [Synth 8-6155] done synthesizing module 'alu_statement_tester__parameterized40' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'alu_statement_tester__parameterized41' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+	Parameter INPUT_A bound to: -2147483648 - type: integer 
+	Parameter INPUT_B bound to: 31 - type: integer 
+	Parameter ALUCODE bound to: 6'b100011 
+	Parameter EXPECTED bound to: -1 - type: integer 
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:120]
+INFO: [Synth 8-6155] done synthesizing module 'alu_statement_tester__parameterized41' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'alu_statement_tester__parameterized42' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+	Parameter INPUT_A bound to: -1412623820 - type: integer 
+	Parameter INPUT_B bound to: -1412623820 - type: integer 
+	Parameter ALUCODE bound to: 6'b110011 
+	Parameter EXPECTED bound to: 1 - type: integer 
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:120]
+INFO: [Synth 8-6155] done synthesizing module 'alu_statement_tester__parameterized42' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'alu_statement_tester__parameterized43' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+	Parameter INPUT_A bound to: -1412623820 - type: integer 
+	Parameter INPUT_B bound to: -280882636 - type: integer 
+	Parameter ALUCODE bound to: 6'b110011 
+	Parameter EXPECTED bound to: 0 - type: integer 
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:120]
+INFO: [Synth 8-6155] done synthesizing module 'alu_statement_tester__parameterized43' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'alu_statement_tester__parameterized44' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+	Parameter INPUT_A bound to: -1412623820 - type: integer 
+	Parameter INPUT_B bound to: -280882636 - type: integer 
+	Parameter ALUCODE bound to: 6'b110101 
+	Parameter EXPECTED bound to: 1 - type: integer 
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:120]
+INFO: [Synth 8-6155] done synthesizing module 'alu_statement_tester__parameterized44' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'alu_statement_tester__parameterized45' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+	Parameter INPUT_A bound to: -1412623820 - type: integer 
+	Parameter INPUT_B bound to: -1412623820 - type: integer 
+	Parameter ALUCODE bound to: 6'b110101 
+	Parameter EXPECTED bound to: 0 - type: integer 
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:120]
+INFO: [Synth 8-6155] done synthesizing module 'alu_statement_tester__parameterized45' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'alu_statement_tester__parameterized46' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+	Parameter INPUT_A bound to: -280882636 - type: integer 
+	Parameter INPUT_B bound to: -1412623820 - type: integer 
+	Parameter ALUCODE bound to: 6'b110101 
+	Parameter EXPECTED bound to: 0 - type: integer 
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:120]
+INFO: [Synth 8-6155] done synthesizing module 'alu_statement_tester__parameterized46' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'alu_statement_tester__parameterized47' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+	Parameter INPUT_A bound to: -1412623820 - type: integer 
+	Parameter INPUT_B bound to: -1412623820 - type: integer 
+	Parameter ALUCODE bound to: 6'b110111 
+	Parameter EXPECTED bound to: 1 - type: integer 
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:120]
+INFO: [Synth 8-6155] done synthesizing module 'alu_statement_tester__parameterized47' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'alu_statement_tester__parameterized48' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+	Parameter INPUT_A bound to: -280882636 - type: integer 
+	Parameter INPUT_B bound to: -1412623820 - type: integer 
+	Parameter ALUCODE bound to: 6'b110111 
+	Parameter EXPECTED bound to: 0 - type: integer 
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:120]
+INFO: [Synth 8-6155] done synthesizing module 'alu_statement_tester__parameterized48' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_statement_tester.sv:7]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_auto_tester.sv:1556]
+INFO: [Synth 8-6155] done synthesizing module 'alu_auto_tester' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alu_auto_tester.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'blinker' [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/blinker.sv:7]
+INFO: [Synth 8-6155] done synthesizing module 'blinker' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/blinker.sv:7]
+INFO: [Synth 8-6155] done synthesizing module 'alchitry_top' (0#1) [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.srcs/sources_1/imports/source/alchitry_top.sv:7]
+WARNING: [Synth 8-7129] Port alufn_signal[5] in module adder is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alufn_signal[4] in module adder is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alufn_signal[3] in module adder is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alufn_signal[2] in module adder is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alufn_signal[1] in module adder is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alufn[5] in module compare is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alufn[4] in module compare is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alufn[3] in module compare is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alufn[0] in module compare is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alufn[5] in module shifter is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alufn[4] in module shifter is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alufn[3] in module shifter is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alufn[2] in module shifter is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alufn[5] in module boolean is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alufn[4] in module boolean is either unconnected or has no load
+WARNING: [Synth 8-7129] Port clk in module alu_manual_tester is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rst in module alu_manual_tester is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_button[4] in module alu_manual_tester is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_button[3] in module alu_manual_tester is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_button[2] in module alu_manual_tester is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_button[1] in module alu_manual_tester is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_button[0] in module alu_manual_tester is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_dip[2][7] in module alu_manual_tester is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_dip[2][6] in module alu_manual_tester is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1474.465 ; gain = 617.254
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1474.465 ; gain = 617.254
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1474.465 ; gain = 617.254
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:01 . Memory (MB): peak = 1591.465 ; gain = 11.789
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/constraint/alchitry.xdc]
+Finished Parsing XDC File [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/constraint/alchitry.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/constraint/alchitry.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/alchitry_top_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/alchitry_top_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Parsing XDC File [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/constraint/au_props.xdc]
+Finished Parsing XDC File [C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/constraint/au_props.xdc]
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.133 . Memory (MB): peak = 1948.785 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.708 . Memory (MB): peak = 1948.785 ; gain = 0.000
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:32 ; elapsed = 00:00:33 . Memory (MB): peak = 1948.910 ; gain = 1091.699
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a35tftg256-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:32 ; elapsed = 00:00:33 . Memory (MB): peak = 1948.910 ; gain = 1091.699
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:32 ; elapsed = 00:00:33 . Memory (MB): peak = 1948.910 ; gain = 1091.699
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'D_states_q_reg' in module 'alu_statement_tester'
+INFO: [Synth 8-802] inferred FSM for state register 'D_states_q_reg' in module 'alu_statement_tester__parameterized0'
+INFO: [Synth 8-802] inferred FSM for state register 'D_states_q_reg' in module 'alu_statement_tester__parameterized1'
+INFO: [Synth 8-802] inferred FSM for state register 'D_states_q_reg' in module 'alu_statement_tester__parameterized2'
+INFO: [Synth 8-802] inferred FSM for state register 'D_states_q_reg' in module 'alu_statement_tester__parameterized3'
+INFO: [Synth 8-802] inferred FSM for state register 'D_states_q_reg' in module 'alu_statement_tester__parameterized4'
+INFO: [Synth 8-802] inferred FSM for state register 'D_states_q_reg' in module 'alu_statement_tester__parameterized5'
+INFO: [Synth 8-802] inferred FSM for state register 'D_states_q_reg' in module 'alu_statement_tester__parameterized6'
+INFO: [Synth 8-802] inferred FSM for state register 'D_states_q_reg' in module 'alu_statement_tester__parameterized7'
+INFO: [Synth 8-802] inferred FSM for state register 'D_states_q_reg' in module 'alu_statement_tester__parameterized8'
+INFO: [Synth 8-802] inferred FSM for state register 'D_states_q_reg' in module 'alu_statement_tester__parameterized9'
+INFO: [Synth 8-802] inferred FSM for state register 'D_states_q_reg' in module 'alu_statement_tester__parameterized10'
+INFO: [Synth 8-802] inferred FSM for state register 'D_states_q_reg' in module 'alu_statement_tester__parameterized11'
+INFO: [Synth 8-802] inferred FSM for state register 'D_states_q_reg' in module 'alu_statement_tester__parameterized12'
+INFO: [Synth 8-802] inferred FSM for state register 'D_states_q_reg' in module 'alu_statement_tester__parameterized13'
+INFO: [Synth 8-802] inferred FSM for state register 'D_states_q_reg' in module 'alu_statement_tester__parameterized14'
+INFO: [Synth 8-802] inferred FSM for state register 'D_states_q_reg' in module 'alu_statement_tester__parameterized15'
+INFO: [Synth 8-802] inferred FSM for state register 'D_states_q_reg' in module 'alu_statement_tester__parameterized16'
+INFO: [Synth 8-802] inferred FSM for state register 'D_states_q_reg' in module 'alu_statement_tester__parameterized17'
+INFO: [Synth 8-802] inferred FSM for state register 'D_states_q_reg' in module 'alu_statement_tester__parameterized18'
+INFO: [Synth 8-802] inferred FSM for state register 'D_states_q_reg' in module 'alu_statement_tester__parameterized19'
+INFO: [Synth 8-802] inferred FSM for state register 'D_states_q_reg' in module 'alu_statement_tester__parameterized20'
+INFO: [Synth 8-802] inferred FSM for state register 'D_states_q_reg' in module 'alu_statement_tester__parameterized21'
+INFO: [Synth 8-802] inferred FSM for state register 'D_states_q_reg' in module 'alu_statement_tester__parameterized22'
+INFO: [Synth 8-802] inferred FSM for state register 'D_states_q_reg' in module 'alu_statement_tester__parameterized23'
+INFO: [Synth 8-802] inferred FSM for state register 'D_states_q_reg' in module 'alu_statement_tester__parameterized24'
+INFO: [Synth 8-802] inferred FSM for state register 'D_states_q_reg' in module 'alu_statement_tester__parameterized25'
+INFO: [Synth 8-802] inferred FSM for state register 'D_states_q_reg' in module 'alu_statement_tester__parameterized26'
+INFO: [Synth 8-802] inferred FSM for state register 'D_states_q_reg' in module 'alu_statement_tester__parameterized27'
+INFO: [Synth 8-802] inferred FSM for state register 'D_states_q_reg' in module 'alu_statement_tester__parameterized28'
+INFO: [Synth 8-802] inferred FSM for state register 'D_states_q_reg' in module 'alu_statement_tester__parameterized29'
+INFO: [Synth 8-802] inferred FSM for state register 'D_states_q_reg' in module 'alu_statement_tester__parameterized30'
+INFO: [Synth 8-802] inferred FSM for state register 'D_states_q_reg' in module 'alu_statement_tester__parameterized31'
+INFO: [Synth 8-802] inferred FSM for state register 'D_states_q_reg' in module 'alu_statement_tester__parameterized32'
+INFO: [Synth 8-802] inferred FSM for state register 'D_states_q_reg' in module 'alu_statement_tester__parameterized33'
+INFO: [Synth 8-802] inferred FSM for state register 'D_states_q_reg' in module 'alu_statement_tester__parameterized34'
+INFO: [Synth 8-802] inferred FSM for state register 'D_states_q_reg' in module 'alu_statement_tester__parameterized35'
+INFO: [Synth 8-802] inferred FSM for state register 'D_states_q_reg' in module 'alu_statement_tester__parameterized36'
+INFO: [Synth 8-802] inferred FSM for state register 'D_states_q_reg' in module 'alu_statement_tester__parameterized37'
+INFO: [Synth 8-802] inferred FSM for state register 'D_states_q_reg' in module 'alu_statement_tester__parameterized38'
+INFO: [Synth 8-802] inferred FSM for state register 'D_states_q_reg' in module 'alu_statement_tester__parameterized39'
+INFO: [Synth 8-802] inferred FSM for state register 'D_states_q_reg' in module 'alu_statement_tester__parameterized40'
+INFO: [Synth 8-802] inferred FSM for state register 'D_states_q_reg' in module 'alu_statement_tester__parameterized41'
+INFO: [Synth 8-802] inferred FSM for state register 'D_states_q_reg' in module 'alu_statement_tester__parameterized42'
+INFO: [Synth 8-802] inferred FSM for state register 'D_states_q_reg' in module 'alu_statement_tester__parameterized43'
+INFO: [Synth 8-802] inferred FSM for state register 'D_states_q_reg' in module 'alu_statement_tester__parameterized44'
+INFO: [Synth 8-802] inferred FSM for state register 'D_states_q_reg' in module 'alu_statement_tester__parameterized45'
+INFO: [Synth 8-802] inferred FSM for state register 'D_states_q_reg' in module 'alu_statement_tester__parameterized46'
+INFO: [Synth 8-802] inferred FSM for state register 'D_states_q_reg' in module 'alu_statement_tester__parameterized47'
+INFO: [Synth 8-802] inferred FSM for state register 'D_states_q_reg' in module 'alu_statement_tester__parameterized48'
+INFO: [Synth 8-802] inferred FSM for state register 'D_states_q_reg' in module 'alu_auto_tester'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 iSTATE3 |                             0000 |                             0000
+                 iSTATE2 |                             0001 |                             0001
+                 iSTATE1 |                             0010 |                             0010
+                  iSTATE |                             0011 |                             0011
+                 iSTATE0 |                             0100 |                             0100
+                 iSTATE8 |                             0101 |                             0101
+                 iSTATE7 |                             0110 |                             0110
+                 iSTATE5 |                             0111 |                             0111
+                 iSTATE6 |                             1000 |                             1000
+                 iSTATE4 |                             1001 |                             1001
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'D_states_q_reg' using encoding 'sequential' in module 'alu_statement_tester'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 iSTATE3 |                             0000 |                             0000
+                 iSTATE2 |                             0001 |                             0001
+                 iSTATE1 |                             0010 |                             0010
+                  iSTATE |                             0011 |                             0011
+                 iSTATE0 |                             0100 |                             0100
+                 iSTATE8 |                             0101 |                             0101
+                 iSTATE7 |                             0110 |                             0110
+                 iSTATE5 |                             0111 |                             0111
+                 iSTATE6 |                             1000 |                             1000
+                 iSTATE4 |                             1001 |                             1001
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'D_states_q_reg' using encoding 'sequential' in module 'alu_statement_tester__parameterized0'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 iSTATE3 |                             0000 |                             0000
+                 iSTATE2 |                             0001 |                             0001
+                 iSTATE1 |                             0010 |                             0010
+                  iSTATE |                             0011 |                             0011
+                 iSTATE0 |                             0100 |                             0100
+                 iSTATE8 |                             0101 |                             0101
+                 iSTATE7 |                             0110 |                             0110
+                 iSTATE5 |                             0111 |                             0111
+                 iSTATE6 |                             1000 |                             1000
+                 iSTATE4 |                             1001 |                             1001
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'D_states_q_reg' using encoding 'sequential' in module 'alu_statement_tester__parameterized1'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 iSTATE3 |                             0000 |                             0000
+                 iSTATE2 |                             0001 |                             0001
+                 iSTATE1 |                             0010 |                             0010
+                  iSTATE |                             0011 |                             0011
+                 iSTATE0 |                             0100 |                             0100
+                 iSTATE8 |                             0101 |                             0101
+                 iSTATE7 |                             0110 |                             0110
+                 iSTATE5 |                             0111 |                             0111
+                 iSTATE6 |                             1000 |                             1000
+                 iSTATE4 |                             1001 |                             1001
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'D_states_q_reg' using encoding 'sequential' in module 'alu_statement_tester__parameterized2'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 iSTATE3 |                             0000 |                             0000
+                 iSTATE2 |                             0001 |                             0001
+                 iSTATE1 |                             0010 |                             0010
+                  iSTATE |                             0011 |                             0011
+                 iSTATE0 |                             0100 |                             0100
+                 iSTATE8 |                             0101 |                             0101
+                 iSTATE7 |                             0110 |                             0110
+                 iSTATE5 |                             0111 |                             0111
+                 iSTATE6 |                             1000 |                             1000
+                 iSTATE4 |                             1001 |                             1001
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'D_states_q_reg' using encoding 'sequential' in module 'alu_statement_tester__parameterized3'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 iSTATE3 |                             0000 |                             0000
+                 iSTATE2 |                             0001 |                             0001
+                 iSTATE1 |                             0010 |                             0010
+                  iSTATE |                             0011 |                             0011
+                 iSTATE0 |                             0100 |                             0100
+                 iSTATE8 |                             0101 |                             0101
+                 iSTATE7 |                             0110 |                             0110
+                 iSTATE5 |                             0111 |                             0111
+                 iSTATE6 |                             1000 |                             1000
+                 iSTATE4 |                             1001 |                             1001
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'D_states_q_reg' using encoding 'sequential' in module 'alu_statement_tester__parameterized4'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 iSTATE3 |                             0000 |                             0000
+                 iSTATE2 |                             0001 |                             0001
+                 iSTATE1 |                             0010 |                             0010
+                  iSTATE |                             0011 |                             0011
+                 iSTATE0 |                             0100 |                             0100
+                 iSTATE8 |                             0101 |                             0101
+                 iSTATE7 |                             0110 |                             0110
+                 iSTATE5 |                             0111 |                             0111
+                 iSTATE6 |                             1000 |                             1000
+                 iSTATE4 |                             1001 |                             1001
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'D_states_q_reg' using encoding 'sequential' in module 'alu_statement_tester__parameterized5'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 iSTATE3 |                             0000 |                             0000
+                 iSTATE2 |                             0001 |                             0001
+                 iSTATE1 |                             0010 |                             0010
+                  iSTATE |                             0011 |                             0011
+                 iSTATE0 |                             0100 |                             0100
+                 iSTATE8 |                             0101 |                             0101
+                 iSTATE7 |                             0110 |                             0110
+                 iSTATE5 |                             0111 |                             0111
+                 iSTATE6 |                             1000 |                             1000
+                 iSTATE4 |                             1001 |                             1001
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'D_states_q_reg' using encoding 'sequential' in module 'alu_statement_tester__parameterized6'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 iSTATE3 |                             0000 |                             0000
+                 iSTATE2 |                             0001 |                             0001
+                 iSTATE1 |                             0010 |                             0010
+                  iSTATE |                             0011 |                             0011
+                 iSTATE0 |                             0100 |                             0100
+                 iSTATE8 |                             0101 |                             0101
+                 iSTATE7 |                             0110 |                             0110
+                 iSTATE5 |                             0111 |                             0111
+                 iSTATE6 |                             1000 |                             1000
+                 iSTATE4 |                             1001 |                             1001
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'D_states_q_reg' using encoding 'sequential' in module 'alu_statement_tester__parameterized7'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 iSTATE3 |                             0000 |                             0000
+                 iSTATE2 |                             0001 |                             0001
+                 iSTATE1 |                             0010 |                             0010
+                  iSTATE |                             0011 |                             0011
+                 iSTATE0 |                             0100 |                             0100
+                 iSTATE8 |                             0101 |                             0101
+                 iSTATE7 |                             0110 |                             0110
+                 iSTATE5 |                             0111 |                             0111
+                 iSTATE6 |                             1000 |                             1000
+                 iSTATE4 |                             1001 |                             1001
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'D_states_q_reg' using encoding 'sequential' in module 'alu_statement_tester__parameterized8'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 iSTATE3 |                             0000 |                             0000
+                 iSTATE2 |                             0001 |                             0001
+                 iSTATE1 |                             0010 |                             0010
+                  iSTATE |                             0011 |                             0011
+                 iSTATE0 |                             0100 |                             0100
+                 iSTATE8 |                             0101 |                             0101
+                 iSTATE7 |                             0110 |                             0110
+                 iSTATE5 |                             0111 |                             0111
+                 iSTATE6 |                             1000 |                             1000
+                 iSTATE4 |                             1001 |                             1001
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'D_states_q_reg' using encoding 'sequential' in module 'alu_statement_tester__parameterized9'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 iSTATE3 |                             0000 |                             0000
+                 iSTATE2 |                             0001 |                             0001
+                 iSTATE1 |                             0010 |                             0010
+                  iSTATE |                             0011 |                             0011
+                 iSTATE0 |                             0100 |                             0100
+                 iSTATE8 |                             0101 |                             0101
+                 iSTATE7 |                             0110 |                             0110
+                 iSTATE5 |                             0111 |                             0111
+                 iSTATE6 |                             1000 |                             1000
+                 iSTATE4 |                             1001 |                             1001
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'D_states_q_reg' using encoding 'sequential' in module 'alu_statement_tester__parameterized10'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 iSTATE3 |                             0000 |                             0000
+                 iSTATE2 |                             0001 |                             0001
+                 iSTATE1 |                             0010 |                             0010
+                  iSTATE |                             0011 |                             0011
+                 iSTATE0 |                             0100 |                             0100
+                 iSTATE8 |                             0101 |                             0101
+                 iSTATE7 |                             0110 |                             0110
+                 iSTATE5 |                             0111 |                             0111
+                 iSTATE6 |                             1000 |                             1000
+                 iSTATE4 |                             1001 |                             1001
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'D_states_q_reg' using encoding 'sequential' in module 'alu_statement_tester__parameterized11'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 iSTATE3 |                             0000 |                             0000
+                 iSTATE2 |                             0001 |                             0001
+                 iSTATE1 |                             0010 |                             0010
+                  iSTATE |                             0011 |                             0011
+                 iSTATE0 |                             0100 |                             0100
+                 iSTATE8 |                             0101 |                             0101
+                 iSTATE7 |                             0110 |                             0110
+                 iSTATE5 |                             0111 |                             0111
+                 iSTATE6 |                             1000 |                             1000
+                 iSTATE4 |                             1001 |                             1001
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'D_states_q_reg' using encoding 'sequential' in module 'alu_statement_tester__parameterized12'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 iSTATE3 |                             0000 |                             0000
+                 iSTATE2 |                             0001 |                             0001
+                 iSTATE1 |                             0010 |                             0010
+                  iSTATE |                             0011 |                             0011
+                 iSTATE0 |                             0100 |                             0100
+                 iSTATE8 |                             0101 |                             0101
+                 iSTATE7 |                             0110 |                             0110
+                 iSTATE5 |                             0111 |                             0111
+                 iSTATE6 |                             1000 |                             1000
+                 iSTATE4 |                             1001 |                             1001
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'D_states_q_reg' using encoding 'sequential' in module 'alu_statement_tester__parameterized13'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 iSTATE3 |                             0000 |                             0000
+                 iSTATE2 |                             0001 |                             0001
+                 iSTATE1 |                             0010 |                             0010
+                  iSTATE |                             0011 |                             0011
+                 iSTATE0 |                             0100 |                             0100
+                 iSTATE8 |                             0101 |                             0101
+                 iSTATE7 |                             0110 |                             0110
+                 iSTATE5 |                             0111 |                             0111
+                 iSTATE6 |                             1000 |                             1000
+                 iSTATE4 |                             1001 |                             1001
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'D_states_q_reg' using encoding 'sequential' in module 'alu_statement_tester__parameterized14'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 iSTATE3 |                             0000 |                             0000
+                 iSTATE2 |                             0001 |                             0001
+                 iSTATE1 |                             0010 |                             0010
+                  iSTATE |                             0011 |                             0011
+                 iSTATE0 |                             0100 |                             0100
+                 iSTATE8 |                             0101 |                             0101
+                 iSTATE7 |                             0110 |                             0110
+                 iSTATE5 |                             0111 |                             0111
+                 iSTATE6 |                             1000 |                             1000
+                 iSTATE4 |                             1001 |                             1001
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'D_states_q_reg' using encoding 'sequential' in module 'alu_statement_tester__parameterized15'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 iSTATE3 |                             0000 |                             0000
+                 iSTATE2 |                             0001 |                             0001
+                 iSTATE1 |                             0010 |                             0010
+                  iSTATE |                             0011 |                             0011
+                 iSTATE0 |                             0100 |                             0100
+                 iSTATE8 |                             0101 |                             0101
+                 iSTATE7 |                             0110 |                             0110
+                 iSTATE5 |                             0111 |                             0111
+                 iSTATE6 |                             1000 |                             1000
+                 iSTATE4 |                             1001 |                             1001
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'D_states_q_reg' using encoding 'sequential' in module 'alu_statement_tester__parameterized16'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 iSTATE3 |                             0000 |                             0000
+                 iSTATE2 |                             0001 |                             0001
+                 iSTATE1 |                             0010 |                             0010
+                  iSTATE |                             0011 |                             0011
+                 iSTATE0 |                             0100 |                             0100
+                 iSTATE8 |                             0101 |                             0101
+                 iSTATE7 |                             0110 |                             0110
+                 iSTATE5 |                             0111 |                             0111
+                 iSTATE6 |                             1000 |                             1000
+                 iSTATE4 |                             1001 |                             1001
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'D_states_q_reg' using encoding 'sequential' in module 'alu_statement_tester__parameterized17'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 iSTATE3 |                             0000 |                             0000
+                 iSTATE2 |                             0001 |                             0001
+                 iSTATE1 |                             0010 |                             0010
+                  iSTATE |                             0011 |                             0011
+                 iSTATE0 |                             0100 |                             0100
+                 iSTATE8 |                             0101 |                             0101
+                 iSTATE7 |                             0110 |                             0110
+                 iSTATE5 |                             0111 |                             0111
+                 iSTATE6 |                             1000 |                             1000
+                 iSTATE4 |                             1001 |                             1001
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'D_states_q_reg' using encoding 'sequential' in module 'alu_statement_tester__parameterized18'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 iSTATE3 |                             0000 |                             0000
+                 iSTATE2 |                             0001 |                             0001
+                 iSTATE1 |                             0010 |                             0010
+                  iSTATE |                             0011 |                             0011
+                 iSTATE0 |                             0100 |                             0100
+                 iSTATE8 |                             0101 |                             0101
+                 iSTATE7 |                             0110 |                             0110
+                 iSTATE5 |                             0111 |                             0111
+                 iSTATE6 |                             1000 |                             1000
+                 iSTATE4 |                             1001 |                             1001
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'D_states_q_reg' using encoding 'sequential' in module 'alu_statement_tester__parameterized19'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 iSTATE3 |                             0000 |                             0000
+                 iSTATE2 |                             0001 |                             0001
+                 iSTATE1 |                             0010 |                             0010
+                  iSTATE |                             0011 |                             0011
+                 iSTATE0 |                             0100 |                             0100
+                 iSTATE8 |                             0101 |                             0101
+                 iSTATE7 |                             0110 |                             0110
+                 iSTATE5 |                             0111 |                             0111
+                 iSTATE6 |                             1000 |                             1000
+                 iSTATE4 |                             1001 |                             1001
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'D_states_q_reg' using encoding 'sequential' in module 'alu_statement_tester__parameterized20'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 iSTATE3 |                             0000 |                             0000
+                 iSTATE2 |                             0001 |                             0001
+                 iSTATE1 |                             0010 |                             0010
+                  iSTATE |                             0011 |                             0011
+                 iSTATE0 |                             0100 |                             0100
+                 iSTATE8 |                             0101 |                             0101
+                 iSTATE7 |                             0110 |                             0110
+                 iSTATE5 |                             0111 |                             0111
+                 iSTATE6 |                             1000 |                             1000
+                 iSTATE4 |                             1001 |                             1001
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'D_states_q_reg' using encoding 'sequential' in module 'alu_statement_tester__parameterized21'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 iSTATE3 |                             0000 |                             0000
+                 iSTATE2 |                             0001 |                             0001
+                 iSTATE1 |                             0010 |                             0010
+                  iSTATE |                             0011 |                             0011
+                 iSTATE0 |                             0100 |                             0100
+                 iSTATE8 |                             0101 |                             0101
+                 iSTATE7 |                             0110 |                             0110
+                 iSTATE5 |                             0111 |                             0111
+                 iSTATE6 |                             1000 |                             1000
+                 iSTATE4 |                             1001 |                             1001
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'D_states_q_reg' using encoding 'sequential' in module 'alu_statement_tester__parameterized22'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 iSTATE3 |                             0000 |                             0000
+                 iSTATE2 |                             0001 |                             0001
+                 iSTATE1 |                             0010 |                             0010
+                  iSTATE |                             0011 |                             0011
+                 iSTATE0 |                             0100 |                             0100
+                 iSTATE8 |                             0101 |                             0101
+                 iSTATE7 |                             0110 |                             0110
+                 iSTATE5 |                             0111 |                             0111
+                 iSTATE6 |                             1000 |                             1000
+                 iSTATE4 |                             1001 |                             1001
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'D_states_q_reg' using encoding 'sequential' in module 'alu_statement_tester__parameterized23'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 iSTATE3 |                             0000 |                             0000
+                 iSTATE2 |                             0001 |                             0001
+                 iSTATE1 |                             0010 |                             0010
+                  iSTATE |                             0011 |                             0011
+                 iSTATE0 |                             0100 |                             0100
+                 iSTATE8 |                             0101 |                             0101
+                 iSTATE7 |                             0110 |                             0110
+                 iSTATE5 |                             0111 |                             0111
+                 iSTATE6 |                             1000 |                             1000
+                 iSTATE4 |                             1001 |                             1001
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'D_states_q_reg' using encoding 'sequential' in module 'alu_statement_tester__parameterized24'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 iSTATE3 |                             0000 |                             0000
+                 iSTATE2 |                             0001 |                             0001
+                 iSTATE1 |                             0010 |                             0010
+                  iSTATE |                             0011 |                             0011
+                 iSTATE0 |                             0100 |                             0100
+                 iSTATE8 |                             0101 |                             0101
+                 iSTATE7 |                             0110 |                             0110
+                 iSTATE5 |                             0111 |                             0111
+                 iSTATE6 |                             1000 |                             1000
+                 iSTATE4 |                             1001 |                             1001
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'D_states_q_reg' using encoding 'sequential' in module 'alu_statement_tester__parameterized25'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 iSTATE3 |                             0000 |                             0000
+                 iSTATE2 |                             0001 |                             0001
+                 iSTATE1 |                             0010 |                             0010
+                  iSTATE |                             0011 |                             0011
+                 iSTATE0 |                             0100 |                             0100
+                 iSTATE8 |                             0101 |                             0101
+                 iSTATE7 |                             0110 |                             0110
+                 iSTATE5 |                             0111 |                             0111
+                 iSTATE6 |                             1000 |                             1000
+                 iSTATE4 |                             1001 |                             1001
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'D_states_q_reg' using encoding 'sequential' in module 'alu_statement_tester__parameterized26'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 iSTATE3 |                             0000 |                             0000
+                 iSTATE2 |                             0001 |                             0001
+                 iSTATE1 |                             0010 |                             0010
+                  iSTATE |                             0011 |                             0011
+                 iSTATE0 |                             0100 |                             0100
+                 iSTATE8 |                             0101 |                             0101
+                 iSTATE7 |                             0110 |                             0110
+                 iSTATE5 |                             0111 |                             0111
+                 iSTATE6 |                             1000 |                             1000
+                 iSTATE4 |                             1001 |                             1001
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'D_states_q_reg' using encoding 'sequential' in module 'alu_statement_tester__parameterized27'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 iSTATE3 |                             0000 |                             0000
+                 iSTATE2 |                             0001 |                             0001
+                 iSTATE1 |                             0010 |                             0010
+                  iSTATE |                             0011 |                             0011
+                 iSTATE0 |                             0100 |                             0100
+                 iSTATE8 |                             0101 |                             0101
+                 iSTATE7 |                             0110 |                             0110
+                 iSTATE5 |                             0111 |                             0111
+                 iSTATE6 |                             1000 |                             1000
+                 iSTATE4 |                             1001 |                             1001
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'D_states_q_reg' using encoding 'sequential' in module 'alu_statement_tester__parameterized28'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 iSTATE3 |                             0000 |                             0000
+                 iSTATE2 |                             0001 |                             0001
+                 iSTATE1 |                             0010 |                             0010
+                  iSTATE |                             0011 |                             0011
+                 iSTATE0 |                             0100 |                             0100
+                 iSTATE8 |                             0101 |                             0101
+                 iSTATE7 |                             0110 |                             0110
+                 iSTATE5 |                             0111 |                             0111
+                 iSTATE6 |                             1000 |                             1000
+                 iSTATE4 |                             1001 |                             1001
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'D_states_q_reg' using encoding 'sequential' in module 'alu_statement_tester__parameterized29'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 iSTATE3 |                             0000 |                             0000
+                 iSTATE2 |                             0001 |                             0001
+                 iSTATE1 |                             0010 |                             0010
+                  iSTATE |                             0011 |                             0011
+                 iSTATE0 |                             0100 |                             0100
+                 iSTATE8 |                             0101 |                             0101
+                 iSTATE7 |                             0110 |                             0110
+                 iSTATE5 |                             0111 |                             0111
+                 iSTATE6 |                             1000 |                             1000
+                 iSTATE4 |                             1001 |                             1001
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'D_states_q_reg' using encoding 'sequential' in module 'alu_statement_tester__parameterized30'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 iSTATE3 |                             0000 |                             0000
+                 iSTATE2 |                             0001 |                             0001
+                 iSTATE1 |                             0010 |                             0010
+                  iSTATE |                             0011 |                             0011
+                 iSTATE0 |                             0100 |                             0100
+                 iSTATE8 |                             0101 |                             0101
+                 iSTATE7 |                             0110 |                             0110
+                 iSTATE5 |                             0111 |                             0111
+                 iSTATE6 |                             1000 |                             1000
+                 iSTATE4 |                             1001 |                             1001
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'D_states_q_reg' using encoding 'sequential' in module 'alu_statement_tester__parameterized31'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 iSTATE3 |                             0000 |                             0000
+                 iSTATE2 |                             0001 |                             0001
+                 iSTATE1 |                             0010 |                             0010
+                  iSTATE |                             0011 |                             0011
+                 iSTATE0 |                             0100 |                             0100
+                 iSTATE8 |                             0101 |                             0101
+                 iSTATE7 |                             0110 |                             0110
+                 iSTATE5 |                             0111 |                             0111
+                 iSTATE6 |                             1000 |                             1000
+                 iSTATE4 |                             1001 |                             1001
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'D_states_q_reg' using encoding 'sequential' in module 'alu_statement_tester__parameterized32'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 iSTATE3 |                             0000 |                             0000
+                 iSTATE2 |                             0001 |                             0001
+                 iSTATE1 |                             0010 |                             0010
+                  iSTATE |                             0011 |                             0011
+                 iSTATE0 |                             0100 |                             0100
+                 iSTATE8 |                             0101 |                             0101
+                 iSTATE7 |                             0110 |                             0110
+                 iSTATE5 |                             0111 |                             0111
+                 iSTATE6 |                             1000 |                             1000
+                 iSTATE4 |                             1001 |                             1001
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'D_states_q_reg' using encoding 'sequential' in module 'alu_statement_tester__parameterized33'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 iSTATE3 |                             0000 |                             0000
+                 iSTATE2 |                             0001 |                             0001
+                 iSTATE1 |                             0010 |                             0010
+                  iSTATE |                             0011 |                             0011
+                 iSTATE0 |                             0100 |                             0100
+                 iSTATE8 |                             0101 |                             0101
+                 iSTATE7 |                             0110 |                             0110
+                 iSTATE5 |                             0111 |                             0111
+                 iSTATE6 |                             1000 |                             1000
+                 iSTATE4 |                             1001 |                             1001
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'D_states_q_reg' using encoding 'sequential' in module 'alu_statement_tester__parameterized34'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 iSTATE3 |                             0000 |                             0000
+                 iSTATE2 |                             0001 |                             0001
+                 iSTATE1 |                             0010 |                             0010
+                  iSTATE |                             0011 |                             0011
+                 iSTATE0 |                             0100 |                             0100
+                 iSTATE8 |                             0101 |                             0101
+                 iSTATE7 |                             0110 |                             0110
+                 iSTATE5 |                             0111 |                             0111
+                 iSTATE6 |                             1000 |                             1000
+                 iSTATE4 |                             1001 |                             1001
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'D_states_q_reg' using encoding 'sequential' in module 'alu_statement_tester__parameterized35'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 iSTATE3 |                             0000 |                             0000
+                 iSTATE2 |                             0001 |                             0001
+                 iSTATE1 |                             0010 |                             0010
+                  iSTATE |                             0011 |                             0011
+                 iSTATE0 |                             0100 |                             0100
+                 iSTATE8 |                             0101 |                             0101
+                 iSTATE7 |                             0110 |                             0110
+                 iSTATE5 |                             0111 |                             0111
+                 iSTATE6 |                             1000 |                             1000
+                 iSTATE4 |                             1001 |                             1001
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'D_states_q_reg' using encoding 'sequential' in module 'alu_statement_tester__parameterized36'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 iSTATE3 |                             0000 |                             0000
+                 iSTATE2 |                             0001 |                             0001
+                 iSTATE1 |                             0010 |                             0010
+                  iSTATE |                             0011 |                             0011
+                 iSTATE0 |                             0100 |                             0100
+                 iSTATE8 |                             0101 |                             0101
+                 iSTATE7 |                             0110 |                             0110
+                 iSTATE5 |                             0111 |                             0111
+                 iSTATE6 |                             1000 |                             1000
+                 iSTATE4 |                             1001 |                             1001
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'D_states_q_reg' using encoding 'sequential' in module 'alu_statement_tester__parameterized37'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 iSTATE3 |                             0000 |                             0000
+                 iSTATE2 |                             0001 |                             0001
+                 iSTATE1 |                             0010 |                             0010
+                  iSTATE |                             0011 |                             0011
+                 iSTATE0 |                             0100 |                             0100
+                 iSTATE8 |                             0101 |                             0101
+                 iSTATE7 |                             0110 |                             0110
+                 iSTATE5 |                             0111 |                             0111
+                 iSTATE6 |                             1000 |                             1000
+                 iSTATE4 |                             1001 |                             1001
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'D_states_q_reg' using encoding 'sequential' in module 'alu_statement_tester__parameterized38'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 iSTATE3 |                             0000 |                             0000
+                 iSTATE2 |                             0001 |                             0001
+                 iSTATE1 |                             0010 |                             0010
+                  iSTATE |                             0011 |                             0011
+                 iSTATE0 |                             0100 |                             0100
+                 iSTATE8 |                             0101 |                             0101
+                 iSTATE7 |                             0110 |                             0110
+                 iSTATE5 |                             0111 |                             0111
+                 iSTATE6 |                             1000 |                             1000
+                 iSTATE4 |                             1001 |                             1001
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'D_states_q_reg' using encoding 'sequential' in module 'alu_statement_tester__parameterized39'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 iSTATE3 |                             0000 |                             0000
+                 iSTATE2 |                             0001 |                             0001
+                 iSTATE1 |                             0010 |                             0010
+                  iSTATE |                             0011 |                             0011
+                 iSTATE0 |                             0100 |                             0100
+                 iSTATE8 |                             0101 |                             0101
+                 iSTATE7 |                             0110 |                             0110
+                 iSTATE5 |                             0111 |                             0111
+                 iSTATE6 |                             1000 |                             1000
+                 iSTATE4 |                             1001 |                             1001
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'D_states_q_reg' using encoding 'sequential' in module 'alu_statement_tester__parameterized40'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 iSTATE3 |                             0000 |                             0000
+                 iSTATE2 |                             0001 |                             0001
+                 iSTATE1 |                             0010 |                             0010
+                  iSTATE |                             0011 |                             0011
+                 iSTATE0 |                             0100 |                             0100
+                 iSTATE8 |                             0101 |                             0101
+                 iSTATE7 |                             0110 |                             0110
+                 iSTATE5 |                             0111 |                             0111
+                 iSTATE6 |                             1000 |                             1000
+                 iSTATE4 |                             1001 |                             1001
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'D_states_q_reg' using encoding 'sequential' in module 'alu_statement_tester__parameterized41'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 iSTATE3 |                             0000 |                             0000
+                 iSTATE2 |                             0001 |                             0001
+                 iSTATE1 |                             0010 |                             0010
+                  iSTATE |                             0011 |                             0011
+                 iSTATE0 |                             0100 |                             0100
+                 iSTATE8 |                             0101 |                             0101
+                 iSTATE7 |                             0110 |                             0110
+                 iSTATE5 |                             0111 |                             0111
+                 iSTATE6 |                             1000 |                             1000
+                 iSTATE4 |                             1001 |                             1001
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'D_states_q_reg' using encoding 'sequential' in module 'alu_statement_tester__parameterized42'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 iSTATE3 |                             0000 |                             0000
+                 iSTATE2 |                             0001 |                             0001
+                 iSTATE1 |                             0010 |                             0010
+                  iSTATE |                             0011 |                             0011
+                 iSTATE0 |                             0100 |                             0100
+                 iSTATE8 |                             0101 |                             0101
+                 iSTATE7 |                             0110 |                             0110
+                 iSTATE5 |                             0111 |                             0111
+                 iSTATE6 |                             1000 |                             1000
+                 iSTATE4 |                             1001 |                             1001
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'D_states_q_reg' using encoding 'sequential' in module 'alu_statement_tester__parameterized43'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 iSTATE3 |                             0000 |                             0000
+                 iSTATE2 |                             0001 |                             0001
+                 iSTATE1 |                             0010 |                             0010
+                  iSTATE |                             0011 |                             0011
+                 iSTATE0 |                             0100 |                             0100
+                 iSTATE8 |                             0101 |                             0101
+                 iSTATE7 |                             0110 |                             0110
+                 iSTATE5 |                             0111 |                             0111
+                 iSTATE6 |                             1000 |                             1000
+                 iSTATE4 |                             1001 |                             1001
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'D_states_q_reg' using encoding 'sequential' in module 'alu_statement_tester__parameterized44'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 iSTATE3 |                             0000 |                             0000
+                 iSTATE2 |                             0001 |                             0001
+                 iSTATE1 |                             0010 |                             0010
+                  iSTATE |                             0011 |                             0011
+                 iSTATE0 |                             0100 |                             0100
+                 iSTATE8 |                             0101 |                             0101
+                 iSTATE7 |                             0110 |                             0110
+                 iSTATE5 |                             0111 |                             0111
+                 iSTATE6 |                             1000 |                             1000
+                 iSTATE4 |                             1001 |                             1001
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'D_states_q_reg' using encoding 'sequential' in module 'alu_statement_tester__parameterized45'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 iSTATE3 |                             0000 |                             0000
+                 iSTATE2 |                             0001 |                             0001
+                 iSTATE1 |                             0010 |                             0010
+                  iSTATE |                             0011 |                             0011
+                 iSTATE0 |                             0100 |                             0100
+                 iSTATE8 |                             0101 |                             0101
+                 iSTATE7 |                             0110 |                             0110
+                 iSTATE5 |                             0111 |                             0111
+                 iSTATE6 |                             1000 |                             1000
+                 iSTATE4 |                             1001 |                             1001
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'D_states_q_reg' using encoding 'sequential' in module 'alu_statement_tester__parameterized46'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 iSTATE3 |                             0000 |                             0000
+                 iSTATE2 |                             0001 |                             0001
+                 iSTATE1 |                             0010 |                             0010
+                  iSTATE |                             0011 |                             0011
+                 iSTATE0 |                             0100 |                             0100
+                 iSTATE8 |                             0101 |                             0101
+                 iSTATE7 |                             0110 |                             0110
+                 iSTATE5 |                             0111 |                             0111
+                 iSTATE6 |                             1000 |                             1000
+                 iSTATE4 |                             1001 |                             1001
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'D_states_q_reg' using encoding 'sequential' in module 'alu_statement_tester__parameterized47'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 iSTATE3 |                             0000 |                             0000
+                 iSTATE2 |                             0001 |                             0001
+                 iSTATE1 |                             0010 |                             0010
+                  iSTATE |                             0011 |                             0011
+                 iSTATE0 |                             0100 |                             0100
+                 iSTATE8 |                             0101 |                             0101
+                 iSTATE7 |                             0110 |                             0110
+                 iSTATE5 |                             0111 |                             0111
+                 iSTATE6 |                             1000 |                             1000
+                 iSTATE4 |                             1001 |                             1001
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'D_states_q_reg' using encoding 'sequential' in module 'alu_statement_tester__parameterized48'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 iSTATE1 |                           000000 |                           000000
+                 iSTATE0 |                           000001 |                           000001
+                  iSTATE |                           000010 |                           000010
+                iSTATE50 |                           000011 |                           000011
+                iSTATE34 |                           000100 |                           000100
+                iSTATE31 |                           000101 |                           000101
+                iSTATE29 |                           000110 |                           000110
+                iSTATE26 |                           000111 |                           000111
+                iSTATE32 |                           001000 |                           001000
+                iSTATE30 |                           001001 |                           001001
+                iSTATE27 |                           001010 |                           001010
+                iSTATE24 |                           001011 |                           001011
+                iSTATE17 |                           001100 |                           001100
+                iSTATE16 |                           001101 |                           001101
+                iSTATE15 |                           001110 |                           001110
+                iSTATE12 |                           001111 |                           001111
+                iSTATE28 |                           010000 |                           010000
+                iSTATE25 |                           010001 |                           010001
+                iSTATE21 |                           010010 |                           010010
+                iSTATE20 |                           010011 |                           010011
+                iSTATE14 |                           010100 |                           010100
+                iSTATE10 |                           010101 |                           010101
+                 iSTATE7 |                           010110 |                           010110
+                 iSTATE4 |                           010111 |                           010111
+                iSTATE11 |                           011000 |                           011000
+                 iSTATE8 |                           011001 |                           011001
+                 iSTATE5 |                           011010 |                           011010
+                 iSTATE2 |                           011011 |                           011011
+                iSTATE48 |                           011100 |                           011100
+                iSTATE45 |                           011101 |                           011101
+                iSTATE41 |                           011110 |                           011110
+                iSTATE37 |                           011111 |                           011111
+                iSTATE13 |                           100000 |                           100000
+                 iSTATE9 |                           100001 |                           100001
+                 iSTATE6 |                           100010 |                           100010
+                 iSTATE3 |                           100011 |                           100011
+                iSTATE49 |                           100100 |                           100100
+                iSTATE47 |                           100101 |                           100101
+                iSTATE43 |                           100110 |                           100110
+                iSTATE40 |                           100111 |                           100111
+                iSTATE46 |                           101000 |                           101000
+                iSTATE44 |                           101001 |                           101001
+                iSTATE39 |                           101010 |                           101010
+                iSTATE36 |                           101011 |                           101011
+                iSTATE23 |                           101100 |                           101100
+                iSTATE22 |                           101101 |                           101101
+                iSTATE19 |                           101110 |                           101110
+                iSTATE18 |                           101111 |                           101111
+                iSTATE42 |                           110000 |                           110000
+                iSTATE38 |                           110001 |                           110001
+                iSTATE35 |                           110010 |                           110010
+                iSTATE33 |                           110011 |                           110011
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'D_states_q_reg' using encoding 'sequential' in module 'alu_auto_tester'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:41 ; elapsed = 00:00:43 . Memory (MB): peak = 1948.910 ; gain = 1091.699
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   3 Input   32 Bit       Adders := 52    
+	   3 Input    1 Bit       Adders := 29120 
++---XORs : 
+	   2 Input     32 Bit         XORs := 156   
+	   3 Input      1 Bit         XORs := 29120 
+	   2 Input      1 Bit         XORs := 52    
++---Registers : 
+	               32 Bit    Registers := 51    
+	                4 Bit    Registers := 1     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 54    
++---Multipliers : 
+	              32x32  Multipliers := 52    
++---Muxes : 
+	   2 Input   32 Bit        Muxes := 104   
+	  10 Input    8 Bit        Muxes := 51    
+	  52 Input    8 Bit        Muxes := 2     
+	   2 Input    8 Bit        Muxes := 5     
+	  52 Input    6 Bit        Muxes := 2     
+	   4 Input    4 Bit        Muxes := 51    
+	  10 Input    4 Bit        Muxes := 306   
+	   2 Input    4 Bit        Muxes := 52    
+	  52 Input    4 Bit        Muxes := 1     
+	   4 Input    1 Bit        Muxes := 3380  
+	   2 Input    1 Bit        Muxes := 11752 
+	  10 Input    1 Bit        Muxes := 102   
+	  52 Input    1 Bit        Muxes := 52    
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 90 (col length:60)
+BRAMs: 100 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+DSP Report: Generating DSP out1, operation Mode is: A*B.
+DSP Report: operator out1 is absorbed into DSP out1.
+DSP Report: operator out1 is absorbed into DSP out1.
+DSP Report: Generating DSP out1, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator out1 is absorbed into DSP out1.
+DSP Report: operator out1 is absorbed into DSP out1.
+DSP Report: Generating DSP out1, operation Mode is: A*B.
+DSP Report: operator out1 is absorbed into DSP out1.
+DSP Report: operator out1 is absorbed into DSP out1.
+DSP Report: Generating DSP out1, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator out1 is absorbed into DSP out1.
+DSP Report: operator out1 is absorbed into DSP out1.
+WARNING: [Synth 8-7129] Port io_button[4] in module alchitry_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_button[3] in module alchitry_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_button[2] in module alchitry_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_button[0] in module alchitry_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_dip[2][7] in module alchitry_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_dip[2][6] in module alchitry_top is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:19 ; elapsed = 00:01:22 . Memory (MB): peak = 1948.910 ; gain = 1091.699
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-3323] Resources of type DSP have been overutilized. Used = 208, Available = 90. Use report_utilization command for details.
+ Sort Area is alu out1_0 : 0 0 : 3101 5879 : Used 52 time 0
+ Sort Area is alu out1_0 : 0 1 : 2778 5879 : Used 52 time 0
+ Sort Area is alu out1_3 : 0 0 : 2759 5418 : Used 52 time 0
+ Sort Area is alu out1_3 : 0 1 : 2659 5418 : Used 52 time 0
+ DSP resource Status: out1_3 0 5418 2759: Used 52 time : Rejected (156 > 90) uniquify 0 
+ DSP resource Status: out1_0 0 5879 3101: Used 52 time : Accepted (52 < 90) uniquify 0 
+ DSP resource Status: out1_0 1 5879 2778: Used 52 time : Rejected (104 > 90) uniquify 14 
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+DSP: Preliminary Mapping Report (see note below. The ' indicates corresponding REG is set)
++------------+----------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name | DSP Mapping    | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++------------+----------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|modulo      | A*B            | 18     | 16     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|modulo      | (PCIN>>17)+A*B | 16     | 16     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|modulo      | A*B            | 18     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|modulo      | (PCIN>>17)+A*B | 18     | 16     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
++------------+----------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+
+Note: The table above is a preliminary report that shows the DSPs inferred at the current stage of the synthesis flow. Some DSP may be reimplemented as non DSP primitives later in the synthesis flow. Multiple instantiated DSPs are reported only once.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:26 ; elapsed = 00:01:28 . Memory (MB): peak = 1948.910 ; gain = 1091.699
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+info: optimization accepted worst group hill climbing move (5949.0/oG.CP 315.0ps)
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:01:32 ; elapsed = 00:01:34 . Memory (MB): peak = 1948.910 ; gain = 1091.699
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:01:34 ; elapsed = 00:01:37 . Memory (MB): peak = 1948.910 ; gain = 1091.699
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:01:38 ; elapsed = 00:01:41 . Memory (MB): peak = 1948.910 ; gain = 1091.699
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:38 ; elapsed = 00:01:41 . Memory (MB): peak = 1948.910 ; gain = 1091.699
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:39 ; elapsed = 00:01:42 . Memory (MB): peak = 1948.910 ; gain = 1091.699
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:39 ; elapsed = 00:01:42 . Memory (MB): peak = 1948.910 ; gain = 1091.699
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:39 ; elapsed = 00:01:42 . Memory (MB): peak = 1948.910 ; gain = 1091.699
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:39 ; elapsed = 00:01:42 . Memory (MB): peak = 1948.910 ; gain = 1091.699
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+DSP Final Report (the ' indicates corresponding REG is set)
++------------+--------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name | DSP Mapping  | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++------------+--------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|modulo      | A*B          | 7      | 15     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|modulo      | A*B          | 17     | 7      | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|modulo      | PCIN>>17+A*B | 17     | 15     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
++------------+--------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+--------+------+
+|      |Cell    |Count |
++------+--------+------+
+|1     |BUFG    |     1|
+|2     |CARRY4  |  1240|
+|3     |DSP48E1 |     3|
+|4     |LUT1    |   224|
+|5     |LUT2    |  1903|
+|6     |LUT3    |   550|
+|7     |LUT4    |   235|
+|8     |LUT5    |   186|
+|9     |LUT6    |  1279|
+|10    |MUXF7   |   183|
+|11    |MUXF8   |    71|
+|12    |FDRE    |  2656|
+|13    |FDSE    |     4|
+|14    |IBUF    |    26|
+|15    |OBUF    |    45|
++------+--------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:39 ; elapsed = 00:01:42 . Memory (MB): peak = 1948.910 ; gain = 1091.699
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 8 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:01:11 ; elapsed = 00:01:24 . Memory (MB): peak = 1948.910 ; gain = 617.254
+Synthesis Optimization Complete : Time (s): cpu = 00:01:39 ; elapsed = 00:01:42 . Memory (MB): peak = 1948.910 ; gain = 1091.699
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.075 . Memory (MB): peak = 1948.910 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 1497 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1948.910 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Synth Design complete | Checksum: d103449
+INFO: [Common 17-83] Releasing license: Synthesis
+332 Infos, 32 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:01:45 ; elapsed = 00:01:48 . Memory (MB): peak = 1948.910 ; gain = 1485.652
+Write ShapeDB Complete: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.024 . Memory (MB): peak = 1948.910 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.runs/synth_1/alchitry_top.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file alchitry_top_utilization_synth.rpt -pb alchitry_top_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Tue Mar 18 20:58:36 2025...

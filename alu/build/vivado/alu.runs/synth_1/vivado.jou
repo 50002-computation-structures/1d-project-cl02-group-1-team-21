@@ -1,0 +1,14 @@
+#-----------------------------------------------------------
+# Vivado v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Tue Mar 18 20:56:39 2025
+# Process ID: 23628
+# Current directory: C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.runs/synth_1
+# Command line: vivado.exe -log alchitry_top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source alchitry_top.tcl
+# Log file: C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.runs/synth_1/alchitry_top.vds
+# Journal file: C:/Users/lehai/Downloads/50.002/1d-project-cl02-group-1-team-21/alu/build/vivado/alu.runs/synth_1\vivado.jou
+# Running On: Akirayasha, OS: Windows, CPU Frequency: 2304 MHz, CPU Physical cores: 8, Host memory: 34111 MB
+#-----------------------------------------------------------
+source alchitry_top.tcl -notrace

@@ -25,7 +25,7 @@ module alu_auto_tester (
             alu_statement_tester test_8 (#INPUT_A(32habcd1234), #INPUT_B(32h00000001), #ALUCODE(6b000010), #EXPECTED(32habcd1234))
             alu_statement_tester test_9 (#INPUT_A(32h0000000A), #INPUT_B(32hffffffff), #ALUCODE(6b000010), #EXPECTED(32hfffffff6))
             alu_statement_tester test_10 (#INPUT_A(32h00001234), #INPUT_B(32h00005678), #ALUCODE(6b000010), #EXPECTED(32h06260060))
-            alu_statement_tester test_11 (#INPUT_A(32hfffffff4), #INPUT_B(32hfffffff6), #ALUCODE(6b000010), #EXPECTED(32h00000014))
+            alu_statement_tester test_11 (#INPUT_A(32hfffffff4), #INPUT_B(32hfffffff6), #ALUCODE(6b000010), #EXPECTED(32h00000078))
             alu_statement_tester test_12 (#INPUT_A(32h00000001), #INPUT_B(32h00000000), #ALUCODE(6b000100), #EXPECTED(32h00000000))
             alu_statement_tester test_13 (#INPUT_A(32habcd1234), #INPUT_B(32h00000001), #ALUCODE(6b000100), #EXPECTED(32habcd1234))
             alu_statement_tester test_14 (#INPUT_A(32h00000001), #INPUT_B(32h00000010), #ALUCODE(6b000100), #EXPECTED(32h00000000))
@@ -106,25 +106,25 @@ module alu_auto_tester (
         test_29.start = 0
         test_30.start = 0
         test_31.start = 0
-    test_32.start = 0
-    test_33.start = 0
-    test_34.start = 0
-    test_35.start = 0
-    test_36.start = 0
-    test_37.start = 0
-    test_38.start = 0
-    test_39.start = 0
-    test_40.start = 0
-    test_41.start = 0
-    test_42.start = 0
-    test_43.start = 0
-    test_44.start = 0
-    test_45.start = 0
-    test_46.start = 0
-    test_47.start = 0
-    test_48.start = 0
-    test_49.start = 0
-    test_50.start = 0
+        test_32.start = 0
+        test_33.start = 0
+        test_34.start = 0
+        test_35.start = 0
+        test_36.start = 0
+        test_37.start = 0
+        test_38.start = 0
+        test_39.start = 0
+        test_40.start = 0
+        test_41.start = 0
+        test_42.start = 0
+        test_43.start = 0
+        test_44.start = 0
+        test_45.start = 0
+        test_46.start = 0
+        test_47.start = 0
+        test_48.start = 0
+        test_49.start = 0
+        test_50.start = 0
         
         case(states.q){
             AutoStates.STANDBY:
