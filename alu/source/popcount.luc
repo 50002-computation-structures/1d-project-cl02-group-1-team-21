@@ -1,0 +1,22 @@
+module popcount (
+    input clk,  // clock
+    input rst,  // reset
+    input a[32],
+    output out[6]
+) {
+    .clk(clk){
+        .rst(rst){
+            dff count[6]
+        }
+    }
+    always {
+        count.d = count.q
+        out = 0
+        repeat(i, 32){
+            if(a[i] == 1){
+                count.d = count.q + 1
+            }
+        }
+        out = count.q
+    }
+}

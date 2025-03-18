@@ -1,0 +1,14 @@
+module parallel_comparison (
+    input clk,  // clock
+    input rst,  // reset
+    input a[32],
+    input stored[4][32],
+    output out[4]
+) {
+    always {
+        out = 0
+        repeat(i, 4){
+            out[i] = (a == stored[i]) ? 1 : 0
+        }
+    }
+}

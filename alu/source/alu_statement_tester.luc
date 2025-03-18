@@ -13,6 +13,7 @@ module alu_statement_tester #(
     output led[8],
     output done
 ) {
+    const SLOW_CLOCK_DEFAULT_SPEED = $is_sim() ? 8 : 24
     
     enum States{
         INIT,
@@ -32,7 +33,7 @@ module alu_statement_tester #(
             dff states[$width(States)](#INIT(States.INIT))
             
             dff o[32]
-            counter slow_clock(#SIZE(1), #DIV(10))
+            counter slow_clock(#SIZE(1), #DIV(SLOW_CLOCK_DEFAULT_SPEED), #UP(1))
             
             multi_seven_seg seg_display
         }

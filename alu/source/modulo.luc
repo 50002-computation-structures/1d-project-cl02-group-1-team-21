@@ -1,0 +1,14 @@
+module modulo (
+    input a[32],
+    input b[32],
+    output out[32]
+) {
+    always {
+        out = 0
+        if(b == 0){
+            out = 0
+        } else {
+            out = a - (a / b) * b
+        }
+    }
+}

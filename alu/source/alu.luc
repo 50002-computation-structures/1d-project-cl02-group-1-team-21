@@ -8,10 +8,12 @@ module alu (
     output n
 ) {
     mux_4 alu_mux[32]
-    mux_2 smul_mux[32]
+    mux_4 arith_mux[32]
     
     adder adder(#SIZE(32)) // 2 units: add & subtract
     multiplier multiplier() // 1 Mutiplier unit
+    division division()
+    modulo modulo()
     boolean boolean(#SIZE(32)) // 4 boolean units
     shifter shifter() // 3 shifter units
     compare compare() // 3 compare units
@@ -28,10 +30,21 @@ module alu (
         multiplier.a = a
         multiplier.b = b
         
+        // Assembling Modulo
+        modulo.a = a
+        modulo.b = b
+        
+        // Assembling Hamming Distance
+        division.a = a
+        division.b = b
+        
         repeat(i, 32){
-            smul_mux.s0[i] = alufn[1]
-            smul_mux.in[i][0] = adder.out[i]
-            smul_mux.in[i][1] = multiplier.mul[i]
+            arith_mux.s0[i] = alufn[1]
+            arith_mux.s1[i] = alufn[2]
+            arith_mux.in[i][0] = adder.out[i]
+            arith_mux.in[i][1] = multiplier.mul[i]
+            arith_mux.in[i][2] = division.out[i]
+            arith_mux.in[i][3] = modulo.out[i]
         }
         
         // Assembling Boolean
@@ -57,7 +70,7 @@ module alu (
         repeat(i, 32){
             alu_mux.s0[i] = alufn[4]
             alu_mux.s1[i] = alufn[5]
-            alu_mux.in[i][0] = smul_mux.out[i]
+            alu_mux.in[i][0] = arith_mux.out[i]
             alu_mux.in[i][1] = boolean.bool[i]
             alu_mux.in[i][2] = shifter.shift[i]
             if(~|i){

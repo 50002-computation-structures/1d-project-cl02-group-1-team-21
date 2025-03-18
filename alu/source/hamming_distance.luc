@@ -1,0 +1,16 @@
+module hamming_distance (
+    input a[32],
+    input b[32],
+    output out[6]
+) {
+    sig count[6]
+    always {
+        out = 0
+        count = 0
+        repeat(i, 32){
+            if((a[i] ^ b[i]) == 1)
+                count = count + 1
+        }
+        out = count
+    }
+}
