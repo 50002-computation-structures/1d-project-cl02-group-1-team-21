@@ -23,7 +23,7 @@ module shifter (
         }
 
         mux_pad.s0 = alufn[1]
-        mux_pad.in = c{1b0,a[31]}
+        mux_pad.in = c{a[31], 1b0}
                 
         repeat(i, 5) {
             if (i == 0) {
@@ -38,8 +38,7 @@ module shifter (
         second_bit_reverse.in = left_shifters.out[4]
         repeat(i, 32) {
             mux_shl.s0[i] = alufn[0]
-            mux_shl.in[i][0] = left_shifters.out[4][i]
-            mux_shl.in[i][1] = second_bit_reverse.reversed[i]
+            mux_shl.in[i] = c{second_bit_reverse.reversed[i], left_shifters.out[4][i]}
         }
         
         shift = mux_shl.out
