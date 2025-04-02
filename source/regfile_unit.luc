@@ -1,0 +1,50 @@
+module regfile_unit (
+    input clk,  // clock
+    input rst,  // reset
+    input read_address_1[5],
+    input read_address_2[5],
+    input clear_reg,
+    input reset_score,
+
+    output read_data_1[32],
+    output read_data_2[32],
+    input write_address[5],
+    input write_data[32],
+    input write_enable,
+    output score[32],
+    //output question[32],
+    //output answer[32],
+    //output button[4],
+    output is_correct
+  ) {
+      dff registers[7][32](.clk(clk))
+      always {
+      
+        //addr 4: useless, trash bin
+        if (clear_reg == 1){
+            registers.d[7h0] = 32b0  // challenge
+            registers.d[7h2] = 32b0  // user's answer
+            registers.d[7h3] = 32b0  // number of button pressed
+            registers.d[7h5] = 32b0  // num-th button pressed just now
+            registers.d[7h6] = 32b0  // compare user's answer vs question result
+        }
+        if (reset_score == 1){
+            registers.d[7h1] = 32d0 // score
+        }  
+        
+        // always can be read
+        read_data_1 = registers.q[read_address_1]
+        read_data_2 = registers.q[read_address_2]
+        
+        score = registers.q[7h1]
+        //question = registers.q[7h0]
+        //answer = registers.q[7h2]
+        //button=registers.q[7h5][3:0]
+        is_correct=registers.q[7h6][0]
+        
+        if (write_enable){
+            registers.d[write_address] = write_data
+        }
+        
+      }
+}

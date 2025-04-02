@@ -1,0 +1,551 @@
+module control_unit (
+    input clk,  // clock
+    input rst,  // reset
+    input startBtn,
+    input clearBtn,
+    input button_input,
+    input timer,
+    input is_correct,
+    output led_enable,
+    output we,
+    output asel,
+    output bsel[3],
+    output alufn[6],
+    output ra[5],
+    output rb[5],
+    output wa[5],
+    output gen_next,
+    output clear_reg,
+    output reset_score,
+    output button_count[4]
+) {
+    enum States {
+        STANDBY,
+        CLEAR_REGISTER,
+        GENERATE_1,
+        DISPLAY_1,
+        SHIFT_1,
+        GENERATE_2,
+        DISPLAY_2,
+        SHIFT_2,
+        GENERATE_3,
+        DISPLAY_3,
+        SHIFT_3,
+        GENERATE_4,
+        DISPLAY_4,
+        SHIFT_4,
+        GENERATE_5,
+        DISPLAY_5,
+        SHIFT_5,
+        GENERATE_6,
+        DISPLAY_6,
+        SHIFT_6,
+        GENERATE_7,
+        DISPLAY_7,
+        SHIFT_7,
+        GENERATE_8,
+        DISPLAY_8,
+        IDLE_WAITPRESS1,
+        STORE_PRESS1,
+        SHIFT_PRESS1,
+        WAIT_PRESS2,
+        STORE_PRESS2,
+        SHIFT_PRESS2,
+        WAIT_PRESS3,
+        STORE_PRESS3,
+        SHIFT_PRESS3,
+        WAIT_PRESS4,
+        STORE_PRESS4,
+        SHIFT_PRESS4,
+        WAIT_PRESS5,
+        STORE_PRESS5,
+        SHIFT_PRESS5,
+        WAIT_PRESS6,
+        STORE_PRESS6,
+        SHIFT_PRESS6,
+        WAIT_PRESS7,
+        STORE_PRESS7,
+        SHIFT_PRESS7,
+        WAIT_PRESS8,
+        STORE_PRESS8,
+        COMPARE,
+        WINLOSE_BRANCH
+    }
+    .clk(clk){
+        .rst(rst){
+            dff states[$width(States)](#INIT(States.STANDBY))
+        }
+    }
+    
+    always {
+        states.d = states.q
+        we = 0
+        asel = 0
+        bsel = 0
+        alufn = 6b011010
+        ra = 5b00000
+        rb = 5b00000
+        wa = 5b00100
+        led_enable = 0
+        gen_next = 0
+        clear_reg = 0
+        reset_score = 0
+        button_count = 4b0000
+        
+        case(states.q){
+            States.STANDBY:
+                if(startBtn == 1){
+                    states.d = States.CLEAR_REGISTER
+                }
+                gen_next = 1
+                reset_score = 1
+            States.CLEAR_REGISTER:
+                if(timer == 1){
+                    states.d = States.GENERATE_1
+                }
+                clear_reg = 0
+                we = 0
+                gen_next = 1
+            States.GENERATE_1:
+                we = 1
+                asel = 0
+                bsel = 3b001
+                alufn = 6b000000
+                ra = 5b00000
+                wa = 5b00000
+                states.d = States.DISPLAY_1
+            States.DISPLAY_1:
+                if(timer == 1){
+                    states.d = States.SHIFT_1
+                }
+                we = 0
+                led_enable = 1
+                bsel = 3b010
+            States.SHIFT_1:
+                we = 1
+                asel = 0
+                bsel = 3b010
+                alufn = 6b100000 // shift left to leave space for following generated input
+                ra = 5b00000
+                wa = 5b00000
+                gen_next = 1
+                states.d = States.GENERATE_2
+            States.GENERATE_2:
+                we = 1
+                asel = 0
+                bsel = 3b001
+                alufn = 6b000000
+                ra = 5b00000
+                wa = 5b00000
+                states.d = States.DISPLAY_2
+            States.DISPLAY_2:
+                if(timer == 1){
+                    states.d = States.SHIFT_2
+                }
+                we = 0
+                led_enable = 1
+                bsel = 3b010
+            States.SHIFT_2:
+                we = 1
+                asel = 0
+                bsel = 3b010
+                alufn = 6b100000 // shift left to leave space for following generated input
+                ra = 5b00000
+                wa = 5b00000
+                gen_next = 1
+                states.d = States.GENERATE_3
+            States.GENERATE_3:
+                we = 1
+                asel = 0
+                bsel = 3b001
+                alufn = 6b000000
+                ra = 5b00000
+                wa = 5b00000
+                states.d = States.DISPLAY_3
+            States.DISPLAY_3:
+                if(timer == 1){
+                    states.d = States.SHIFT_3
+                }
+                we = 0
+                led_enable = 1
+                bsel = 3b010
+            States.SHIFT_3:
+                we = 1
+                asel = 0
+                bsel = 3b010
+                alufn = 6b100000 // shift left to leave space for following generated input
+                ra = 5b00000
+                wa = 5b00000
+                gen_next = 1
+                states.d = States.GENERATE_4
+            States.GENERATE_4:
+                we = 1
+                asel = 0
+                bsel = 3b001
+                alufn = 6b000000
+                ra = 5b00000
+                wa = 5b00000
+                states.d = States.DISPLAY_4
+            States.DISPLAY_4:
+                if(timer == 1){
+                    states.d = States.SHIFT_4
+                }
+                we = 0
+                led_enable = 1
+                bsel = 3b010
+            States.SHIFT_4:
+                we = 1
+                asel = 0
+                bsel = 3b010
+                alufn = 6b100000 // shift left to leave space for following generated input
+                ra = 5b00000
+                wa = 5b00000
+                gen_next = 1
+                states.d = States.GENERATE_5
+            States.GENERATE_5:
+                we = 1
+                asel = 0
+                bsel = 3b001
+                alufn = 6b000000
+                ra = 5b00000
+                wa = 5b00000
+                states.d = States.DISPLAY_5
+            States.DISPLAY_5:
+                if(timer == 1){
+                    states.d = States.SHIFT_5
+                }
+                we = 0
+                led_enable = 1
+                bsel = 3b010
+            States.SHIFT_5:
+                we = 1
+                asel = 0
+                bsel = 3b010
+                alufn = 6b100000 // shift left to leave space for following generated input
+                ra = 5b00000
+                wa = 5b00000
+                gen_next = 1
+                states.d = States.GENERATE_6
+            States.GENERATE_6:
+                we = 1
+                asel = 0
+                bsel = 3b001
+                alufn = 6b000000
+                ra = 5b00000
+                wa = 5b00000
+                states.d = States.DISPLAY_6
+            States.DISPLAY_6:
+                if(timer == 1){
+                    states.d = States.SHIFT_6
+                }
+                we = 0
+                led_enable = 1
+                bsel = 3b010
+            States.SHIFT_6:
+                we = 1
+                asel = 0
+                bsel = 3b010
+                alufn = 6b100000 // shift left to leave space for following generated input
+                ra = 5b00000
+                wa = 5b00000
+                gen_next = 1
+                states.d = States.GENERATE_7
+            States.GENERATE_7:
+                we = 1
+                asel = 0
+                bsel = 3b001
+                alufn = 6b000000
+                ra = 5b00000
+                wa = 5b00000
+                states.d = States.DISPLAY_7
+            States.DISPLAY_7:
+                if(timer == 1){
+                    states.d = States.SHIFT_7
+                }
+                we = 0
+                led_enable = 1
+                bsel = 3b010
+            States.SHIFT_7:
+                we = 1
+                asel = 0
+                bsel = 3b010
+                alufn = 6b100000 // shift left to leave space for following generated input
+                ra = 5b00000
+                wa = 5b00000
+                gen_next = 1
+                states.d = States.GENERATE_8
+            States.GENERATE_8:
+                we = 1
+                asel = 0
+                bsel = 3b001
+                alufn = 6b000000
+                ra = 5b00000
+                wa = 5b00000
+                states.d = States.DISPLAY_8
+            States.DISPLAY_8:
+                if(timer == 1){
+                    states.d = States.IDLE_WAITPRESS1
+                }
+                we = 0
+                led_enable = 1
+            States.IDLE_WAITPRESS1:
+                we = 0
+                button_count = 4b0000
+                if(~button_input){
+                    states.d = States.STORE_PRESS1
+                    bsel = 3b011
+                    asel = 1
+                    alufn = 6b000000
+                    we = 1
+                    wa = 5b00101
+                }
+            States.STORE_PRESS1:
+                we = 1
+                asel = 0
+                bsel = 3b000
+                alufn = 6b000000
+                ra = 5b00010
+                rb = 5b00101
+                wa = 5b00010
+                states.d = States.SHIFT_PRESS1
+            States.SHIFT_PRESS1:
+                we = 1
+                asel = 0
+                bsel = 3b010
+                alufn = 6b100000 // shift left to leave space for the next button
+                ra = 5b00010
+                wa = 5b00010
+                states.d = States.WAIT_PRESS2
+            States.WAIT_PRESS2:
+                we = 0
+                button_count = 4b0001
+                if(~button_input){
+                    states.d = States.STORE_PRESS2
+                    bsel = 3b011
+                    asel = 1
+                    alufn = 6b000000
+                    we = 1
+                    wa = 5b00101
+                }
+                if(clearBtn){
+                    states.d = States.IDLE_WAITPRESS1
+                }
+            States.STORE_PRESS2:
+                we = 1
+                asel = 0
+                bsel = 3b000
+                alufn = 6b000000
+                ra = 5b00010
+                rb = 5b00101
+                wa = 5b00010
+                states.d = States.SHIFT_PRESS2
+            States.SHIFT_PRESS2:
+                we = 1
+                asel = 0
+                bsel = 3b010
+                alufn = 6b100000 // shift left to leave space for the next button
+                ra = 5b00010
+                wa = 5b00010
+                states.d = States.WAIT_PRESS3
+            States.WAIT_PRESS3:
+                we = 0
+                button_count = 4b0010
+                if(~button_input){
+                    states.d = States.STORE_PRESS3
+                    bsel = 3b011
+                    asel = 1
+                    alufn = 6b000000
+                    we = 1
+                    wa = 5b00101
+                }
+                if(clearBtn){
+                    states.d = States.IDLE_WAITPRESS1
+                }
+            States.STORE_PRESS3:
+                we = 1
+                asel = 0
+                bsel = 3b000
+                alufn = 6b000000
+                ra = 5b00010
+                rb = 5b00101
+                wa = 5b00010
+                states.d = States.SHIFT_PRESS3
+            States.SHIFT_PRESS3:
+                we = 1
+                asel = 0
+                bsel = 3b010
+                alufn = 6b100000 // shift left to leave space for the next button
+                ra = 5b00010
+                wa = 5b00010
+                states.d = States.WAIT_PRESS4
+            States.WAIT_PRESS4:
+                we = 0
+                button_count = 4b0011
+                if(~button_input){
+                    states.d = States.STORE_PRESS4
+                    bsel = 3b011
+                    asel = 1
+                    alufn = 6b000000
+                    we = 1
+                    wa = 5b00101
+                }
+                if(clearBtn){
+                    states.d = States.IDLE_WAITPRESS1
+                }
+            States.STORE_PRESS4:
+                we = 1
+                asel = 0
+                bsel = 3b000
+                alufn = 6b000000
+                ra = 5b00010
+                rb = 5b00101
+                wa = 5b00010
+                states.d = States.SHIFT_PRESS4
+            States.SHIFT_PRESS4:
+                we = 1
+                asel = 0
+                bsel = 3b010
+                alufn = 6b100000 // shift left to leave space for the next button
+                ra = 5b00010
+                wa = 5b00010
+                states.d = States.WAIT_PRESS5
+            States.WAIT_PRESS5:
+                we = 0
+                button_count = 4b0100
+                if(~button_input){
+                    states.d = States.STORE_PRESS5
+                    bsel = 3b011
+                    asel = 1
+                    alufn = 6b000000
+                    we = 1
+                    wa = 5b00101
+                }
+                if(clearBtn){
+                    states.d = States.IDLE_WAITPRESS1
+                }
+            States.STORE_PRESS5:
+                we = 1
+                asel = 0
+                bsel = 3b000
+                alufn = 6b000000
+                ra = 5b00010
+                rb = 5b00101
+                wa = 5b00010
+                states.d = States.SHIFT_PRESS5
+            States.SHIFT_PRESS5:
+                we = 1
+                asel = 0
+                bsel = 3b010
+                alufn = 6b100000 // shift left to leave space for the next button
+                ra = 5b00010
+                wa = 5b00010
+                states.d = States.WAIT_PRESS6
+            States.WAIT_PRESS6:
+                we = 0
+                button_count = 4b0101
+                if(~button_input){
+                    states.d = States.STORE_PRESS6
+                    bsel = 3b011
+                    asel = 1
+                    alufn = 6b000000
+                    we = 1
+                    wa = 5b00101
+                }
+                if(clearBtn){
+                    states.d = States.IDLE_WAITPRESS1
+                }
+            States.STORE_PRESS6:
+                we = 1
+                asel = 0
+                bsel = 3b000
+                alufn = 6b000000
+                ra = 5b00010
+                rb = 5b00101
+                wa = 5b00010
+                states.d = States.SHIFT_PRESS6
+            States.SHIFT_PRESS6:
+                we = 1
+                asel = 0
+                bsel = 3b010
+                alufn = 6b100000 // shift left to leave space for the next button
+                ra = 5b00010
+                wa = 5b00010
+                states.d = States.WAIT_PRESS7
+            States.WAIT_PRESS7:
+                we = 0
+                button_count = 4b0110
+                if(~button_input){
+                    states.d = States.STORE_PRESS7
+                    bsel = 3b011
+                    asel = 1
+                    alufn = 6b000000
+                    we = 1
+                    wa = 5b00101
+                }
+                if(clearBtn){
+                    states.d = States.IDLE_WAITPRESS1
+                }
+            States.STORE_PRESS7:
+                we = 1
+                asel = 0
+                bsel = 3b000
+                alufn = 6b000000
+                ra = 5b00010
+                rb = 5b00101
+                wa = 5b00010
+                states.d = States.SHIFT_PRESS7
+            States.SHIFT_PRESS7:
+                we = 1
+                asel = 0
+                bsel = 3b010
+                alufn = 6b100000 // shift left to leave space for the next button
+                ra = 5b00010
+                wa = 5b00010
+                states.d = States.WAIT_PRESS8
+            States.WAIT_PRESS8:
+                we = 0
+                button_count = 4b0111
+                if(~button_input){
+                    states.d = States.STORE_PRESS8
+                    bsel = 3b011
+                    asel = 1
+                    alufn = 6b000000
+                    we = 1
+                    wa = 5b00101
+                }
+                if(clearBtn){
+                    states.d = States.IDLE_WAITPRESS1
+                }
+            States.STORE_PRESS8:
+                we = 1
+                asel = 0
+                bsel = 3b000
+                alufn = 6b000000
+                ra = 5b00010
+                rb = 5b00101
+                wa = 5b00010
+                states.d = States.COMPARE
+            States.COMPARE:
+                asel = 0
+                bsel = 3b000
+                ra = 5b00000
+                rb = 5b00010
+                alufn = 6b110011
+                we = 1
+                wa = 5b00110
+                states.d = States.WINLOSE_BRANCH
+            States.WINLOSE_BRANCH:
+                if(~is_correct){
+                    states.d = States.STANDBY
+                } else {
+                    we = 1
+                    alufn = 6b000000
+                    ra = 5b00001
+                    asel = 0
+                    bsel = 3b100
+                    wa = 5b00001
+                    states.d = States.IDLE_WAITPRESS1
+                }
+        }
+    }
+}
