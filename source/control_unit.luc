@@ -733,7 +733,7 @@ module control_unit (
                 ra = 5b00010
                 rb = 5b00101
                 wa = 5b00010
-                states.d = States.COMPARE
+                states.d = States.PREPARE_CHECK_PRESS8
             States.PREPARE_CHECK_PRESS8:
                 we = 1
                 asel = 0

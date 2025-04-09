@@ -6,9 +6,6 @@ module alchitry_top (
     output usb_tx,          // USB->Serial output
     output io_led[3][8],    // LEDs on IO Shield
     input io_button[5],     // 5 buttons on IO Shield
-<<<<<<< Updated upstream
-    input io_dip[3][8]      // DIP switches on IO Shield
-=======
     input io_dip[3][8],      // DIP switches on IO Shield
     input startBtnIn,
     input clearBtnIn,
@@ -36,25 +33,19 @@ module alchitry_top (
     output button_count_seg[8],
     output score_sel[2],
     output button_count_sel[1]
->>>>>>> Stashed changes
 ) {
     
+    const CLK_FREQ = $is_sim() ? 1000 : 10000000 // put 1000 for sim, 10000000 otherwise in hardware
+    
     sig rst                 // reset signal
+    
+    alu alu
     
     .clk(clk) {
         // The reset conditioner is used to synchronize the reset signal to the FPGA
         // clock. This ensures the entire FPGA comes out of reset at the same time.
         reset_conditioner reset_cond
         
-<<<<<<< Updated upstream
-        edge_detector edge_detector(#RISE(1), #FALL(0))
-        
-        .rst(rst) {
-            // Reduce DIV values for simulation so it doesn't take forever
-            multi_seven_seg seg (#DIV($is_sim() ? 1 : 16), #DIGITS(4))
-            multi_decimal_counter dec_ctr (#DIGITS(4))
-            counter ctr (#SIZE(1), #DIV($is_sim() ? 8 : 24))
-=======
         edge_detector timer(#RISE(1), #FALL(0))
         
         button_conditioner firstBtnCond(#CLK_FREQ(CLK_FREQ))
@@ -90,7 +81,6 @@ module alchitry_top (
             regfile_unit regfile_system
             control_unit control_system
             pn_gen generator
->>>>>>> Stashed changes
         }
     }
     
@@ -98,15 +88,6 @@ module alchitry_top (
         reset_cond.in = ~rst_n  // input raw inverted reset signal
         rst = reset_cond.out    // conditioned reset
         
-<<<<<<< Updated upstream
-        led = c{3b0, io_button} // connect buttons to LEDs
-        
-        usb_tx = usb_rx         // loop serial port
-        
-        edge_detector.in = ctr.value
-        dec_ctr.inc = edge_detector.out
-        seg.values = dec_ctr.digits
-=======
         io_led = 3x{{8h00}}
         led = c{3b0, io_button} // connect buttons to LEDs
         usb_tx = usb_rx         // loop serial port
@@ -120,14 +101,19 @@ module alchitry_top (
         button_count_seg = ~buttonCountSeg.seg
         button_count_sel = ~buttonCountSeg.sel
         io_led = io_dip       // connect the DIP switches to the LEDs
->>>>>>> Stashed changes
         
-        io_segment = ~seg.seg // connect segments to the driver
-        io_select = ~seg.sel  // connect digit select to the driver
+        firstLED = 0
+        secondLED = 0
+        thirdLED = 0
+        fourthLED = 0
+        fifthLED = 0
+        sixthLED = 0
+        seventhLED = 0
+        eighthLED = 0
+        heart1LED = 1
+        heart2LED = 1
+        heart3LED = 1
         
-<<<<<<< Updated upstream
-        io_led = io_dip       // connect the DIP switches to the LEDs
-=======
         firstBtnCond.in = firstBtnIn
         firstBtnDetect.in = firstBtnCond.out
         secondBtnCond.in = secondBtnIn
@@ -590,6 +576,5 @@ module alchitry_top (
         }
         
         control_system.is_correct = regfile_system.is_correct
->>>>>>> Stashed changes
     }
 }
