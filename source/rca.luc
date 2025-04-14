@@ -1,0 +1,40 @@
+module rca #(BITS = 2)(
+    //s is output, v is overflow, z is all zero, n is negative
+    input a[BITS],
+    input b[BITS],
+    input alufn,
+    output s[BITS],
+    output v, 
+    output z,
+    output n
+) {
+    fa adder[BITS]
+    sig xb[BITS]
+    
+    always {
+        //finding xb
+        xb = b ^ BITSx{alufn}
+        //first 1bit adder
+        adder.a[0] = a[0]
+        adder.b[0] = xb[0]
+        adder.cin[0] = alufn
+        s[0] = adder.s[0]
+        
+        //repeat for next (BITS-1) 1bit adders
+        repeat(i, BITS-1, 1){
+            adder.a[i] = a[i]
+            adder.b[i] = xb[i]
+            adder.cin[i] = adder.cout[i-1]
+            s[i] = adder.s[i]
+        }
+        
+        //finding v
+        v = (a[BITS-1] & xb[BITS-1] & ~adder.s[BITS-1]) | (~a[BITS-1] & ~xb[BITS-1] & adder.s[BITS-1]) 
+        
+        //finding n
+        n = adder.s[BITS-1]
+        
+        //finding z
+        z = ~|adder.s
+    }
+}

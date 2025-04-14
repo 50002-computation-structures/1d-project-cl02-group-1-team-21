@@ -1,0 +1,18 @@
+module compare (
+    input z,
+    input v,
+    input n,
+    input alufn[6],
+    output cmp
+) {
+    sig nxorv
+    always {
+        nxorv = n ^ v
+        case(alufn[2:1]){
+            b01: cmp = z
+            b10: cmp = nxorv
+            b11: cmp = z | nxorv
+            default: cmp = 0
+        }
+    }
+}

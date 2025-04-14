@@ -1,0 +1,24 @@
+module x_bit_left_shifter #(
+    SHIFT = 8 : SHIFT > -1 & SHIFT < 32
+)(
+    input a[32],
+    input shift, 
+    input pad, 
+    output out[32]
+) {
+    mux_2 mux_2[32]
+    
+    always {
+        repeat(i, 32-SHIFT, SHIFT) {
+            mux_2.in[i][0] = a[i]
+            mux_2.in[i][1] = a[i-SHIFT]
+            mux_2.s0[i] = shift
+        }
+        repeat(i, SHIFT) { 
+            mux_2.in[i][0] = a[i]
+            mux_2.in[i][1] = pad
+            mux_2.s0[i] = shift
+        }
+        out = mux_2.out
+    }
+}
