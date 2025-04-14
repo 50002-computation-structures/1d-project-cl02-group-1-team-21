@@ -1,0 +1,43 @@
+module pn_gen #(
+    // SEED needs to always be non-zero
+    // Since seed is XORed with the 32MSBs of SEED, we need the 96 LSBs to be nonzero.
+    SEED = 6781203480
+  )(
+    input clk,       // clock
+    input rst,       // reset
+    input next,      // generate next number flag
+    input seed [32], // seed used on reset
+    output num [32]  // "random" number output
+  ) {
+  
+  .clk(clk) {
+        dff x[32]
+        dff y[32]
+        dff z[32]
+        dff w[32]; // state storage
+  }
+  
+  sig t [32];                       // temporary results
+  
+  always {
+    num = w.q;                      // output is from w
+    t = x.q ^ (x.q << 11);          // calculate intermediate value
+    
+    if (next) {                     // if we need a new number
+      x.d = y.q;                    // shift values along
+      y.d = z.q;                   
+      z.d = w.q;
+      
+      // magic formula from Wikipedia
+      w.d = w.q ^ (w.q >> 19) ^ t ^ (t >> 8);
+    }
+    
+    // Manually reset the flip-flops so we can change the reset value
+    if (rst) {
+      x.d = SEED[8:0];
+      y.d = SEED[15:9];
+      z.d = SEED[23:16];
+      w.d = SEED[31:24] ^ seed;
+    }
+  }
+}

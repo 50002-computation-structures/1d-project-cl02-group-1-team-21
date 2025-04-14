@@ -1,0 +1,613 @@
+module alchitry_top (
+    input clk,              // 10MHz clock
+    input rst_n,            // reset button (active low)
+    output led[8],          // 8 user controllable LEDs
+    input usb_rx,           // USB->Serial input
+    output usb_tx,          // USB->Serial output    
+    output io_led[3][8],    // LEDs on IO Shield
+    output io_segment[8],   // 7-segment LEDs on IO Shield
+    output io_select[4],    // Digit select on IO Shield
+    output buttonCountSegment[8],
+    output buttonCountSelect[1],
+    input io_button[5],     // 5 buttons on IO Shield
+    input io_dip[3][8]      // DIP switches on IO Shield
+) {
+    
+    const CLK_FREQ = $is_sim() ? 1000 : 10000000 // put 1000 for sim, 10000000 otherwise in hardware
+    
+    sig rst                 // reset signal
+    
+    alu alu
+    
+    sig startBtnIn
+    sig clearBtnIn
+    sig skipBtnIn
+    sig firstBtnIn
+    sig secondBtnIn
+    sig thirdBtnIn
+    sig fourthBtnIn
+    sig fifthBtnIn
+    sig sixthBtnIn
+    sig seventhBtnIn
+    sig eighthBtnIn
+    sig firstLED
+    sig secondLED
+    sig thirdLED
+    sig fourthLED
+    sig fifthLED
+    sig sixthLED
+    sig seventhLED
+    sig eighthLED
+    sig heart1LED
+    sig heart2LED
+    sig heart3LED
+    
+    sig score_seg[8]
+    sig button_count_seg[8]
+    sig score_sel[2]
+    sig button_count_sel[1]
+    
+    .clk(clk) {
+        // The reset conditioner is used to synchronize the reset signal to the FPGA
+        // clock. This ensures the entire FPGA comes out of reset at the same time.
+        reset_conditioner reset_cond
+        
+        edge_detector timer(#RISE(1), #FALL(0))
+        
+        button_conditioner firstBtnCond(#CLK_FREQ(CLK_FREQ))
+        button_conditioner secondBtnCond(#CLK_FREQ(CLK_FREQ))
+        button_conditioner thirdBtnCond(#CLK_FREQ(CLK_FREQ))
+        button_conditioner fourthBtnCond(#CLK_FREQ(CLK_FREQ))
+        button_conditioner fifthBtnCond(#CLK_FREQ(CLK_FREQ))
+        button_conditioner sixthBtnCond(#CLK_FREQ(CLK_FREQ))
+        button_conditioner seventhBtnCond(#CLK_FREQ(CLK_FREQ))
+        button_conditioner eighthBtnCond(#CLK_FREQ(CLK_FREQ))
+        button_conditioner startBtnCond(#CLK_FREQ(CLK_FREQ))
+        button_conditioner clearBtnCond(#CLK_FREQ(CLK_FREQ))
+        button_conditioner skipBtnCond(#CLK_FREQ(CLK_FREQ))
+        
+        edge_detector firstBtnDetect(#RISE(1), #FALL(0))
+        edge_detector secondBtnDetect(#RISE(1), #FALL(0))
+        edge_detector thirdBtnDetect(#RISE(1), #FALL(0))
+        edge_detector fourthBtnDetect(#RISE(1), #FALL(0))
+        edge_detector fifthBtnDetect(#RISE(1), #FALL(0))
+        edge_detector sixthBtnDetect(#RISE(1), #FALL(0))
+        edge_detector seventhBtnDetect(#RISE(1), #FALL(0))
+        edge_detector eighthBtnDetect(#RISE(1), #FALL(0))
+        edge_detector startBtnDetect(#RISE(1), #FALL(0))
+        edge_detector clearBtnDetect(#RISE(1), #FALL(0))
+        edge_detector skipBtnDetect(#RISE(1), #FALL(0))
+        
+        .rst(rst) {
+            // Reduce DIV values for simulation so it doesn't take forever
+            multi_seven_seg buttonCountSeg (#DIV($is_sim() ? 1 : 16), #DIGITS(2))
+            multi_seven_seg scoreSeg(#DIV($is_sim() ? 1 : 16), #DIGITS(2))
+            counter slowclock (#SIZE(1), #DIV($is_sim() ? 8 : 26))
+            
+            regfile_unit regfile_system
+            control_unit control_system
+            pn_gen generator
+        }
+    }
+    
+    always {
+         
+        io_led = 3x{{8h00}}
+        io_segment = 8h0
+        io_select = 4h0
+        buttonCountSegment = 4h0
+        buttonCountSelect = 1h0
+
+
+        startBtnIn = io_button[0]
+        clearBtnIn = io_button[1]
+        skipBtnIn  = io_button[2]
+        firstBtnIn = io_dip[0][0]
+        secondBtnIn= io_dip[0][1]
+        thirdBtnIn= io_dip[0][2]
+        fourthBtnIn= io_dip[0][3]
+        fifthBtnIn= io_dip[0][4]
+        sixthBtnIn= io_dip[0][5]
+        seventhBtnIn= io_dip[0][6]
+        eighthBtnIn = io_dip[0][7]
+
+        reset_cond.in = ~rst_n  // input raw inverted reset signal
+        rst = reset_cond.out    // conditioned reset
+        led = c{3b0, 1b0} // connect buttons to LEDs
+        usb_tx = usb_rx         // loop serial port
+        timer.in = slowclock.value
+        
+        buttonCountSeg.values = {4b0, 4b0}
+        scoreSeg.values = {4b0, 4b0}
+        
+        score_seg = ~scoreSeg.seg
+        score_sel = ~scoreSeg.sel
+        button_count_seg = ~buttonCountSeg.seg
+        button_count_sel = ~buttonCountSeg.sel
+        
+        firstLED = 0
+        secondLED = 0
+        thirdLED = 0
+        fourthLED = 0
+        fifthLED = 0
+        sixthLED = 0
+        seventhLED = 0
+        eighthLED = 0
+        heart1LED = 1
+        heart2LED = 1
+        heart3LED = 1
+        
+        firstBtnCond.in = firstBtnIn
+        firstBtnDetect.in = firstBtnCond.out
+        secondBtnCond.in = secondBtnIn
+        secondBtnDetect.in = secondBtnCond.out
+        thirdBtnCond.in = thirdBtnIn
+        thirdBtnDetect.in = thirdBtnCond.out
+        fourthBtnCond.in = fourthBtnIn
+        fourthBtnDetect.in = fourthBtnCond.out
+        fifthBtnCond.in = fifthBtnIn
+        fifthBtnDetect.in = fifthBtnCond.out
+        sixthBtnCond.in = sixthBtnIn
+        sixthBtnDetect.in = sixthBtnCond.out
+        seventhBtnCond.in = seventhBtnIn
+        seventhBtnDetect.in = seventhBtnCond.out
+        eighthBtnCond.in = eighthBtnIn
+        eighthBtnDetect.in = eighthBtnCond.out
+        startBtnCond.in = startBtnIn
+        startBtnDetect.in = startBtnCond.out
+        clearBtnCond.in = clearBtnIn
+        clearBtnDetect.in = clearBtnCond.out
+        skipBtnCond.in = skipBtnIn
+        skipBtnDetect.in = skipBtnCond.out
+        
+        control_system.skipBtn = skipBtnDetect.out
+        control_system.startBtn = startBtnDetect.out
+        control_system.clearBtn = clearBtnDetect.out
+        control_system.timer = timer.out
+        control_system.is_correct = regfile_system.is_correct
+        
+        if (regfile_system.score >= d100){
+            buttonCountSeg.values = {4b0, 4b0}
+            scoreSeg.values = {4b0, 4b0}
+            
+            button_count_seg = ~buttonCountSeg.seg
+            button_count_sel = ~buttonCountSeg.sel
+            score_seg = ~scoreSeg.seg
+            score_sel = ~scoreSeg.sel
+        } else {
+            if (regfile_system.score == 0){
+                buttonCountSeg.values = {control_system.button_count, 4d0}
+                scoreSeg.values = {4d0, 4d0}
+            }else if (regfile_system.score == 1){
+                buttonCountSeg.values = {control_system.button_count, 4d0}
+                scoreSeg.values = {4d0, 4d1}
+            }else if (regfile_system.score == 2){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d0, 4d2}
+            }else if (regfile_system.score == 3){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d0, 4d3}
+            }else if (regfile_system.score == 4){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d0, 4d4}
+            }else if (regfile_system.score == 5){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d0, 4d5}
+            }else if (regfile_system.score == 6){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d0, 4d6}
+            }else if (regfile_system.score == 7){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d0, 4d7}
+            }else if (regfile_system.score == 8){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d0, 4d8}
+            }else if (regfile_system.score == 9){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d0, 4d9}
+            }else if (regfile_system.score == 10){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d1, 4d0}
+            }else if (regfile_system.score == 11){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d1, 4d1}
+            }else if (regfile_system.score == 12){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d1, 4d2}
+            }else if (regfile_system.score == 13){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d1, 4d3}
+            }else if (regfile_system.score == 14){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d1, 4d4}
+            }else if (regfile_system.score == 15){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d1, 4d5}
+            }else if (regfile_system.score == 16){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d1, 4d6}
+            }else if (regfile_system.score == 17){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d1, 4d7}
+            }else if (regfile_system.score == 18){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d1, 4d8}
+            }else if (regfile_system.score == 19){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d1, 4d9}
+            }else if (regfile_system.score == 20){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d2, 4d0}
+            }else if (regfile_system.score == 21){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d2, 4d1}
+            }else if (regfile_system.score == 22){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d2, 4d2}
+            }else if (regfile_system.score == 23){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d2, 4d3}
+            }else if (regfile_system.score == 24){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d2, 4d4}
+            }else if (regfile_system.score == 25){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d2, 4d5}
+            }else if (regfile_system.score == 26){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d2, 4d6}
+            }else if (regfile_system.score == 27){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d2, 4d7}
+            }else if (regfile_system.score == 28){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d2, 4d8}
+            }else if (regfile_system.score == 29){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d2, 4d9}
+            }else if (regfile_system.score == 30){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d3, 4d0}
+            }else if (regfile_system.score == 31){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d3, 4d1}
+            }else if (regfile_system.score == 32){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d3, 4d2}
+            }else if (regfile_system.score == 33){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d3, 4d3}
+            }else if (regfile_system.score == 34){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d3, 4d4}
+            }else if (regfile_system.score == 35){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d3, 4d5}
+            }else if (regfile_system.score == 36){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d3, 4d6}
+            }else if (regfile_system.score == 37){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d3, 4d7}
+            }else if (regfile_system.score == 38){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d3, 4d8}
+            }else if (regfile_system.score == 39){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d3, 4d9}
+            }else if (regfile_system.score == 40){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d4, 4d0}
+            }else if (regfile_system.score == 41){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d4, 4d1}
+            }else if (regfile_system.score == 42){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d4, 4d2}
+            }else if (regfile_system.score == 43){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d4, 4d3}
+            }else if (regfile_system.score == 44){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d4, 4d4}
+            }else if (regfile_system.score == 45){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d4, 4d5}
+            }else if (regfile_system.score == 46){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d4, 4d6}
+            }else if (regfile_system.score == 47){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d4, 4d7}
+            }else if (regfile_system.score == 48){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d4, 4d8}
+            }else if (regfile_system.score == 49){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d4, 4d9}
+            }else if (regfile_system.score == 50){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d5, 4d0}
+            }else if (regfile_system.score == 51){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d5, 4d1}
+            }else if (regfile_system.score == 52){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d5, 4d2}
+            }else if (regfile_system.score == 53){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d5, 4d3}
+            }else if (regfile_system.score == 54){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d5, 4d4}
+            }else if (regfile_system.score == 55){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d5, 4d5}
+            }else if (regfile_system.score == 56){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d5, 4d6}
+            }else if (regfile_system.score == 57){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d5, 4d7}
+            }else if (regfile_system.score == 58){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d5, 4d8}
+            }else if (regfile_system.score == 59){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d5, 4d9}
+            }else if (regfile_system.score == 60){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d6, 4d0}
+            }else if (regfile_system.score == 61){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d6, 4d1}
+            }else if (regfile_system.score == 62){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d6, 4d2}
+            }else if (regfile_system.score == 63){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d6, 4d3}
+            }else if (regfile_system.score == 64){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d6, 4d4}
+            }else if (regfile_system.score == 65){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d6, 4d5}
+            }else if (regfile_system.score == 66){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d6, 4d6}
+            }else if (regfile_system.score == 67){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d6, 4d7}
+            }else if (regfile_system.score == 68){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d6, 4d8}
+            }else if (regfile_system.score == 69){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d6, 4d9}
+            }else if (regfile_system.score == 70){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d7, 4d0}
+            }else if (regfile_system.score == 71){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d7, 4d1}
+            }else if (regfile_system.score == 72){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d7, 4d2}
+            }else if (regfile_system.score == 73){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d7, 4d3}
+            }else if (regfile_system.score == 74){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d7, 4d4}
+            }else if (regfile_system.score == 75){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d7, 4d5}
+            }else if (regfile_system.score == 76){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d7, 4d6}
+            }else if (regfile_system.score == 77){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d7, 4d7}
+            }else if (regfile_system.score == 78){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d7, 4d8}
+            }else if (regfile_system.score == 79){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d7, 4d9}
+            }else if (regfile_system.score == 80){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d8, 4d0}
+            }else if (regfile_system.score == 81){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d8, 4d1}
+            }else if (regfile_system.score == 82){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d8, 4d2}
+            }else if (regfile_system.score == 83){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d8, 4d3}
+            }else if (regfile_system.score == 84){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d8, 4d4}
+            }else if (regfile_system.score == 85){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d8, 4d5}
+            }else if (regfile_system.score == 86){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d8, 4d6}
+            }else if (regfile_system.score == 87){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d8, 4d7}
+            }else if (regfile_system.score == 88){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d8, 4d8}
+            }else if (regfile_system.score == 89){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d8, 4d9}
+            }else if (regfile_system.score == 90){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d9, 4d0}
+            }else if (regfile_system.score == 91){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d9, 4d1}
+            }else if (regfile_system.score == 92){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d9, 4d2}
+            }else if (regfile_system.score == 93){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d9, 4d3}
+            }else if (regfile_system.score == 94){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d9, 4d4}
+            }else if (regfile_system.score == 95){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d9, 4d5}
+            }else if (regfile_system.score == 96){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d9, 4d6}
+            }else if (regfile_system.score == 97){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d9, 4d7}
+            }else if (regfile_system.score == 98){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d9, 4d8}
+            }else if (regfile_system.score == 99){
+                            buttonCountSeg.values = {control_system.button_count, 4d0}
+                            scoreSeg.values = {4d9, 4d9}
+            }
+            
+            button_count_seg = ~buttonCountSeg.seg
+            button_count_sel = ~buttonCountSeg.sel
+            score_seg = ~scoreSeg.seg
+            score_sel = ~scoreSeg.sel
+        }
+        
+        generator.seed = 32b1
+        alu.b = 32b0
+        if(control_system.asel == 0){
+            alu.a = regfile_system.read_data_1
+        } else {
+            alu.a = 32b0
+        }
+        
+        case(control_system.bsel){
+            3b000:
+                alu.b = regfile_system.read_data_2
+            3b001:
+                alu.b[31:3] = 29b0
+                alu.b[2:0] = generator.num[2:0]
+            3b010:
+                alu.b = 32d3
+            3b011:
+                if(firstBtnDetect.out == 1){
+                    alu.b = 32b000
+                } else if(secondBtnDetect.out == 1){
+                    alu.b = 32b001
+                } else if(thirdBtnDetect.out == 1){
+                    alu.b = 32b010
+                } else if(fourthBtnDetect.out == 1){
+                    alu.b = 32b011
+                } else if(fifthBtnDetect.out == 1){
+                    alu.b = 32b100
+                } else if(sixthBtnDetect.out == 1){
+                    alu.b = 32b101
+                } else if(seventhBtnDetect.out == 1){
+                    alu.b = 32b110
+                } else if(eighthBtnDetect.out == 1){
+                    alu.b = 32b111
+                }
+                else{
+                    alu.b = 32hFFFFFFFF
+                }
+            3b100:
+                alu.b = 32b1
+            3b101:
+                if(control_system.button_count == 1){
+                    // alu.b = 32d21
+                    alu.b = 32d9
+                } else if(control_system.button_count == 2){
+                    // alu.b = 32d18
+                    alu.b = 32d6
+                } else if(control_system.button_count == 3){
+                    // alu.b = 32d15
+                    alu.b = 32d3
+                } else if(control_system.button_count == 4){
+                    // alu.b = 32d12
+                    alu.b = 32d0
+                }
+            3b110:
+                alu.b = 32b0
+        }
+        
+        if(firstBtnDetect.out == 1 || secondBtnDetect.out == 1 || thirdBtnDetect.out == 1 ||
+            fourthBtnDetect.out == 1 || fifthBtnDetect.out == 1 || sixthBtnDetect.out == 1 ||
+            seventhBtnDetect.out == 1 || eighthBtnDetect.out == 1
+        ){
+            control_system.button_input = 1
+        } else {
+            control_system.button_input = 0
+        }
+        
+        regfile_system.read_address_1 = control_system.ra
+        regfile_system.read_address_2 = control_system.rb
+        regfile_system.write_enable = control_system.we
+        regfile_system.write_address = control_system.wa
+        regfile_system.clear_reg = control_system.clear_reg
+        regfile_system.reset_score = control_system.reset_score
+        regfile_system.write_data = alu.out
+        
+        generator.next = control_system.gen_next
+        alu.alufn = control_system.alufn
+        if(control_system.led_enable && (~slowclock.value)){
+            if(generator.num[2:0] == 3b000){
+                firstLED = 1
+            } else if(generator.num[2:0] == 3b001){
+                secondLED = 1
+            } else if(generator.num[2:0] == 3b010){
+                thirdLED = 1
+            } else if(generator.num[2:0] == 3b011){
+                fourthLED = 1
+            } else if(generator.num[2:0] == 3b100){
+                fifthLED = 1
+            } else if(generator.num[2:0] == 3b101){
+                sixthLED = 1
+            } else if(generator.num[2:0] == 3b110){
+                seventhLED = 1
+            } else if(generator.num[2:0] == 3b111){
+                eighthLED = 1
+            }
+        }
+        
+        if(regfile_system.hearts_remaining == 3){
+            heart1LED = 1
+            heart2LED = 1
+            heart3LED = 1
+        } else if(regfile_system.hearts_remaining == 2){
+            heart1LED = 0
+            heart2LED = 1
+            heart3LED = 1
+        } else if(regfile_system.hearts_remaining == 1){
+            heart1LED = 0
+            heart2LED = 0
+            heart3LED = 1
+        } else if(regfile_system.hearts_remaining == 0){
+            heart1LED = 0
+            heart2LED = 0
+            heart3LED = 0
+        }
+        
+        
+        
+        io_led[0] = c{eighthLED, seventhLED, sixthLED, fifthLED, fourthLED, thirdLED, secondLED, firstLED}
+        io_led[1][2:0] =  c{heart1LED, heart2LED, heart3LED} 
+        io_segment = score_seg
+        io_select[1:0] = score_sel
+        io_select[3:2] = button_count_sel
+        
+        buttonCountSegment = button_count_seg
+        buttonCountSelect = button_count_sel
+        
+        led = control_system.debug
+    }
+}
