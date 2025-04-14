@@ -1,0 +1,59 @@
+module alu (
+    input a[32],
+    input b[32],
+    input alufn[6],
+    output out[32],
+    output z,
+    output v,
+    output n
+) {
+    //creating modules
+    mux_4_32_bit mux
+    mux_2 mux2
+    mux_2 mux3
+    divisor divisor
+    rca adder(#BITS(32))
+    boolean boolean
+    compare compare
+    shifter shifter
+    multiplier multiplier
+    
+    always {
+        //inputing values into nodes
+        adder.a = a
+        adder.b = b
+        adder.alufn = alufn[0]
+        boolean.a = a
+        boolean.b = b
+        boolean.alufn = alufn[3:0]
+        compare.z = adder.z
+        compare.n = adder.n
+        compare.v = adder.v
+        compare.alufn = alufn[2:1]
+        shifter.a = a
+        shifter.b = b[4:0]
+        shifter.alufn = alufn[1:0]
+        multiplier.a = a
+        multiplier.b = b
+        divisor.a = a
+        divisor.b = b
+        
+        //connecting to mux
+        mux2.s0 = alufn[1]
+        mux2.i0 = adder.s
+        mux2.i1 = multiplier.mul
+        mux3.s0 = alufn[0]
+        mux3.i0 = boolean.out
+        mux3.i1 = divisor.out
+        mux.s0 = alufn[4]
+        mux.s1 = alufn[5]
+        mux.in[0] = mux2.out
+        mux.in[1] = mux3.out
+        mux.in[2] = shifter.out
+        mux.in[3] = c{31x{b0}, compare.out}
+        z = adder.z
+        v = adder.v
+        n = adder.n
+        out = mux.out
+    }
+}

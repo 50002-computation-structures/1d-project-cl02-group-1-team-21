@@ -1,0 +1,14 @@
+module boolean (
+    input alufn[4],
+    input a[32],
+    input b[32],
+    output out[32]
+) {
+    mux_4 mux[32]
+    always {
+        mux.in = 32x{{alufn}}
+        mux.s0 = a
+        mux.s1 = b
+        out = mux.out
+    }
+}

@@ -1,0 +1,46 @@
+module right_shifter (
+    input a[32],
+    input b[32],
+    output out[32]
+) {
+    //16 bit, 8 bit, 4 bit, 2 bit and 1 bit mux
+    mux_2 mux[5]
+    
+    //mux outputs
+    sig wr[32]
+    sig xr[32]
+    sig yr[32]
+    sig zr[32]
+    
+    always {
+        //16 bit
+        mux.i0[0] = a
+        mux.i1[0] = c{16b0, a[31:16]}
+        mux.s0[0] = b[4]
+        wr = mux.out[0]
+        
+        //8 bit
+        mux.i0[1] = wr
+        mux.i1[1] = c{8b0, wr[31:8]}
+        mux.s0[1] = b[3]
+        xr = mux.out[1]
+        
+        //4 bit
+        mux.i0[2] = xr
+        mux.i1[2] = c{4b0, xr[31:4]}
+        mux.s0[2] = b[2]
+        yr = mux.out[2]
+        
+        //2 bit
+        mux.i0[3] = yr
+        mux.i1[3] = c{2b0, yr[31:2]}
+        mux.s0[3] = b[1]
+        zr = mux.out[3]
+        
+        //1 bit
+        mux.i0[4] = zr
+        mux.i1[4] = c{b0, zr[31:1]}
+        mux.s0[4] = b[0]
+        out = mux.out[4]
+    }
+}

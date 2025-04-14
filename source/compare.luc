@@ -1,0 +1,21 @@
+module compare (
+    input alufn[2],
+    input z,
+    input v,
+    input n,
+    output out
+) {
+    // init adder and mux
+    mux_4 mux
+    
+    always {
+        //pass values into 4 way mux
+        mux.s0 = alufn[0]
+        mux.s1 = alufn[1]
+        mux.in[0] = 0
+        mux.in[1] = z
+        mux.in[2] = n ^ v
+        mux.in[3] = (n ^ v) | z
+        out = mux.out
+    }
+}
