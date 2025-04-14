@@ -1,0 +1,30 @@
+module shifter(
+    input a[32],
+    input b[5],
+    input alufn[2],
+    output out[32]
+) {
+    mux_4_32_bit mux
+    left_shifter ls
+    right_shifter rs
+    arith_right_shifter ars
+    
+    always {
+        // setting up shifters
+        ls.a = a
+        ls.b = b
+        rs.a = a
+        rs.b = b
+        ars.a = a
+        ars.b = b
+        
+        // mux selector
+        mux.s0 = alufn[0]
+        mux.s1 = alufn[1]
+        mux.in[0] = ls.out
+        mux.in[1] = rs.out
+        mux.in[2] = 32b0
+        mux.in[3] = ars.out
+        out = mux.out
+    }
+}
